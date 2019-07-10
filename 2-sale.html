@@ -1,0 +1,442 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>SequoiaBook</title>
+		<meta name="description" content="Multi-Purpose E-commerce Template">
+		<!--[if IE]>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<![endif]-->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="author" content="">
+		<link rel="shortcut icon" href="images/favicon.png" type="image/x-icon" />
+		<link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+		<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
+		<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
+		<link rel="stylesheet" type="text/css" href="third-party/sidr/css/jquery.sidr.dark.css">
+		<link rel="stylesheet" type="text/css" href="third-party/slick/css/slick.css">
+
+		<link rel="stylesheet" type="text/css" href="third-party/wow/css/animate.min.css">
+        <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css">
+		<link rel="stylesheet" type="text/css" href="third-party/magnific-popup-master/css/magnific-popup.css">
+		<link rel="stylesheet" type="text/css" href="third-party/accordionjs/css/accordion.min.css">
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<link rel="stylesheet" type="text/css" href="icons/icons.css">
+		<link rel="stylesheet" type="text/css" href="css/custom.css">
+		<link rel="stylesheet" type="text/css" href="css/responsive.css">
+		<link rel="stylesheet" id="color" href="css/default.css">
+
+
+		<link rel="stylesheet" href="third-party/fontawesome/releases/v5.2.0/css/all.css" >
+
+		<link href="https://fonts.googleapis.com/css?family=Roboto:400,500,600,700" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800" rel="stylesheet">
+
+		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+		<script src="http://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="http://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+		<script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+		<script src="https://cdn.bootcss.com/echarts/3.8.5/echarts.js"></script>
+
+		<script  src="third-party/jquery/jquery-3.2.1.min.js"></script>
+		<script  src="third-party/jquery/jquery-migrate-3.0.0.min.js"></script>
+		<script src="js/jquery.min.js"></script>
+		<script type="text/javascript">
+			var jQuery_New = $.noConflict();
+		</script>
+		<script src="js/lib/jquery.pagination.js"></script>
+		<link rel="stylesheet" href="css/common.css">
+		<link rel="stylesheet" href="js/lib/pagination.css">
+		<script>
+			var saleData;
+			function loadData(){
+				$.ajax({
+					url: 'http://192.168.1.178:5000/api/GetSeller',
+					async: false,
+					type: 'post',
+					contentType: 'application/json; charset=UTF-8',
+					xhrFields:{
+						withCredentials: true
+					},
+					data: JSON.stringify({}),
+					success: function(data){
+						console.log("success");
+						console.log(data);
+						$.ajax({
+							url: 'http://192.168.1.178:5000/api/GetMerchandisesOfSeller',
+							type: 'post',
+							async: false,
+							contentType: 'application/json; charset=UTF-8',
+							xhrFields: {	//发送cookie
+								withCredentials: true
+							},
+							data: JSON.stringify({
+								'sellerShopName': data.ShopName
+							}),
+							success: function(msg){
+								console.log("success");
+								saleData = msg;
+								console.log(msg);
+							},
+							error: function(err){
+								console.log(err.statusText);
+							}
+						});
+					},
+					error: function(err){
+						console.log(err.statusText);
+					}
+				});
+			}
+			loadData();
+			console.log(saleData);
+		</script>
+		<script>
+				var pageSize = 20;
+				function pagination(){
+					jQuery_New('.M-box').pagination(saleData.length,{
+						jump: true,
+						coping: true,
+						num_display_entries: 4,
+						num_edge_entries: 1,
+						callback: PageCallback,
+						items_per_page: pageSize,
+						homePage: '首页',
+						endPage: '末页',
+						current: 0,
+						prevContent: '<<上页',
+						nextContent: '下页>>'
+					});
+				}
+				function PageCallback(index,jq) {
+					jQuery_New(".PageTable").hide();
+					LoadData(index);
+				}
+				var flag = 0;
+				function LoadData(pageIndex){
+					var items_per_page = pageSize;
+					var bookname, authorname;
+					var max_elem = Math.min((pageIndex+1)*items_per_page,saleData.length);
+					if(flag==0){
+						jQuery_New('.tbody').append(`<tr><th>商品ID</th><th>书籍名称</th><th>ISBN号码</th>
+						<th>作者姓名</th><th>单价</th><th>描述</th></tr>`);
+						flag = 1;
+					}
+					for(var i=pageIndex*items_per_page;i<max_elem;i++) {
+						$.ajax({
+							url: 'http://192.168.1.178:5000/api/GetBook/',
+							type: 'post',
+							async:false,
+							contentType: 'application/json; charset=UTF-8',
+							xhrFields: {	//发送cookie
+								withCredentials: true
+							},
+							data: JSON.stringify({
+								'ISBN': saleData[i].ISBN
+							}),
+							success: function(msg){
+								console.log("success");
+								console.log(msg);
+								bookname = msg.Title;
+								authorname = msg.Author;
+							},
+							error: function(err){
+								console.log(err.statusText);
+							}
+						});
+						jQuery_New('.tbody').append(`
+					<tr class="PageTable">
+						<td>${saleData[i].MerchandiseId}</td>
+						<td>${bookname}</td>
+						<td>${saleData[i].ISBN}</td>
+						<td>${authorname}</td>
+						<td>${saleData[i].Price}</td>
+						<td>${saleData[i].Description}</td>
+						</tr>
+					`)
+					}
+				}
+				jQuery_New(function(){
+					pagination();
+				})
+	
+	
+			</script>
+			
+
+	</head>
+	<body class="home header-v1">
+		<div id="page" class="site">
+		<!-- Mobile main menu -->
+			<a href="#" id="mobile-trigger"><i class="fa fa-list" aria-hidden="true"></i></a>
+		    <!-- #mob-menu -->
+			<header id="masthead" class="site-header sticky-enabled">
+				<div class="container">
+					<div class="site-branding pull-left">
+						<div id="site-identity">
+							<h1 class="site-title"><a href="#"  rel="home"><img alt="logo" class="site-logo" src="images/logo.png">红杉书屋</a></h1>
+						</div><!-- #site-identity -->
+					</div><!-- .site-branding -->
+					<nav class="main-navigation pull-right">
+						<ul>
+							<li><a href="2-information.html">我的店铺</a></li>
+							<a href="2-login.html">登录</a>
+							<a href="#" onclick="logout()" >安全退出</a>
+							<script>
+								function logout(){
+									$.ajax({
+										url: 'http://192.168.1.178:5000/api/SellerLogout',
+										type: 'post',
+										contentType: 'application/json; charset=UTF-8',
+										xhrFields: {	//发送cookie
+										withCredentials: true
+										},
+										data: JSON.stringify({}),
+										success: function(msg){
+											console.log("success");
+											window.location = '2-login.html';
+										},
+										error: function(err){
+											//理论上不可能
+										}
+									});
+								}
+							</script>
+						</ul>
+					</nav> <!-- .site-navigation -->
+				</div> <!-- .container -->
+			</header> <!-- .site-header -->
+            <div id="custom-header">
+			<div class="custom-header-content">
+                <div class="container">
+                  <h1 class="page-title">我的店铺</h1>
+<!-- #breadcrumb -->
+                </div> <!-- .container -->
+              </div>  <!-- .custom-header-content -->
+            </div> <!-- .custom-header -->
+            <div id="content" class="site-content global-layout-left-sidebar">
+              <div class="container">
+                <div class="inner-wrapper">
+                  <div id="primary" class="content-area">
+                    <main id="main" class="site-main"> <!-- .post -->
+					<div class="view-information">
+						<div class="title">
+							<h3>出售中的商品</h3>
+						</div>
+						<div class="content">
+							<form>
+								<table style="border-style:none;" class="frameless-table">
+									<tr style="border-style:none;">
+										<td style="border-style:none;"><label>商品ID</label></td>
+										<td style="border-style:none;"><input id="id" type="text" style="width:100px; height:35px;" /></td>
+										<td style="border-style:none;"><label>书籍名称</label></td>
+										<td style="border-style:none;"><input id="name" type="text" style="width:100px; height:35px;"/></td>
+										<td style="border-style:none;"><label>ISBN号码</label></td>
+										<td style="border-style:none;"><input id="ISBN" type="text" style="width:100px; height:35px;"/></td>
+									</tr>
+									<tr style="border-style:none;">
+										<td style="border-style:none;"><label>作者姓名</label></td>
+										<td style="border-style:none;"><input id="author" type="text" style="width:100px; height:35px;" /></td>
+										<td style="border-style:none;"><label>商品价格</label></td>
+										<td style="border-style:none;"><input id="minprice" type="number" style="width:50px; height:35px;"/><lable>—</lable><input id="maxprice" type="number" style="width:50px; height:35px;"/></td>
+										<td style="border-style:none;">&nbsp;</td><td style="border-style:none;">&nbsp;</td>
+									</tr>
+									<tr style="border-style:none;">
+										<td style="border-style:none;"><input type="button" value="查询" onclick="query();"/></td>
+										<script>
+											function query(){
+												console.log("query");
+												loadData();
+												console.log(saleData);
+												if($("#id").val() != ""){
+													for(var i = 0; i< saleData.length; i++){
+														if(saleData[i].MerchandiseId != $("#id").val()){
+															saleData.splice(i, 1);
+															i--;
+														}
+													}
+												}
+												if($("#ISBN").val() != ""){
+													for(var i = 0; i< saleData.length; i++){
+														if(saleData[i].ISBN != $("#ISBN").val()){
+															saleData.splice(i, 1);
+															i--;
+														}
+													}
+												}
+												if($("#author").val() != ""){
+													for(var i = 0; i< saleData.length; i++){
+														$.ajax({
+															url: 'http://192.168.1.178:5000/api/GetBook/',
+															type: 'post',
+															async:false,
+															contentType: 'application/json; charset=UTF-8',
+															xhrFields: {	//发送cookie
+																withCredentials: true
+															},
+															data: JSON.stringify({
+																'ISBN': saleData[i].ISBN
+															}),
+															success: function(msg){
+																authorname = msg.Author;
+															},
+															error: function(err){
+																console.log(err.statusText);
+															}
+														});
+														if(authorname != $("#author").val()){
+															saleData.splice(i, 1);
+															i--;
+														}
+													}
+												}
+												if($("#name").val() != ""){
+													for(var i = 0; i< saleData.length; i++){
+														$.ajax({
+															url: 'http://192.168.1.178:5000/api/GetBook/',
+															type: 'post',
+															async:false,
+															contentType: 'application/json; charset=UTF-8',
+															xhrFields: {	//发送cookie
+																withCredentials: true
+															},
+															data: JSON.stringify({
+																'ISBN': saleData[i].ISBN
+															}),
+															success: function(msg){
+																bookname = msg.Title;
+															},
+															error: function(err){
+																console.log(err.statusText);
+															}
+														});
+														if(bookname != $("#name").val()){
+															saleData.splice(i, 1);
+															i--;
+														}
+													}
+												}
+												if($("#minprice").val() != "" && $("#maxprice").val() != ""){
+													for(var i = 0; i< saleData.length; i++){
+														if(saleData[i].Price < $("#minprice").val() || saleData[i].Price > $("#maxprice").val()){
+															saleData.splice(i, 1);
+															i--;
+														}
+													}
+												}
+												if(saleData.length == 0){
+													$("#error").html("没有符合条件的商品信息！");
+												}
+												console.log(saleData);
+												jQuery_New(function(){
+													pagination();
+												});
+											}
+										</script>
+	
+										<td style="border-style:none;"><input type="button" value="重置" onclick="resetData();"/></td>
+										<script>
+											function resetData(){
+												console.log("reset");
+												loadData();
+												console.log(saleData);
+												jQuery_New(function(){
+													pagination();
+												});
+											}
+										</script>
+
+									</tr>
+								</table>
+								<p id="error" style="color:red"></p>
+							</form>
+						</div>
+						<br><br>
+						<div>
+							<div class="M-box" ></div>
+							<table class="tbody"></table>
+						</div>				
+
+					</div>
+                    </main> <!-- #main -->
+                  </div> <!-- #primary -->
+                  <div id="sidebar-primary" class="sidebar widget-area" >
+                    <div class="sidebar-widget-wrapper"> <!-- .widget -->
+                      <!-- .widget-archive -->
+                      <aside class="widget widget-categories">
+						<ul>
+							<li> <h3><a href="#"><img alt="logo" class="site-logo" src="images/shop.png">店铺管理</a></h3>
+                        <ul>
+                          <li><a href="2-information.html" >查看信息</a> </li>
+                          <li><a href="2-changeinfo.html" >修改信息</a> </li>
+                          <li> <a href="2-change.html" >安全中心</a></li>
+                        </ul>
+							</li>
+							<li>
+						  <h3><a href="#"><img alt="logo" class="site-logo" src="images/transaction.png">交易管理</a></h3>
+						   <ul>
+                          <li><a href="2-evaluation.html" >评价管理</a> </li>
+                          <li><a href="2-order.html" >订单信息</a> </li>
+								</ul></li>
+						  <li><h3><a href="#"><img alt="logo" class="site-logo" src="images/logistics.png">物流管理</a></h3>
+						   <ul>
+                          <li><a href="2-logistics.html" >物流信息</a> </li>
+							  </ul></li>
+						  <li><h3><a href="#"><img alt="logo" class="site-logo" src="images/commodity.png">商品管理</a></h3>
+						   <ul>
+                          <li><a href="2-onshelves.html" >上架商品</a> </li>
+                          <li><a href="2-sale.html" >出售中的商品</a> </li>
+							  </ul></li>
+						  <li><h3><a href="#"><img alt="logo" class="site-logo" src="images/customer-service.png">客户服务</a></h3>
+						   <ul>
+                          <li><a href="2-member.html" >会员管理</a> </li>
+                          <li><a href="2-coupons.html" >优惠券管理</a> </li>
+							  </ul></li>
+						</ul>
+                      </aside>
+<!-- .widget-recent-entries -->                      <!-- .widget-tag-cloud -->
+                    </div>
+                    <!-- .sidebar-widget-wrapper -->
+                  </div> <!-- .sidebar -->
+                </div> <!-- #inner-wrapper -->
+              </div><!-- .container -->
+            </div> <!-- #content-->
+			<div class="footer-container">
+				<footer id="colophon" class="site-footer">
+					<div class="colophon-bottom">
+						<div class="container">
+							<div class="inner-wrapper">
+								<a href="1-intro.html">  团队介绍 </a>
+								<br>
+								<a href="http://www.miitbeian.gov.cn"> 互联网ICP备案：沪ICP备19023316号-1 </a>
+								<p> (+86) 008 400 123 &nbsp&nbsp database@tongji.edu.cn &nbsp&nbsp 4800 Cao'an Street, China </p>
+								<p> Copyright © 2019 SequoiaBook . All rights reserved. </p>
+							</div><!-- .inner-wrapper -->
+						</div> <!-- .container -->
+					</div> <!-- .colophon-bottom -->
+				</footer> <!-- footer ends here -->
+			</div><!-- footer-container -->
+	</div> <!--#page-->
+		<div id="btn-scrollup">
+			<a  title="Go Top"  class="scrollup button-circle" href="#"><i class="fas fa-angle-up"></i></a>
+		</div><!-- #btn-scrollup -->
+		<div class="ad-wrapper">
+		<script  src="third-party/jquery/jquery-3.2.1.min.js"></script>
+		<script  src="third-party/jquery/jquery-migrate-3.0.0.min.js"></script>
+		<!--Include all compiled plugins (below), or include individual files as needed-->
+		<script  src="third-party/sidr/js/jquery.sidr.js"></script>
+		<script  src="third-party/cycle2/jquery.cycle2.js"></script>
+		<script  src="third-party/slick/js/slick.min.js"></script>
+		<script  src="third-party/wow/js/wow.min.js"></script>
+        <script src="js/jquery-ui.min.js"></script>
+		<script  src="third-party/magnific-popup-master/js/jquery.magnific-popup.js"></script>
+		<script  src="third-party/accordionjs/js/accordion.min.js"></script>
+		<script  src="js/contact.js"></script>
+		<script  src="js/custom.js"></script>
+		<script  src="js/color-switcher.js"></script>
+		</div>
+	</body>
+</html>

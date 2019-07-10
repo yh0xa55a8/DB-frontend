@@ -1,0 +1,283 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>SequoiaBook</title>
+    <meta name="description" content="Multi-Purpose E-commerce Template">
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
+    <link rel="stylesheet" type="text/css" href="third-party/sidr/css/jquery.sidr.dark.css">
+    <link rel="stylesheet" type="text/css" href="third-party/slick/css/slick.css">
+    <link rel="stylesheet" type="text/css" href="third-party/wow/css/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css">
+    <link rel="stylesheet" type="text/css" href="third-party/magnific-popup-master/css/magnific-popup.css">
+    <link rel="stylesheet" type="text/css" href="third-party/accordionjs/css/accordion.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="icons/icons.css">
+    <link rel="stylesheet" type="text/css" href="css/custom.css">
+    <link rel="stylesheet" type="text/css" href="css/responsive.css">
+    <link rel="stylesheet" id="color" href="css/default.css">
+    <!-- <link rel="stylesheet" type="text/css" href="css/colors/lite-green.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/colors/dark-green.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/colors/black.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/colors/orange.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/colors/brown.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/colors/lite-green.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/colors/dark-purple.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/colors/cyan.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/colors/dark-blue.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/colors/purple.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/colors/sky-blue.css"> -->
+
+
+    <link rel="stylesheet" href="third-party/fontawesome/releases/v5.2.0/css/all.css" >
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="http://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="http://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script>
+        function checkName(){
+            if ($.trim($('#name').val()).length == 0) {
+                $('#nameError').html('姓名没有输入');
+                $('#name').focus();
+                return false;
+            } else {
+                $('#nameError').html('');
+                return true;}
+        }
+
+        function checkPassword(){
+            if($.trim($('#password').val()).length == 0){
+                $('#passwordError').html('密码没有输入');
+                $('#password').focus();
+                return false;
+            }else{
+                $('#passwordError').html('');
+                const rePass = $.trim($('#rePassword').val());
+                const pass = $.trim($('#password').val());
+                if (rePass.length != 0) {
+                    if (rePass != pass) {
+                        $('#rePasswordError').html('两次密码不一致');
+                        return false;
+                    } else {
+                        $('#rePasswordError').html('');
+                        return true;
+                    }
+                }
+            }
+        }
+
+        function checkRePassword(){
+            const rePass = $.trim($('#rePassword').val());/*去除字符串两端空白*/
+            if(rePass.length == 0){
+                $('#rePasswordError').html("密码没有输入");
+                $('#rePassword').focus();
+                return false;
+            }else{
+                $('#rePasswordError').html('');
+                const pass=$.trim($('#password').val());
+                if(pass.length==0){
+                    $('#rePassword').val('');
+                    $('#passwordError').html("密码没有输入");
+                    $('#password').focus();
+                    return false;
+                }else if(rePass != pass){
+                    $('#rePasswordError').html('两次密码不一致');
+                    return false;
+                }else{
+                    $('#rePasswordError').html('');
+                    return true;
+                }
+            }
+        }
+
+        function checkRegister(){
+            if(checkName()==false){
+                return false;
+            }
+            if(checkPassword()==false){
+                return false;
+            }
+            if(checkRePassword()==false){
+                return false;
+            }
+        }
+
+    </script>
+
+    <script language="javascript" type="text/javascript">
+        function change(){
+            var div1=document.getElementById("div1");
+            if(div1.style.display=="none"){
+                div1.style.display = "block";
+                div2.style.display = "none";
+                div6.style.display = "none";
+                div5.style.display = "block";
+            }else{
+                div1.style.display = "none";
+                div2.style.display = "block";
+                div5.style.display = "none";
+                div6.style.display = "block";
+            }
+        }
+    </script>
+
+    <script src="js/change.js"></script>
+</head>
+<body class="home header-v1">
+<div id="page" class="site">
+
+    <header id="masthead" class="site-header sticky-enabled">
+        <div class="container">
+            <div class="site-branding pull-left">
+                <div id="site-identity">
+                    <h1 class="site-title"><a href="home-v1.html"  rel="home"><img alt="logo" class="site-logo" src="images/logo.png">红杉书屋</a></h1>
+                </div><!-- #site-identity -->
+            </div><!-- .site-branding -->
+            <a href="1-search.html"><input type="button" value="进入搜索" class="pull-right quick-link-button"></a>
+            <div id="header-right" class="pull-right">
+                <div class="hearder-min-cart">
+                    <ul>
+                        <li class="cart-button mini-cart-wrap">
+                            <a href="#"><i class=" icon-basket"></i>	</a>
+                        </li>
+                        <li class="cart-button">
+                            <a href="wishlist.html"  title="wishlist"><i class=" icon-heart"></i>	</a>
+                        </li>
+                    </ul>
+                </div><!-- #quick-link-buttons -->
+            </div>
+            <nav class="main-navigation pull-right">
+                <ul>
+                    <a href="#">主页&nbsp&nbsp</a>
+                    <li class="menu-item-has-children"><a href="#">类别</a>
+                        <ul class="sub-menu">
+                            <li><a href="shop-grid.html">世界名著</a></li>
+                            <li><a href="shop-full.html">当代文学</a></li>
+                            <li><a href="shop-left-sidebar.html">哲学宗教</a></li>
+                            <li><a href="shop-right-sidebar.html">政治法律</a></li>
+                            <li><a href="shop-three-column.html">历史地理</a></li>
+                            <li><a href="shop-three-column.html">自然科学</a></li>
+                        </ul>
+                    </li>
+                    <a href="#" >我的订单&nbsp&nbsp&nbsp</a>
+                    <a href="#" >我的账户</a>
+                </ul>
+            </nav> <!-- .site-navigation -->
+        </div> <!-- .container -->
+    </header> <!-- .site-header -->
+
+
+    <div id="custom-header">
+        <div class="custom-header-content">
+            <div class="container">
+                <h1 class="page-title">修改密码</h1>
+                <div id="breadcrumb">
+                    <div  aria-label="Breadcrumbs" class="breadcrumbs breadcrumb-trail">
+                        <ul class="trail-items">
+                            <li class="trail-item trail-begin"><a href="" rel="home"><span>主页</span></a></li>
+                            <li class="trail-item trail-end"><span>修改密码</span></li>
+                        </ul>
+                    </div> <!-- .breadcrumbs -->
+                </div> <!-- #breadcrumb -->
+            </div> <!-- .container -->
+        </div>  <!-- .custom-header-content -->
+    </div> <!-- .custom-header -->
+    <div id="content" class="site-content default-full-width">
+        <div class="container">
+            <div class="inner-wrapper">
+                <div id="primary" class="content-area">
+                    <main id="main" class="site-main">
+                        <div class="section-my-account">
+                            <div class="register-account">
+                                <div class="user-acc-header">
+                                    <h3>修改密码</h3>
+                                </div>
+                                <div class="content-body" id="div1">
+                                    <form>
+                                        <p><label>电子邮箱</label><input type="text" placeholder="电子邮箱" id="Email1"></p>
+                                        <p><input type="button" value="点击发送验证码" onclick="SendMail()"></p>
+                                        <p><label>邮箱验证码</label><input type="text" placeholder="邮箱验证码" id="ValidateCode1"></p>
+                                        <p><label>新密码</label><input id="password1" name="password" onblur="checkPassword()"
+                                                                    required="required" type="password" placeholder="新密码">
+                                        <p id="passwordError1" style="color:red;"></p>
+                                        </p>
+                                        <p><label>再次输入新密码</label><input id="rePassword1" name="rePassword" onblur="checkRePassword()"
+                                                                        required="required" type="password" placeholder="再次输入新密码">
+                                        <p id="rePasswordError1" style="color:red;"></p></p>
+                                        <p><input type="button" value="确认" onblur="checkRegister()" onclick="MailChangePassword()"></p>
+                                    </form>
+                                </div>
+                                <div class="content-body" id="div2" style="display: none">
+                                    <form>
+                                        <p><label>手机号码</label><input type="text" placeholder="手机号码" id="Email2"></p>
+                                        <p><input type="button" value="点击发送验证码" onclick="SendMail()"></p>
+                                        <p><label>手机验证码</label><input type="text" placeholder="手机验证码" id="ValidateCode2"></p>
+                                        <p><label>新密码</label><input id="password2" name="password" onblur="checkPassword()"
+                                                                    required="required" type="password" placeholder="新密码">
+                                        <p id="passwordError2" style="color:red;"></p>
+                                        </p>
+                                        <p><label>再次输入新密码</label><input id="rePassword2" name="rePassword" onblur="checkRePassword()"
+                                                                        required="required" type="password" placeholder="再次输入新密码">
+                                        <p id="rePasswordError2" style="color:red;"></p></p>
+                                        <p><input type="button" value="确认" onblur="checkRegister()" onclick="MailChangePassword()"></p>
+                                    </form>
+                                </div>
+                                <div class="user-acc-footer">
+                                    <p>已有账号? <a class="login-account-link" href="1-login.html">登录</a></p>
+                                    <div id="div5"><p><a href="javascript:void(0);" onclick="change()">使用电子邮箱修改密码</a></p></div>
+                                    <div id="div6" style="display:none"><p><a href="javascript:void(0);" onclick="change()">使用手机号码修改密码</a></p></div>
+                                </div>
+                            </div><!-- .register-account -->
+                        </div><!-- .section-my-acount -->
+                    </main> <!-- #main -->
+                </div> <!-- #primary -->
+            </div> <!-- #inner-wrapper -->
+        </div><!-- .container -->
+    </div> <!-- #content-->
+
+    <!-- 页脚 -->
+    <div class="footer-container">
+        <footer id="colophon" class="site-footer">
+            <div class="container">
+                <div class="inner-wrapper">
+                    <a href="http://www.bootstrapmb.com/">  团队介绍 </a>
+                    <p> (+86) 008 400 123 &nbsp&nbsp database@tongji.edu.cn &nbsp&nbsp 4800 Cao'an Street, China </p>
+                    <p> Copyright © 2019 SequoiaBook . All rights reserved. </p>
+                </div><!-- .inner-wrapper -->
+            </div> <!-- .container -->
+        </footer> <!-- footer ends here -->
+    </div><!-- footer-container -->
+</div> <!--#page-->
+
+<script  src="third-party/jquery/jquery-3.2.1.min.js"></script>
+<script  src="third-party/jquery/jquery-migrate-3.0.0.min.js"></script>
+<!--Include all compiled plugins (below), or include individual files as needed-->
+<script  src="third-party/sidr/js/jquery.sidr.js"></script>
+<script  src="third-party/cycle2/jquery.cycle2.js"></script>
+<script  src="third-party/slick/js/slick.min.js"></script>
+<script  src="third-party/wow/js/wow.min.js"></script>
+<script src="js/jquery-ui.min.js"></script>
+<script  src="third-party/magnific-popup-master/js/jquery.magnific-popup.js"></script>
+<script  src="third-party/accordionjs/js/accordion.min.js"></script>
+<script  src="js/contact.js"></script>
+<script  src="js/custom.js"></script>
+<script  src="js/color-switcher.js"></script>
+</body>
+</html>
+
+

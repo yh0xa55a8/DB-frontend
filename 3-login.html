@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>SequoiaBook</title>
+		<meta name="description" content="Multi-Purpose E-commerce Template">
+		<!--[if IE]>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<![endif]-->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="author" content="">
+		<link rel="shortcut icon" href="images/favicon.png" type="image/x-icon" />
+		<link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+		<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
+		<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
+		<link rel="stylesheet" type="text/css" href="third-party/sidr/css/jquery.sidr.dark.css">
+		<link rel="stylesheet" type="text/css" href="third-party/slick/css/slick.css">
+		
+		<link rel="stylesheet" type="text/css" href="third-party/wow/css/animate.min.css">
+        <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css">
+		<link rel="stylesheet" type="text/css" href="third-party/magnific-popup-master/css/magnific-popup.css">
+		<link rel="stylesheet" type="text/css" href="third-party/accordionjs/css/accordion.min.css">
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<link rel="stylesheet" type="text/css" href="icons/icons.css">
+		<link rel="stylesheet" type="text/css" href="css/custom.css">
+		<link rel="stylesheet" type="text/css" href="css/responsive.css">
+		<link rel="stylesheet" id="color" href="css/default.css">
+	
+		<link rel="stylesheet" href="third-party/fontawesome/releases/v5.2.0/css/all.css" >
+
+		<link href="https://fonts.googleapis.com/css?family=Roboto:400,500,600,700" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800" rel="stylesheet">
+		<script language="javascript" type="text/javascript">
+			function change(){
+				var div1=document.getElementById("div1");
+				if(div1.style.display=="none"){
+					div1.style.display = "block";
+					div2.style.display = "none";
+					div6.style.display = "none";
+					div5.style.display = "block";
+				}else{
+					div1.style.display = "none";
+					div2.style.display = "block";
+					div5.style.display = "none";
+					div6.style.display = "block";
+				}
+			}
+		</script>
+	</head>
+	<body class="home header-v1">
+		<div id="page" class="site">
+		<!-- Mobile main menu -->
+			<a href="#" id="mobile-trigger"><i class="fa fa-list" aria-hidden="true"></i></a>
+		    <!-- #mob-menu -->
+	      <!-- #tophead -->
+			<header id="masthead" class="site-header sticky-enabled">
+				<div class="container">
+					<div class="site-branding pull-left">
+						<div id="site-identity">
+							<h1 class="site-title"><a href="1-home.html" rel="home"><img alt="logo" class="site-logo" src="images/logo.png">红杉书屋</a></h1>
+						</div><!-- #site-identity -->
+					</div><!-- .site-branding -->
+					<nav class="main-navigation pull-right">
+						<ul>
+							<li><a href="3-home.html">首页</a></li>
+							<li><a href="0-root.html" >安全退出</a></li>
+						</ul>
+					</nav> <!-- .site-navigation -->
+				</div> <!-- .container -->
+			</header> <!-- .site-header -->
+            <div id="custom-header">
+			  <div class="custom-header-content">
+			    <div class="container">
+					<h1 class="page-title">登录</h1>
+			    </div> <!-- .container -->
+			  </div>  <!-- .custom-header-content -->
+			</div> <!-- .custom-header -->
+			<br>
+			<br>
+			<br>
+			<br>
+			<div id="content" class="site-content default-full-width">
+				<div class="container">
+					<div class="inner-wrapper">
+						<div id="primary" class="content-area">
+							<main id="main" class="site-main">
+								<div class="section-my-account">
+									<div class="login-account">
+										<div class="user-acc-header">
+											<img src="images/blog-single/author1.png" alt="">
+											<h3>登录</h3>
+										</div>
+										<div class="content-body" id="div1">
+											<form>
+												<p><label>手机号</label><input type="text" placeholder="手机号"></p>
+												<p><input type="button" value="发送验证码" onclick="submitFormData()"></p>
+												<p><label>验证码</label><input id="code1" type="password" placeholder="验证码"></p>
+												<a href="3-home.html"><p><input type="button" value="登录" onclick="submitFormData()"></p></a>
+											</form>
+										</div>
+										<div class="content-body" id="div2" style="display: none">
+											<form>
+												<p><label>手机号/邮箱</label><input id="email" type="email" placeholder="手机号/邮箱"></p>
+												<p><label>密码</label><input id="password2" type="password" placeholder="密码"></p>
+												<a href="3-home.html"><p><input type="button" value="登录" onclick="submitFormData()"></p></a>
+											</form>
+										</div>
+										<div class="user-acc-footer">
+											<p>新用户? <a class="register-account-link" href="1-register.html">注册</a></p>
+											<div id="div5"><p><a href="javascript:void(0);" onclick="change()">使用密码登录</a></p></div>
+											<div id="div6" style="display:none"><p><a href="javascript:void(0);" onclick="change()">使用手机验证码登录</a></p></div>
+										</div>
+									</div> <!-- .section-my-account -->
+								</div><!-- .section-my-account -->
+							</main> <!-- #main -->
+						</div> <!-- #primary -->
+					</div> <!-- #inner-wrapper -->
+				</div><!-- .container -->
+			</div> <!-- #content-->
+			<br>
+			<br>
+			<br>
+			<br>			
+			<div class="footer-container">
+				<footer id="colophon" class="site-footer">
+					<div class="colophon-bottom">
+						<div class="container">
+							<div class="inner-wrapper">
+								<a href="1-intro.html">  团队介绍 </a>
+								<br>
+								<a href="http://www.miitbeian.gov.cn"> 互联网ICP备案：沪ICP备19023316号-1 </a>
+								<p> (+86) 008 400 123 &nbsp&nbsp database@tongji.edu.cn &nbsp&nbsp 4800 Cao'an Street, China </p>
+								<p> Copyright © 2019 SequoiaBook . All rights reserved. </p>
+							</div><!-- .inner-wrapper -->
+						</div> <!-- .container -->
+					</div> <!-- .colophon-bottom -->
+				</footer> <!-- footer ends here -->
+			</div><!-- footer-container -->
+		<div id="btn-scrollup">
+			<a  title="Go Top"  class="scrollup button-circle" href="#"><i class="fas fa-angle-up"></i></a>
+		</div><!-- #btn-scrollup -->
+		<div class="ad-wrapper">
+		<script  src="third-party/jquery/jquery-3.2.1.min.js"></script>
+		<script  src="third-party/jquery/jquery-migrate-3.0.0.min.js"></script>
+		<!--Include all compiled plugins (below), or include individual files as needed-->
+		<script  src="third-party/sidr/js/jquery.sidr.js"></script>
+		<script  src="third-party/cycle2/jquery.cycle2.js"></script>
+		<script  src="third-party/slick/js/slick.min.js"></script>
+		<script  src="third-party/wow/js/wow.min.js"></script>
+        <script src="js/jquery-ui.min.js"></script>
+		<script  src="third-party/magnific-popup-master/js/jquery.magnific-popup.js"></script>
+		<script  src="third-party/accordionjs/js/accordion.min.js"></script>
+		<script  src="js/contact.js"></script>
+		<script  src="js/custom.js"></script>
+		<script  src="js/color-switcher.js"></script>
+		</div>
+		</div>
+	</body>
+</html>

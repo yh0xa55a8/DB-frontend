@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>SequoiaBook</title>
+		<meta name="description" content="Multi-Purpose E-commerce Template">
+		<!--[if IE]>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<![endif]-->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="author" content="">
+		<link rel="shortcut icon" href="images/favicon.png" type="image/x-icon" />
+		<link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+		<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
+		<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
+		<link rel="stylesheet" type="text/css" href="third-party/sidr/css/jquery.sidr.dark.css">
+		<link rel="stylesheet" type="text/css" href="third-party/slick/css/slick.css">
+		
+		<link rel="stylesheet" type="text/css" href="third-party/wow/css/animate.min.css">
+        <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css">
+		<link rel="stylesheet" type="text/css" href="third-party/magnific-popup-master/css/magnific-popup.css">
+		<link rel="stylesheet" type="text/css" href="third-party/accordionjs/css/accordion.min.css">
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<link rel="stylesheet" type="text/css" href="icons/icons.css">
+		<link rel="stylesheet" type="text/css" href="css/custom.css">
+		<link rel="stylesheet" type="text/css" href="css/responsive.css">
+		<link rel="stylesheet" id="color" href="css/default.css">
+	
+		<link rel="stylesheet" href="third-party/fontawesome/releases/v5.2.0/css/all.css" >
+
+		<link href="https://fonts.googleapis.com/css?family=Roboto:400,500,600,700" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800" rel="stylesheet">
+
+		<script src="third-party/incubator-echarts-4.2.1/dist/echarts.min.js"></script>
+		<script src="https://cdn.bootcss.com/echarts/3.8.5/echarts.js"></script>
+
+		<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+	</head>
+	<body class="home header-v1">
+		<div id="page" class="site">
+		<!-- Mobile main menu -->
+			<a href="#" id="mobile-trigger"><i class="fa fa-list" aria-hidden="true"></i></a>
+		    <!-- #mob-menu -->
+	      <!-- #tophead -->
+			<header id="masthead" class="site-header sticky-enabled">
+				<div class="container">
+					<div class="site-branding pull-left">
+						<div id="site-identity">
+							<h1 class="site-title"><a href="1-home.html" rel="home"><img alt="logo" class="site-logo" src="images/logo.png">红杉书屋</a></h1>
+						</div><!-- #site-identity -->
+					</div><!-- .site-branding -->
+					<nav class="main-navigation pull-right">
+						<ul>
+							<li><a href="3-home.html">首页</a></li>
+							<li><a href="0-root.html" >安全退出</a></li>
+						</ul>
+					</nav> <!-- .site-navigation -->
+				</div> <!-- .container -->
+			</header> <!-- .site-header -->
+            <div id="custom-header">
+			<div class="custom-header-content">
+                <div class="container">
+                  <h1 class="page-title">后台管理系统</h1>
+<!-- #breadcrumb -->
+                </div> <!-- .container -->
+              </div>  <!-- .custom-header-content -->
+            </div> <!-- .custom-header -->
+			<div id="content" class="site-content global-layout-left-sidebar">
+              <div class="container">
+                <div class="inner-wrapper">
+                  <div id="primary" class="content-area">
+                    <main id="main" class="site-main"> <!-- .post -->
+					<div class="view-information">
+						<div class="title">
+							<h3>店铺图表</h3>
+						</div>
+
+						<div style="position:relative;left:170px;">
+						<br><br>
+						<div id="3-shopchart" style="width:500px;height:500px;"></div>
+						<script type="text/javascript" src="js/3-shopchart.js"></script>	
+		
+						</div>
+
+						<div class="content" style="padding-top: 30px;">
+							
+						</div>	
+					</div>
+                    </main> <!-- #main -->
+                  </div> <!-- #primary -->
+                  <div id="sidebar-primary" class="sidebar widget-area" >
+                    <div class="sidebar-widget-wrapper"> <!-- .widget -->
+                      <!-- .widget-archive -->
+                     <aside class="widget widget-category">
+						 <h3 class="widget-title">管理</h3>
+						<ul>
+							<li class="has-child"><a href="#">商家管理</a>
+                        <ul class="sub-menu">
+                          <li><a href="3-shoplist.html" >店铺列表</a> </li>
+                          <li><a href="3-shopchart.html" >店铺图表</a> </li>
+                        </ul>
+							</li>
+							<li class="has-child"><a href="#">用户管理</a>
+                        <ul class="sub-menu">
+                          <li><a href="3-userlist.html" >用户列表</a> </li>
+                          <li><a href="3-userchart.html" >用户图表</a> </li>
+                        </ul>
+							</li>
+							<li class="has-child"><a href="#">购物车管理</a>
+                        <ul class="sub-menu">
+                          <li><a href="3-cartlist.html" >购物车列表</a> </li>
+                          <li><a href="3-cartchart.html" >购物车图表</a> </li>
+                        </ul>
+							</li>
+							<li class="has-child"> <a href="#">收藏管理</a>
+                        <ul class="sub-menu">
+                          <li><a href="3-wishlist.html" >收藏列表</a> </li>
+                          <li><a href="3-wishchart.html" >收藏图表</a> </li>
+                        </ul>
+							</li>
+							<li class="has-child">
+						   <a href="#">商品管理</a>
+						   <ul class="sub-menu">
+                          <li><a href="3-commodity.html" >商品列表</a> </li>
+                          <li><a href="3-book.html" >书本列表</a> </li>
+                          <li><a href="3-commoditychart.html" >商品图表</a> </li>
+								</ul></li>
+						  <li class="has-child"><a href="#">订单管理</a>
+						   <ul class="sub-menu">
+                          <li><a href="3-orderlist.html" >订单列表</a> </li>
+                          <li><a href="3-orderchart.html" >订单图表</a> </li>
+							  </ul></li>
+						  <li class="has-child"><a href="#">会员管理</a>
+						   <ul class="sub-menu">
+                          <li><a href="3-memberlist.html" >会员列表</a> </li>
+                          <li><a href="3-memberchart.html" >会员图表</a> </li>
+							  </ul></li>
+						  <li class="has-child"><a href="#">优惠券管理</a>
+						   <ul class="sub-menu">
+                          <li><a href="3-couponlist.html" >优惠券列表</a> </li>
+                          <li><a href="3-couponchart.html" >优惠券图表</a> </li>
+							  </ul></li>
+						</ul>
+                      </aside>
+<!-- .widget-recent-entries -->                      <!-- .widget-tag-cloud -->
+                    </div> 
+                    <!-- .sidebar-widget-wrapper -->
+                  </div> <!-- .sidebar -->
+                </div> <!-- #inner-wrapper -->
+              </div><!-- .container -->
+            </div> <!-- #content-->
+			<!-- 页脚 -->
+			<div class="footer-container">
+				<footer id="colophon" class="site-footer">
+					<div class="colophon-bottom">
+						<div class="container">
+							<div class="inner-wrapper">
+								<a href="1-intro.html">  团队介绍 </a>
+								<br>
+								<a href="http://www.miitbeian.gov.cn"> 互联网ICP备案：沪ICP备19023316号-1 </a>
+								<p> (+86) 008 400 123 &nbsp&nbsp database@tongji.edu.cn &nbsp&nbsp 4800 Cao'an Street, China </p>
+								<p> Copyright © 2019 SequoiaBook . All rights reserved. </p>
+							</div><!-- .inner-wrapper -->
+						</div> <!-- .container -->
+					</div> <!-- .colophon-bottom -->
+				</footer> <!-- footer ends here -->
+			</div><!-- footer-container -->
+		<div id="btn-scrollup">
+			<a  title="Go Top"  class="scrollup button-circle" href="#"><i class="fas fa-angle-up"></i></a>
+		</div><!-- #btn-scrollup -->
+		<div class="ad-wrapper">
+		<script  src="third-party/jquery/jquery-3.2.1.min.js"></script>
+		<script  src="third-party/jquery/jquery-migrate-3.0.0.min.js"></script>
+		<!--Include all compiled plugins (below), or include individual files as needed-->
+		<script  src="third-party/sidr/js/jquery.sidr.js"></script>
+		<script  src="third-party/cycle2/jquery.cycle2.js"></script>
+		<script  src="third-party/slick/js/slick.min.js"></script>
+		<script  src="third-party/wow/js/wow.min.js"></script>
+        <script src="js/jquery-ui.min.js"></script>
+		<script  src="third-party/magnific-popup-master/js/jquery.magnific-popup.js"></script>
+		<script  src="third-party/accordionjs/js/accordion.min.js"></script>
+		<script  src="js/contact.js"></script>
+		<script  src="js/custom.js"></script>
+		<script  src="js/color-switcher.js"></script>
+		</div>
+		</div>
+	</body>
+</html>

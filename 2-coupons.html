@@ -1,0 +1,500 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>SequoiaBook</title>
+		<meta name="description" content="Multi-Purpose E-commerce Template">
+		<!--[if IE]>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<![endif]-->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="author" content="">
+		<link rel="shortcut icon" href="images/favicon.png" type="image/x-icon" />
+		<link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+		<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
+		<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
+		<link rel="stylesheet" type="text/css" href="third-party/sidr/css/jquery.sidr.dark.css">
+		<link rel="stylesheet" type="text/css" href="third-party/slick/css/slick.css">
+
+		<link rel="stylesheet" type="text/css" href="third-party/wow/css/animate.min.css">
+        <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css">
+		<link rel="stylesheet" type="text/css" href="third-party/magnific-popup-master/css/magnific-popup.css">
+		<link rel="stylesheet" type="text/css" href="third-party/accordionjs/css/accordion.min.css">
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<link rel="stylesheet" type="text/css" href="icons/icons.css">
+		<link rel="stylesheet" type="text/css" href="css/custom.css">
+		<link rel="stylesheet" type="text/css" href="css/responsive.css">
+		<link rel="stylesheet" id="color" href="css/default.css">
+
+
+		<link rel="stylesheet" href="third-party/fontawesome/releases/v5.2.0/css/all.css" >
+
+		<link href="https://fonts.googleapis.com/css?family=Roboto:400,500,600,700" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800" rel="stylesheet">
+
+		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+		<script src="http://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="http://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+		<style>
+			.myTable{
+				border-collapse:collapse;
+				width:74%;
+				border:1px solid #ddd;
+				font-size:18px;
+			}
+			.myTable th, .myTable td{
+				text-align:left;
+				padding:12px;
+			}
+			.myTable tr{
+				border-bottom:1px solid #ddd;
+			}
+			.myTable tr.header, .myTable tr:hover{
+				background-color:#F1F1F1;
+			}
+		</style>
+
+		<script type="text/javascript">
+			function check(){
+				var MemberId = document.getElementById("id").value;
+				var one = document.getElementById("out");
+
+				var _price = document.getElementById("price").value;
+				var two = document.getElementById("out1");
+
+				var _discount = document.getElementById("discount").value;
+				var three = document.getElementById("out2");
+				if(MemberId==null||MemberId==""){
+					one.innerHTML="*输入信息有误";
+				}
+
+				if(_price == null || _price == ""){
+					two.innerHTML = "*输入信息有误2";
+				}
+
+				if(_discount == null || _discount == ""){
+					three.innerHTML = "*输入信息有误3";
+				}
+			}
+
+			var myTableArray = [
+				{"id":"25WRYYY","money":"22","condition":"33","date":"2019-01-09"},
+				{"id":"MUDAMUA","money":"222","condition":"330","date":"2030-09-17"}
+			];
+			function Table(){
+				var input, fliter, table, tr, td, i;
+				input = document.getElementById("id");
+				fliter = input.value.toUpperCase();
+				table = document.getElementById("myTable");
+				tr = table.getElementsByTagName("tr");
+
+				for(i = 1; i < tr.length; i++){
+					td = tr[i].getElementsByTagName("td")[1];
+					if(td){
+						if(td.innerHTML.toUpperCase().indexOf(fliter) > -1){
+							tr[i].style.display = "";
+						}else{
+							tr[i].style.display = "none";
+						}
+					}
+				}
+			}
+
+			var tab;
+			function loadTab(){
+				tab = document.getElementById("myTable");
+				for(var rowindex = 0; rowindex < myTableArray.length;rowindex++){
+					var tr = tab.insertRow(tab.rows.length);
+					var td1 = tr.insertCell(-1);
+					td1.innerHTML = "<input type='checkbox' name='CouponID'>"+myTableArray[rowindex].id;
+					var td2 = tr.insertCell(-1);
+					td2.innerHTML = myTableArray[rowindex].money;
+					var td3 = tr.insertCell(-1);
+					td3.innerHTML = myTableArray[rowindex].condition;
+					var td4 = tr.insertCell(-1);
+					td4.innerHTML = myTableArray[rowindex].date;
+
+				}
+			}
+
+			function selectAll(myTable, isSel){
+				for(var i = 0; i < myTable.rows.length;i++){
+					var tr = myTable.rows[i];
+					tr.cells[0].childNodes[0].checked = isSel;
+				}
+			}
+
+			// window.onload = function(){
+			// 	loadTab();
+			// 	document.getElementById("CouponIDSelected").onclick = function(){
+			// 		if(document.getElementById("CouponIDSelected").checked == true){
+			// 			selectAll(tab,true);
+			// 		}else{
+			// 			selectAll(tab,false);
+			// 		}
+			// 	}
+			// 	document.getElementById("button1").onclick = function(){
+			// 		var chks = document.getElementsByName("CouponID");
+			// 		for(var i = chks.length-1; i >= 0; i--){
+			// 			var chk =chks[i];
+			// 			if(chk.checked == true) {
+			// 				var rowNow = chk.parentNode.parentNode;
+			// 				rowNow.parentNode.removeChild(rowNow);
+			// 			}
+			// 			}
+			// 		}
+			// }
+
+
+
+		</script>
+
+		<script  src="third-party/jquery/jquery-3.2.1.min.js"></script>
+		<script  src="third-party/jquery/jquery-migrate-3.0.0.min.js"></script>
+		<script src="js/jquery.min.js"></script>
+		<script type="text/javascript">
+			var jQuery_New = $.noConflict();
+		</script>
+		<script src="js/lib/jquery.pagination.js"></script>
+		<link rel="stylesheet" href="css/common.css">
+		<link rel="stylesheet" href="js/lib/pagination.css">
+		<script>
+			var couponData;
+			function loadData(){
+				$.ajax({
+					url: 'http://192.168.1.178:5000/api/GetAllCoupons/',
+					async:false,
+					type: 'post',
+					contentType: 'application/json; charset=UTF-8',
+					xhrFields: {	//发送cookie
+						withCredentials: true
+					},
+					data: JSON.stringify({}),
+					success: function(msg){
+						console.log("success");
+						console.log(msg);
+						couponData= msg;
+					},
+					error: function(err){
+						console.log(err.statusText);
+					}
+				});
+			}
+			loadData();
+			console.log(couponData);
+			var pageSize = 20;
+			function pagination(){
+				jQuery_New('.M-box').pagination(couponData.length,{
+					jump: true,
+					coping: true,
+					num_display_entries: 4,
+					num_edge_entries: 1,
+					callback: PageCallback,
+					items_per_page: pageSize,
+					homePage: '首页',
+					endPage: '末页',
+					current: 0,
+					prevContent: '<<上页',
+					nextContent: '下页>>'
+				});
+			}
+			function PageCallback(index,jq) {
+				jQuery_New(".PageTable").hide();
+				LoadData(index);
+			}
+			var flag = 0;
+			function LoadData(pageIndex){
+				var items_per_page = pageSize;
+				var max_elem = Math.min((pageIndex+1)*items_per_page,couponData.length);
+				if(flag==0){
+					jQuery_New('.tbody').append(`<tr><th>优惠券ID</th><th>折扣金额</th><th>使用条件</th>
+					<th>截止时间</th></tr>`);
+					flag = 1
+				}
+				for(var i=pageIndex*items_per_page;i<max_elem;i++) {
+					jQuery_New('.tbody').append(`
+				<tr class="PageTable">
+					<td>${couponData[i].CouponId}</td>
+					<td>${couponData[i].DiscountAmount}</td>
+					<td>${couponData[i].PriceLimit}</td>
+					<td>${couponData[i].ValidThrough}</td>
+					</tr>
+				`)
+				}
+			}
+			jQuery_New(function(){
+				pagination();
+			})
+
+
+		</script>
+
+	</head>
+	<body class="home header-v1">
+		<div class="color-switcher" id="choose_color"> </div>
+		<div id="page" class="site">
+		<!-- Mobile main menu -->
+			<a href="#" id="mobile-trigger"><i class="fa fa-list" aria-hidden="true"></i></a>
+		    <!-- #mob-menu -->
+	      <!-- #tophead -->
+			<header id="masthead" class="site-header sticky-enabled">
+				<div class="container">
+					<div class="site-branding pull-left">
+						<div id="site-identity">
+							<h1 class="site-title"><a href="#"  rel="home"><img alt="logo" class="site-logo" src="images/logo.png">红杉书屋</a></h1>
+						</div><!-- #site-identity -->
+					</div><!-- .site-branding -->
+					<nav class="main-navigation pull-right">
+						<ul>
+							<li><a href="2-information.html">我的店铺</a></li>
+							<a href="2-login.html">登录</a>
+							<a href="#" onclick="logout()" >安全退出</a>
+							<script>
+								function logout(){
+									$.ajax({
+										url: 'http://192.168.1.178:5000/api/SellerLogout',
+										type: 'post',
+										contentType: 'application/json; charset=UTF-8',
+										xhrFields: {	//发送cookie
+										withCredentials: true
+										},
+										data: JSON.stringify({}),
+										success: function(msg){
+											console.log("success");
+											window.location = '2-login.html';
+										},
+										error: function(err){
+											//理论上不可能
+										}
+									});
+								}
+							</script>
+						</ul>
+					</nav> <!-- .site-navigation -->
+				</div> <!-- .container -->
+			</header> <!-- .site-header -->
+            <div id="custom-header">
+			  <div class="custom-header-content">
+                <div class="container">
+                  <h1 class="page-title">我的店铺</h1>
+<!-- #breadcrumb -->
+                </div> <!-- .container -->
+              </div>  <!-- .custom-header-content -->
+            </div> <!-- .custom-header -->
+
+            <div id="content" class="site-content global-layout-left-sidebar">
+              <div class="container">
+                <div class="inner-wrapper">
+                  <div id="primary" class="content-area">
+                    <main id="main" class="site-main"> <!-- .post -->
+					<div class="view-information">
+						<h3>优惠卷管理</h3>
+						<nav style="background-color: #d8d8d8;">
+							<ul style="overflow:hidden;margin:0;padding:0;">
+								<li style="display:inline;float:left;padding:8px 15px;background-color:#ffffff;"><a href="2-coupons.html">已发布的优惠卷</a></li>
+								<li style="display:inline;float:left;padding:8px 15px;"><a href="2-publishcoupons.html">发布优惠卷</a></li>
+								<!-- <li style="display:inline;float:left;padding:8px 15px;"><a href="2-unusedcoupon.html">未使用的优惠卷</a></li> -->
+
+							</ul>
+						</nav>
+						<br>
+						<form  style="top:-400px;left:-450px; position:relative;" onclick="check()">
+							<table style="border-style:none;">
+								<tr>
+									<td style="border-style:none;top:400px;left:500px;position:absolute;">优惠卷ID</td>
+									<td style="border-style:none;"><input onkeyup="Table()" type="text" id="id" name="memberId" size="20"
+															style="width:150px;height:35px;top:400px; left:580px; position:absolute;">
+										<span id="out" style="color:red; font-size: 10px; top:400px;left:750px;position:absolute;"></span>
+									</td>
+									<td  style="border-style:none;top:400px; left:850px; position:absolute;width:150px;height:35px;">使用条件价格</td>
+									<td><input id="limit" type="text" id="price" name="memberSurName" size="20"
+											   style="width:150px;height:35px;top:400px; left:1000px; position:absolute;">
+										<span id="out1" style="color:red;font-size:10px;top:400px;left:750px;position:relative;"></span>
+									</td>
+								</tr>
+								<tr>
+									<td style="border-style:none;top:450px;left:500px;position:absolute;">折扣金额</td>
+									<td style="border-style:none;"><input type="text" id="discount" name="discount" size="20"
+																		  style="width:150px;height:35px;top:450px; left:580px; position:absolute;">
+										<span id="out2" style="color:red;font-size:10px;top:450px;left:750px;position:absolute;"></span>
+									</td>
+									<td style="border-style:none;top:450px; left:850px; position:absolute;width:150px;height:35px;">截止时间</td>
+									<td><input id="enddate" type="date" name="cutOffTime" size="20"
+											   style="width:150px;height:35px;top:450px; left:1000px; position:absolute;">
+									</td>
+								</tr>
+							</table>
+							<input type="button" value="查询" class="search-submit" style="width:150px;height:40px;top:530px;left:580px;position:absolute;" onclick="query()">
+							<script>
+								function query(){
+									loadData();
+									console.log(couponData);
+									if($("#id").val() != ""){
+										for(var i = 0; i< couponData.length; i++){
+											if(couponData[i].CouponId != $("#id").val()){
+												couponData.splice(i, 1);
+												i--;
+											}
+										}
+									}
+									if($("#limit").val() != ""){
+										for(var i = 0; i< couponData.length; i++){
+											if(couponData[i].PriceLimit != $("#limit").val()){
+												couponData.splice(i, 1);
+												i--;
+											}
+										}
+									}
+									if($("#discount").val() != ""){
+										for(var i = 0; i< couponData.length; i++){
+											if(couponData[i].DiscountAmount != $("#discount").val()){
+												couponData.splice(i, 1);
+												i--;
+											}
+										}
+									}
+									if($("#enddate").val() != ""){
+										for(var i = 0; i< couponData.length; i++){
+											console.log(couponData[i].ValidThrough, $("#enddate").val())
+											if(couponData[i].ValidThrough < $("#enddate").val()){
+												couponData.splice(i, 1);
+												i--;
+											}
+										}
+									}
+									if(couponData.length == 0){
+										$("#error").html("没有符合条件的优惠券信息！");
+									}
+									console.log(couponData);
+									jQuery_New(function(){
+										pagination();
+									});
+								}
+							</script>
+							<p id="error" style="color:red"></p>
+							<br><br><br><br><br><br>
+						<!-- </form>
+												<form style="top:220px;left:20px; position:relative;">
+							<input type="button" id="button1" style="background-color:#ffffff;border:1px solid #e4e4e4;color:black;padding:2px 15px;text-align:center;
+							text-decoration:none;display:inline-block;font-size:11px;" value="删除"> -->
+						<!-- </form>
+						<form style="top:195px;left:500px;position:relative">
+							<input type="button" style="background-color:#ffffff;border:1px solid #e4e4e4;color:black;padding:2px 15px;text-align:center;
+							text-decoration:none;display:inline-block;font-size:11px;" value="上一页">
+							<input type="button" style="background-color:#ffffff;border:1px solid #e4e4e4;color:black;padding:2px 15px;text-align:center;
+							text-decoration:none;display:inline-block;font-size:11px;" value="下一页">
+						</form>
+						<table id="myTable" class="myTable" style="top:210px;left:20px;position:relative;">
+							<tr class="header">
+								<td>
+									<input type="checkbox" id="CouponIDSelected">优惠券ID
+								</td >
+								<td>折扣金额</td>
+								<td>使用条件</td>
+								<td>截止时间</td>
+							</tr>
+							<tr>
+								<td><input type="checkbox" name="CouponID">
+									203AM23</td>
+								<td>20</td>
+								<td>120</td>
+								<td>2015-04-09</td>
+							</tr>
+							<tr>
+								<td><input type="checkbox" name="CouponID">
+									33WW2S</td>
+								<td>30</td>
+								<td>300</td>
+								<td>2017-09-09</td>
+							</tr>
+						</table> -->
+					</div>
+					<div>
+							<div class="M-box" ></div>
+							<table class="tbody"></table>
+						</div>
+
+                    </main> <!-- #main -->
+                  </div> <!-- #primary -->
+                  <div id="sidebar-primary" class="sidebar widget-area" >
+                    <div class="sidebar-widget-wrapper"> <!-- .widget -->
+                      <!-- .widget-archive -->
+                      <aside class="widget widget-categories">
+						<ul>
+							<li> <h3><a href="#"><img alt="logo" class="site-logo" src="images/shop.png">店铺管理</a></h3>
+                        <ul>
+                          <li><a href="2-information.html" >查看信息</a> </li>
+                          <li><a href="2-changeinfo.html" >修改信息</a> </li>
+                          <li> <a href="2-change.html" >安全中心</a></li>
+                        </ul>
+							</li>
+							<li>
+						  <h3><a href="#"><img alt="logo" class="site-logo" src="images/transaction.png">交易管理</a></h3>
+						   <ul>
+                          <li><a href="2-evaluation.html" >评价管理</a> </li>
+                          <li><a href="2-order.html" >订单信息</a> </li>
+								</ul></li>
+						  <li><h3><a href="#"><img alt="logo" class="site-logo" src="images/logistics.png">物流管理</a></h3>
+						   <ul>
+                          <li><a href="2-logistics.html" >物流信息</a> </li>
+							  </ul></li>
+						  <li><h3><a href="#"><img alt="logo" class="site-logo" src="images/commodity.png">商品管理</a></h3>
+						   <ul>
+                          <li><a href="2-onshelves.html" >上架商品</a> </li>
+                          <li><a href="2-sale.html" >出售中的商品</a> </li>
+							  </ul></li>
+						  <li><h3><a href="#"><img alt="logo" class="site-logo" src="images/customer-service.png">客户服务</a></h3>
+						   <ul>
+                          <li><a href="2-member.html" >会员管理</a> </li>
+                          <li><a href="2-coupons.html" >优惠券管理</a> </li>
+							  </ul></li>
+						</ul>
+                      </aside>
+<!-- .widget-recent-entries -->                      <!-- .widget-tag-cloud -->
+                    </div>
+                    <!-- .sidebar-widget-wrapper -->
+                  </div> <!-- .sidebar -->
+                </div> <!-- #inner-wrapper -->
+              </div><!-- .container -->
+            </div> <!-- #content-->
+			<!-- 页脚 -->
+			<div class="footer-container">
+				<footer id="colophon" class="site-footer">
+					<div class="colophon-bottom">
+						<div class="container">
+							<div class="inner-wrapper">
+								<a href="1-intro.html">  团队介绍 </a>
+								<br>
+								<a href="http://www.miitbeian.gov.cn"> 互联网ICP备案：沪ICP备19023316号-1 </a>
+								<p> (+86) 008 400 123 &nbsp&nbsp database@tongji.edu.cn &nbsp&nbsp 4800 Cao'an Street, China </p>
+								<p> Copyright © 2019 SequoiaBook . All rights reserved. </p>
+							</div><!-- .inner-wrapper -->
+						</div> <!-- .container -->
+					</div> <!-- .colophon-bottom -->
+				</footer> <!-- footer ends here -->
+			</div><!-- footer-container -->
+	    </div> <!--#page-->
+		<div id="btn-scrollup">
+			<a  title="Go Top"  class="scrollup button-circle" href="#"><i class="fas fa-angle-up"></i></a>
+		</div><!-- #btn-scrollup -->
+		<div class="ad-wrapper">
+		<script  src="third-party/jquery/jquery-3.2.1.min.js"></script>
+		<script  src="third-party/jquery/jquery-migrate-3.0.0.min.js"></script>
+		<!--Include all compiled plugins (below), or include individual files as needed-->
+		<script  src="third-party/sidr/js/jquery.sidr.js"></script>
+		<script  src="third-party/cycle2/jquery.cycle2.js"></script>
+		<script  src="third-party/slick/js/slick.min.js"></script>
+		<script  src="third-party/wow/js/wow.min.js"></script>
+        <script src="js/jquery-ui.min.js"></script>
+		<script  src="third-party/magnific-popup-master/js/jquery.magnific-popup.js"></script>
+		<script  src="third-party/accordionjs/js/accordion.min.js"></script>
+		<script  src="js/contact.js"></script>
+		<script  src="js/custom.js"></script>
+		<script  src="js/color-switcher.js"></script>
+	</div>
+	</body>
+</html>

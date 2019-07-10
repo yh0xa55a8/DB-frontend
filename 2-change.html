@@ -1,0 +1,320 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>SequoiaBook</title>
+		<meta name="description" content="Multi-Purpose E-commerce Template">
+		<!--[if IE]>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<![endif]-->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="author" content="">
+		<link rel="shortcut icon" href="images/favicon.png" type="image/x-icon" />
+		<link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+		<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
+		<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
+		<link rel="stylesheet" type="text/css" href="third-party/sidr/css/jquery.sidr.dark.css">
+		<link rel="stylesheet" type="text/css" href="third-party/slick/css/slick.css">
+
+		<link rel="stylesheet" type="text/css" href="third-party/wow/css/animate.min.css">
+        <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css">
+		<link rel="stylesheet" type="text/css" href="third-party/magnific-popup-master/css/magnific-popup.css">
+		<link rel="stylesheet" type="text/css" href="third-party/accordionjs/css/accordion.min.css">
+		<link rel="stylesheet" type="text/css" href="style.css">f
+		<link rel="stylesheet" type="text/css" href="icons/icons.css">
+		<link rel="stylesheet" type="text/css" href="css/custom.css">
+		<link rel="stylesheet" type="text/css" href="css/responsive.css">
+		<link rel="stylesheet" id="color" href="css/default.css">
+
+
+		<link rel="stylesheet" href="third-party/fontawesome/releases/v5.2.0/css/all.css" >
+
+		<link href="https://fonts.googleapis.com/css?family=Roboto:400,500,600,700" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800" rel="stylesheet">
+
+		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+		<script src="http://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="http://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+		<script>
+			function checkPassword(){
+				if($.trim($('#password').val()).length == 0){
+					$('#passwordError').html('密码没有输入');
+					$('#password').focus();
+					return false;
+				}else{
+					$('#passwordError').html('');
+					const rePass = $.trim($('#rePassword').val());
+					const pass = $.trim($('#password').val());
+					if (rePass.length != 0) {
+						if (rePass != pass) {
+							$('#rePasswordError').html('两次密码不一致');
+							return false;
+						} else {
+							$('#rePasswordError').html('');
+							return true;
+						}
+					}
+				}
+			}
+
+			function checkRePassword(){
+				const rePass = $.trim($('#rePassword').val());/*去除字符串两端空白*/
+				if(rePass.length == 0){
+					$('#rePasswordError').html("密码没有输入");
+					$('#rePassword').focus();
+					return false;
+				}else{
+					$('#rePasswordError').html('');
+					const pass=$.trim($('#password').val());
+					if(pass.length==0){
+						$('#rePassword').val('');
+						$('#passwordError').html("密码没有输入");
+						$('#password').focus();
+						return false;
+					}else if(rePass != pass){
+						$('#rePasswordError').html('两次密码不一致');
+						return false;
+					}else{
+						$('#rePasswordError').html('');
+						return true;
+					}
+				}
+			}
+
+			function checkRegister(){
+				if(checkPassword()==false){
+					return false;
+				}
+				if(checkRePassword()==false){
+					return false;
+				}
+			}
+		</script>
+
+	</head>
+	<body class="home header-v1">
+<div id="page" class="site">
+  <!-- Mobile main menu -->
+	<a href="#" id="mobile-trigger"><i class="fa fa-list" aria-hidden="true"></i></a>
+    <!-- #mob-menu -->
+  <!-- #tophead -->
+	<header id="masthead" class="site-header sticky-enabled">
+				<div class="container">
+					<div class="site-branding pull-left">
+						<div id="site-identity">
+							<h1 class="site-title"><a href="#"  rel="home"><img alt="logo" class="site-logo" src="images/logo.png">红杉书屋</a></h1>
+						</div><!-- #site-identity -->
+					</div><!-- .site-branding -->
+					<nav class="main-navigation pull-right">
+						<ul>
+							<li><a href="2-information.html">我的店铺</a></li>
+							<a href="2-login.html">登录</a>
+							<a href="#" onclick="logout()" >安全退出</a>
+							<script>
+								function logout(){
+									$.ajax({
+										url: 'http://192.168.1.178:5000/api/SellerLogout',
+										type: 'post',
+										contentType: 'application/json; charset=UTF-8',
+										xhrFields: {	//发送cookie
+										withCredentials: true
+										},
+										data: JSON.stringify({}),
+										success: function(msg){
+											console.log("success");
+											window.location = '2-login.html';
+										},
+										error: function(err){
+											//理论上不可能
+										}
+									});
+								}
+							</script>
+						</ul>
+					</nav> <!-- .site-navigation -->
+				</div> <!-- .container -->
+			</header> <!-- .site-header -->
+            <div id="custom-header">
+			<div class="custom-header-content">
+                <div class="container">
+                  <h1 class="page-title">我的店铺</h1>
+<!-- #breadcrumb -->
+                </div> <!-- .container -->
+              </div>  <!-- .custom-header-content -->
+            </div> <!-- .custom-header -->
+            <div id="content" class="site-content global-layout-left-sidebar">
+              <div class="container">
+                <div class="inner-wrapper">
+                  <div id="primary" class="content-area">
+                    <main id="main" class="site-main"> <!-- .post -->
+					<div class="view-information">
+						<div class="title">
+							<h3>修改密码</h3>
+						</div>
+						<div class="content" style="padding-left: 50px;padding-top: 30px;">
+							<form>
+								<p>
+									<label style="width: 130px;height:35px;">邮箱地址</label><input id="email" type="email" style="width:220px; height:35px;" />
+								</p>
+								<p style="padding-left: 130px">
+									<input type="button" style="width:220px; height:35px;" value="点击获取验证码" onclick="getEmailCode()"/>
+									<script>
+										function getEmailCode(){
+											$.ajax({
+												url: 'http://192.168.1.178:5000/api/SellerSendMail',
+												type: 'post',
+												contentType: 'application/json; charset=UTF-8',
+												xhrFields: {	//发送cookie
+													withCredentials: true
+												},
+												data: JSON.stringify({
+													'Email': $("#email").val(),
+													'Password': "123456",
+													'EmailStatus': '1'
+												}),
+												success: function(msg){
+													console.log("success");
+												},
+												error: function(err){
+													console.log(err.statusText);
+													//显示邮箱已存在
+												}
+											});
+
+										}
+									</script>
+								</p>
+							     <p><label style="width: 130px;height:35px;">输入验证码</label><input id="code" type="text" style="width:220px; height:35px;" /></p>
+							     <p><label style="width: 130px;height:35px;">输入新密码</label>
+									 <input id="password" name="password" onblur="checkPassword()" required="required" type="password" style="width:220px; height:35px;" />
+								<p id="passwordError" style="color:red;"></p>
+								 </p>
+							     <p><label style="width: 130px;height:35px;">再次输入新密码</label>
+									 <input id="rePassword" name="rePassword" onblur="checkRePassword()" required="required" type="password" style="width:220px; height:35px;" />
+								<p id="rePasswordError" style="color:red"></p>
+								 </p>
+							<div style="width: 1000px;height:100px;">
+								<div style="padding-left: 130px;width:300px; height:35px;float:left;margin-right:10px;">
+									<input type="button" onblur="checkRegister()" onclick="changePasswordWithEmail()" style="width: 220px;height:35px;" value="修改密码">
+								</div>
+								<script>
+								function changePasswordWithEmail(){
+									if(checkRePassword()==true&&checkPassword()==true) {
+										$.ajax({
+											url: 'http://192.168.1.178:5000/api/SellerMailChangePassword',
+											type: 'post',
+											contentType: 'application/json; charset=UTF-8',
+											xhrFields: {	//发送cookie
+												withCredentials: true
+											},
+											data: JSON.stringify({
+												'Email': $("#email").val(),
+												'Password': $("#password").val(),
+												'EmailStatusCode': '1',
+												'ValidateCode': $("#code").val()
+											}),
+											success: function(){
+												console.log("success");
+												document.getElementById("success2").innerHTML = "恭喜您，修改成功！";
+											},
+											error: function(){
+												document.getElementById("success2").innerHTML = "FUCK，修改失败！";
+											}
+										})
+									}
+								}
+								function show()
+								{
+									if(checkRePassword()==true&&checkPassword()==true) {
+										document.getElementById("success2").innerHTML = "恭喜您，修改成功！";
+									}
+								}
+								</script>
+
+									<div id="show" style="padding-left: 410px;"><p id="success2" style="width:220px;height:35px;text-align:center;color:#1AFA29"></p></div>
+							</div>
+						</form>
+						</div>
+					</div>
+                    </main> <!-- #main -->
+                  </div> <!-- #primary -->
+                  <div id="sidebar-primary" class="sidebar widget-area" >
+                    <div class="sidebar-widget-wrapper"> <!-- .widget -->
+                      <!-- .widget-archive -->
+                      <aside class="widget widget-categories">
+						<ul>
+							<li> <h3><a href="#"><img alt="logo" class="site-logo" src="images/shop.png">店铺管理</a></h3>
+                        <ul>
+                          <li><a href="2-information.html" >查看信息</a> </li>
+                          <li><a href="2-changeinfo.html" >修改信息</a> </li>
+                          <li> <a href="2-change.html" >安全中心</a></li>
+                        </ul>
+							</li>
+							<li>
+						  <h3><a href="#"><img alt="logo" class="site-logo" src="images/transaction.png">交易管理</a></h3>
+						   <ul>
+                          <li><a href="2-evaluation.html" >评价管理</a> </li>
+                          <li><a href="2-order.html" >订单信息</a> </li>
+								</ul></li>
+						  <li><h3><a href="#"><img alt="logo" class="site-logo" src="images/logistics.png">物流管理</a></h3>
+						   <ul>
+                          <li><a href="2-logistics.html" >物流信息</a> </li>
+							  </ul></li>
+						  <li><h3><a href="#"><img alt="logo" class="site-logo" src="images/commodity.png">商品管理</a></h3>
+						   <ul>
+                          <li><a href="2-onshelves.html" >上架商品</a> </li>
+                          <li><a href="2-sale.html" >出售中的商品</a> </li>
+							  </ul></li>
+						  <li><h3><a href="#"><img alt="logo" class="site-logo" src="images/customer-service.png">客户服务</a></h3>
+						   <ul>
+                          <li><a href="2-member.html" >会员管理</a> </li>
+                          <li><a href="2-coupons.html" >优惠券管理</a> </li>
+							  </ul></li>
+						</ul>
+                      </aside>
+<!-- .widget-recent-entries -->                      <!-- .widget-tag-cloud -->
+                    </div>
+                    <!-- .sidebar-widget-wrapper -->
+                  </div> <!-- .sidebar -->
+                </div> <!-- #inner-wrapper -->
+              </div><!-- .container -->
+            </div> <!-- #content-->
+			<!-- 页脚 -->
+			<div class="footer-container">
+				<footer id="colophon" class="site-footer">
+					<div class="colophon-bottom">
+						<div class="container">
+							<div class="inner-wrapper">
+								<a href="http://www.bootstrapmb.com/">  团队介绍 </a>
+								<p> (+86) 008 400 123 &nbsp&nbsp database@tongji.edu.cn &nbsp&nbsp 4800 Cao'an Street, China </p>
+								<p> Copyright © 2019 SequoiaBook . All rights reserved. </p>
+							</div><!-- .inner-wrapper -->
+						</div> <!-- .container -->
+					</div> <!-- .colophon-bottom -->
+				</footer> <!-- footer ends here -->
+			</div><!-- footer-container -->
+	</div> <!--#page-->
+		<div id="btn-scrollup">
+			<a  title="Go Top"  class="scrollup button-circle" href="#"><i class="fas fa-angle-up"></i></a>
+		</div><!-- #btn-scrollup -->
+		<div class="ad-wrapper">
+		<script  src="third-party/jquery/jquery-3.2.1.min.js"></script>
+		<script  src="third-party/jquery/jquery-migrate-3.0.0.min.js"></script>
+		<!--Include all compiled plugins (below), or include individual files as needed-->
+		<script  src="third-party/sidr/js/jquery.sidr.js"></script>
+		<script  src="third-party/cycle2/jquery.cycle2.js"></script>
+		<script  src="third-party/slick/js/slick.min.js"></script>
+		<script  src="third-party/wow/js/wow.min.js"></script>
+        <script src="js/jquery-ui.min.js"></script>
+		<script  src="third-party/magnific-popup-master/js/jquery.magnific-popup.js"></script>
+		<script  src="third-party/accordionjs/js/accordion.min.js"></script>
+		<script  src="js/contact.js"></script>
+		<script  src="js/custom.js"></script>
+		<script  src="js/color-switcher.js"></script>
+		</div>
+	</body>
+</html>

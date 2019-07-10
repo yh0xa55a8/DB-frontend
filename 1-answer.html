@@ -1,0 +1,318 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>SequoiaBook</title>
+    <meta name="description" content="Multi-Purpose E-commerce Template">
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
+    <link rel="stylesheet" type="text/css" href="third-party/sidr/css/jquery.sidr.dark.css">
+    <link rel="stylesheet" type="text/css" href="third-party/slick/css/slick.css">
+
+    <link rel="stylesheet" type="text/css" href="third-party/wow/css/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css">
+    <link rel="stylesheet" type="text/css" href="third-party/magnific-popup-master/css/magnific-popup.css">
+    <link rel="stylesheet" type="text/css" href="third-party/accordionjs/css/accordion.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="icons/icons.css">
+    <link rel="stylesheet" type="text/css" href="css/custom.css">
+    <link rel="stylesheet" type="text/css" href="css/responsive.css">
+    <link rel="stylesheet" id="color" href="css/default.css">
+    <!-- <link rel="stylesheet" type="text/css" href="css/colors/lite-green.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/colors/dark-green.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/colors/black.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/colors/orange.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/colors/brown.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/colors/lite-green.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/colors/dark-purple.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/colors/cyan.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/colors/dark-blue.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/colors/purple.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/colors/sky-blue.css"> -->
+
+    <link rel="stylesheet" href="third-party/fontawesome/releases/v5.2.0/css/all.css" >
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="http://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="http://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="js/answer.js"></script>
+    <script src="js/search.js"></script>
+
+</head>
+<body class="home header-v1">
+<div class="color-switcher" id="choose_color">
+    <a href="#." class="picker_close"><i class="fas fa-cog fa-spin"></i></a>
+    <div class="theme-colours">
+        <p>Choose Colour style</p>
+        <ul>
+            <li><a href="#" class="red" id="red"></a></li>
+            <li><a href="#" class="cyan" id="cyan"></a></li>
+            <li><a href="#" class="sky-blue" id="sky-blue"></a></li>
+            <li><a href="#" class="dark-blue" id="dark-blue"></a></li>
+            <li><a href="#" class="dark-green" id="dark-green"></a></li>
+            <li><a href="#" class="lite-green" id="lite-green"></a></li>
+            <li><a href="#" class="purple" id="purple"></a></li>
+            <li><a href="#" class="dark-purple" id="dark-purple"></a></li>
+            <li><a href="#" class="blue" id="blue"></a></li>
+            <li><a href="#" class="orange" id="orange"></a></li>
+            <li><a href="#" class="brown" id="brown"></a></li>
+            <li><a href="#" class="pink" id="pink"></a></li>
+        </ul>
+    </div>
+</div>
+<div id="page" class="site">
+
+    <header id="masthead" class="site-header sticky-enabled">
+        <div class="container">
+            <div class="site-branding pull-left">
+                <div id="site-identity">
+                    <h1 class="site-title"><a href="1-home.html" rel="home"><img alt="logo" class="site-logo" src="images/logo.png">红杉书屋</a></h1>
+                </div><!-- #site-identity -->
+            </div><!-- .site-branding -->
+            <a href="1-search.html"><input type="button" value="进入搜索" class="pull-right quick-link-button"></a>
+            <div id="header-right" class="pull-right">
+                <div class="hearder-min-cart">
+                    <ul>
+                        <li class="cart-button mini-cart-wrap">
+                            <a href="1-pay.html"><i class=" icon-basket"></i>	</a>
+                        </li>
+                        <li class="cart-button">
+                            <a href="1-wishlist.html"  title="wishlist"><i class=" icon-heart"></i>	</a>
+                        </li>
+                    </ul>
+                </div><!-- #quick-link-buttons -->
+            </div>
+            <nav class="main-navigation pull-right">
+                <ul>
+                    <a href="1-home.html">主页&nbsp&nbsp</a>
+                    <li class="menu-item-has-children"><a href="#">类别</a>
+                        <ul class="sub-menu">
+                            <li><a href="1-search.html">世界名著</a></li>
+                            <li><a href="1-search.html">当代文学</a></li>
+                            <li><a href="1-search.html">哲学宗教</a></li>
+                            <li><a href="1-search.html">政治法律</a></li>
+                            <li><a href="1-search.html">历史地理</a></li>
+                            <li><a href="1-search.html">自然科学</a></li>
+                        </ul>
+                    </li>
+                    <a href="1-order.html" >我的订单&nbsp&nbsp&nbsp</a>
+                    <a href="1-info.html" >我的账户</a>
+                </ul>
+            </nav> <!-- .site-navigation -->
+        </div> <!-- .container -->
+    </header> <!-- .site-header -->
+    <div id="custom-header">
+        <div class="custom-header-content">
+            <div class="container">
+                <h1 class="page-title">产品详情</h1>
+            </div> <!-- .container -->
+        </div>  <!-- .custom-header-content -->
+    </div> <!-- .custom-header -->
+    <div id="content" class="site-content global-layout-right-sidebar">
+        <div class="container">
+            <div class="inner-wrapper">
+                <div id="primary" class="content-area">
+                    <main id="main" class="site-main">
+                        <div class="product-single">
+                            <div class="inner-wrapper">
+                                <div class="col-grid-6">
+                                    <div class="single-thumb-detail">
+                                        <div class="single-main-thumb">
+                                            <div class="single-thumb"><a href="#"><img alt="product" src="images/shop/product-1.jpg"></a></div>
+                                            <div class="single-thumb"><a href="#"><img alt="product" src="images/shop/product-2.jpg"></a></div>
+                                            <div class="single-thumb"><a href="#"><img alt="product" src="images/shop/product-3.jpg"></a></div>
+                                        </div>
+                                        <div class="pager-thumbnail">
+                                            <div class="pager-thumb active"><img src="images/shop/product-1.jpg"></div>
+                                            <div class="pager-thumb"><img src="images/shop/product-2.jpg"></div>
+                                            <div class="pager-thumb"><img src="images/shop/product-3.jpg"></div>
+                                        </div> <!-- .pager-thumbnail---->
+                                    </div><!-- .single-thumb-detail -->
+                                </div><!-- col-grid-6 -->
+                                <div class="col-grid-6">
+                                    <div class="summary entry-summary">
+                                        <div class="product-item-details">
+                                            <h2 class="product-title"><a href="#" title="title">阿特拉斯耸耸肩</a></h2>
+                                            <div class="product-price-container">
+                                                <span class="fix-price">商品ID&nbsp</span>
+                                                <span class="fix-price">123456</span>
+                                            </div><!-- .商品唯一ID -->
+                                            <div class="product-price-container">
+                                                <span class="fix-price">发货地点&nbsp</span>
+                                                <span class="fix-price">上海</span>
+                                            </div><!-- .商品发售地点 -->
+                                            <div class="rating-wrapper clear-fix">
+                                                <div class="product-ratings">
+                                                    <span class="star active"></span>
+                                                    <span class="star active"></span>
+                                                    <span class="star active"></span>
+                                                    <span class="star"></span>
+                                                    <span class="star"></span>
+                                                </div>
+                                                <ul class="info-links">
+                                                    <li><a href="1-product.html">(3.5) 54 评价数 </a> </li>
+                                                </ul>
+                                            </div><!-- .rating-wrapper -->
+                                            <div class="product-price-container">
+                                                <del class="dis-price">$65.99</del>
+                                                <span class="fix-price">$45.99</span>
+                                            </div><!-- .product-price-container -->
+                                        </div><!-- .product-item-details -->
+                                        <div class="item-content">
+                                            <p>《阿特拉斯耸耸肩》一书是客观主义哲学之母安·兰德的代表作。它是一本小说，但同时也渗透着安·兰德的哲学思想，篇幅巨大，背景恢弘，气势磅礴。书中展示了如果人类的思想开始罢工——如果每一行业具有创造能力的人都停止工作，消失不见——世界将会怎样的图景。通过描写经济危机背景下几位商界大亨的不同应对方式，传达了作者的个人主义思想。</p>
+                                        </div><!-- .item-content -->
+                                        <div class="availability">
+                                            <i class="fas fa-check-circle"></i>
+                                            <span>库存：200</span>
+                                        </div><!-- .availability -->
+                                        <form class="single-cart" method="post">
+                                            <input type="number" class="input-text" step="1" min="1" value="1">
+                                            <button type="button" name="add-ro-cart" class="custom-button button-small"> 加入购物车 </button>
+                                            <button type="button" name="add-ro-cart" class="custom-button custom-secondary-button button-small"> 加入愿望清单 </button>
+                                        </form><!-- .single-cart -->
+                                        <div class="share-on">
+                                            <h4>分享商品 :</h4>
+                                            <div class="social-links text-alignleft">
+                                                <ul>
+                                                    <li><a target="_blank" href="http://facebook.com/">Facebook</a></li>
+                                                    <li><a target="_blank" href="http://twitter.com/">Twitter</a></li>
+                                                    <li><a target="_blank" href="http://linkedin.com/">Linkedln</a></li>
+                                                    <li><a target="_blank" href="http://youtube.com/">Linkedln</a></li>
+                                                </ul>
+                                            </div>
+                                        </div> <!-- .share-on -->
+                                        <div class="entry-meta product-meta">
+                                            <h4>类别 :</h4>
+                                            <span class="cat-links">
+								            <a href="1-search.html" rel="tag">世界名著</a>
+								       </span>
+                                        </div><!-- .entry-meta -->
+                                    </div>
+                                </div><!-- .col-grid-6 -->
+                            </div><!-- .inner-wrapper -->
+                        </div> <!-- .product-single -->
+                        <div id="tabs" class="product-tabs wc-tabs-wrapper">
+                            <div id="tabs" class="product-tabs wc-tabs-wrapper">
+                                <ul class="tabs wc-tabs nav-tabs" role="tablist">
+                                    <li class="nav-item"><a href="#reviews">问答</a></li>
+                                </ul>
+                                <div class="tab-content">
+
+                                    <!-- .unit -->
+                                    <div class="tab-pane" id="reviews">
+                                        <h2>回答</h2>
+                                        <div id="woo-reviews" class="product-reviews">
+                                            <div id="review_form_wrapper">
+                                                <div class="review_form">
+                                                    <div id="respond" class="comment-respond">
+                                                        <form  id="commentform" class="comment-form" >
+                                                            <div class="comment-form-rating">
+                                                                <label>问题描述</label>
+                                                                <br>
+                                                                <a id="question">这是一个问题</a >
+                                                            </div>
+                                                            <p class="comment-form-comment">
+                                                                <label for="answer">回答内容</label>
+                                                                <textarea id="answer" name="comment" cols="45" rows="8" maxlength="65525" required="required"></textarea>
+                                                            </p>
+                                                            <p class="form-submit">
+                                                                <input name="submit" type="button" id="submit" class="submit" value="提交" onclick="Answer()">
+                                                                <input type="hidden" name="comment_post_ID" value="4819" id="comment_post_ID">
+                                                                <input type="hidden" name="comment_parent" id="comment_parent" value="0">
+                                                            </p>
+                                                        </form>
+
+                                                    </div>
+                                                    <!-- #respond -->
+                                                </div>
+                                            </div> <!-- #review_form_wrapper -->
+                                        </div> <!-- #reviews -->
+                                    </div>
+                                </div>
+                            </div> <!-- .product-tabs -->
+
+                    </main> <!-- #main -->
+                </div> <!-- #primary -->
+                <div id="sidebar-primary" class="sidebar widget-area" >
+                    <div class="sidebar-widget-wrapper">
+                        <aside class="widget recent-porduct-list">
+                            <h3 class="widget-title">相关商品</h3>
+                            <div class="products-list">
+                                <a href="#" class="product-thumb" title="Product Name"> <img src="images/shop/product-1.jpg" alt="Product image" class="product-image"> </a>
+                                <h5 class="product-title"><a href="1-product.html" title="Product"> 三体 </a></h5>
+                                <div class="product-price-container">
+                                    <span class="fix-price">￥45.99</span>
+                                </div>
+                            </div><!-- .products-list -->
+                            <div class="products-list">
+                                <a href="#" class="product-thumb" title="Product Name"> <img src="images/shop/product-2.jpg" alt="Product image" class="product-image"> </a>
+                                <h5 class="product-title"><a href="1-product.html" title="Product"> 三体Ⅱ·黑暗森林 </a></h5>
+                                <div class="product-price-container">
+                                    <del class="dis-price">￥65.99</del>
+                                    <span class="fix-price">￥45.99</span>
+                                </div>
+                            </div><!-- .products-list -->
+                            <div class="products-list">
+                                <a href="#" class="product-thumb" title="Product Name"> <img src="images/shop/product-3.jpg" alt="Product image" class="product-image"> </a>
+                                <h5 class="product-title"><a href="1-product.html" title="Product"> 三体Ⅲ·死神永生 </a></h5>
+                                <div class="product-price-container">
+                                    <span class="fix-price">￥45.99</span>
+                                </div>
+                            </div><!-- .products-list -->
+                        </aside><!-- .widget -->
+                    </div> <!-- .sidebar-widget-wrapper -->
+                </div> <!-- .sidebar -->
+            </div> <!-- #inner-wrapper -->
+        </div><!-- .container -->
+    </div> <!-- #content-->
+
+
+    <!-- 页脚 -->
+    <div class="footer-container">
+        <footer id="colophon" class="site-footer">
+            <div class="container">
+                <div class="inner-wrapper">
+                    <a href="1-intro.html">  团队介绍 </a>
+                    <br>
+                    <a href="http://www.miitbeian.gov.cn"> 互联网ICP备案：沪ICP备19023316号-1 </a>
+                    <p> (+86) 008 400 123 &nbsp&nbsp database@tongji.edu.cn &nbsp&nbsp 4800 Cao'an Street, China </p>
+                    <p> Copyright © 2019 SequoiaBook . All rights reserved. </p>
+                </div><!-- .inner-wrapper -->
+            </div> <!-- .container -->
+        </footer> <!-- footer ends here -->
+    </div><!-- footer-container -->
+</div> <!--#page-->
+
+<div id="btn-scrollup">
+    <a  title="Go Top"  class="scrollup button-circle" href="#"><i class="fas fa-angle-up"></i></a>
+</div>
+<script  src="third-party/jquery/jquery-3.2.1.min.js"></script>
+<script  src="third-party/jquery/jquery-migrate-3.0.0.min.js"></script>
+<!--Include all compiled plugins (below), or include individual files as needed-->
+<script  src="third-party/sidr/js/jquery.sidr.js"></script>
+<script  src="third-party/cycle2/jquery.cycle2.js"></script>
+<script  src="third-party/slick/js/slick.min.js"></script>
+<script  src="third-party/wow/js/wow.min.js"></script>
+<script  src="third-party/isotope/js/isotope.pkgd.min.js"></script>
+
+<script src="js/jquery-ui.min.js"></script>
+<script  src="third-party/accordionjs/js/accordion.min.js"></script>
+<script  src="js/contact.js"></script>
+<script  src="js/custom.js"></script>
+<script  src="js/color-switcher.js"></script>
+</body>
+</html>
