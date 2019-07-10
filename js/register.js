@@ -1,6 +1,6 @@
 function SendMail() {
     $.ajax({
-        url: 'http://192.168.1.178:5000/api/SendMail/',
+        url: 'http://www.sparkxyf.cn:8080/api/SendMail/',
         type: 'post',
         contentType: 'application/json;charset=UTF-8',
         xhrFields: {
@@ -11,16 +11,18 @@ function SendMail() {
             'EmailStatus': 0,
         }),
         success: function(msg){
+            alert("success");
             console.log("success");
         },
         error: function(err){
+            alert("fail");
             console.log('fail');
         }
     });
 }
 function Sms() {
     $.ajax({
-        url: 'http://192.168.1.178:5000/api/Sms/',
+        url: 'http://www.sparkxyf.cn:8080/api/Sms/',
         type: 'post',
         contentType: 'application/json;charset=UTF-8',
         xhrFields: {
@@ -40,7 +42,7 @@ function Sms() {
 }
 function CustomerByEmail() {
     $.ajax({
-        url: 'http://192.168.1.178:5000/api/Customer/',
+        url: 'http://www.sparkxyf.cn:8080/api/Customer/',
         type: 'post',
         contentType: 'application/json;charset=UTF-8',
         xhrFields: {
@@ -63,13 +65,14 @@ function CustomerByEmail() {
             //window.location.href= '1-login.html';
         },
         error: function(err){
+            alert("请输入xx");
             console.log('fail');
         }
     });
 }
 function CustomerByPhone() {
     $.ajax({
-        url: 'http://192.168.1.178:5000/api/Customer/',
+        url: 'http://www.sparkxyf.cn:8080/api/Customer/',
         type: 'post',
         contentType: 'application/json;charset=UTF-8',
         xhrFields: {

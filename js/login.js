@@ -15,7 +15,7 @@ function change(){
     }
     function Login() {
         $.ajax({
-            url: 'http://192.168.1.178:5000/api/Login/',
+            url: 'http://www.sparkxyf.cn:8080/api/Login/',
             type: 'post',
             contentType: 'application/json;charset=UTF-8',
             xhrFields: {
@@ -39,7 +39,7 @@ function change(){
     }
 function Sms() {
     $.ajax({
-        url: 'http://192.168.1.178:5000/api/Sms/',
+        url: 'http://www.sparkxyf.cn:8080/api/Sms/',
         type: 'post',
         contentType: 'application/json;charset=UTF-8',
         xhrFields: {
@@ -59,7 +59,7 @@ function Sms() {
 }
 function SmsLogin() {
     $.ajax({
-        url: 'http://192.168.1.178:5000/api/SmsLogin/',
+        url: 'http://www.sparkxyf.cn:8080/api/SmsLogin/',
         type: 'post',
         contentType: 'application/json;charset=UTF-8',
         xhrFields: {
