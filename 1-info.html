@@ -67,18 +67,20 @@
 					return
 				}
 				$.ajax({
-					url: 'http://192.168.1.154:5000/api/RequestCustomerAvatarUpload',
+					// url: 'http://192.168.1.154:5000/api/RequestCustomerAvatarUpload',
+					url: 'http://www.sparkxyf.cn:8080/api/RequestCustomerAvatarUpload',
 					type: 'post',
 					xhrFields:{withCredentials: true}, // 发送凭据
 					contentType: 'application/json; charset=UTF-8',
 					data: JSON.stringify({}),
 					success: function(result,status,xhl){
 						let form = $("#avatarUploadForm")[0];
-
+						console.log(result);
 						let data = new FormData(form);
 
-						data.set("token", result.token);
-						data.set("key", result.key);
+
+						data.set("token", result.Token.toString());
+						data.set("key", result.Key.toString());
 						$.ajax({
 							type: 'POST',
 							processData: false,

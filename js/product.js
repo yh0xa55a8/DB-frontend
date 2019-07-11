@@ -1,13 +1,25 @@
 window.location.href;
-function getUrlParam(name) {
-    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
-    var r = window.location.search.substr(1).match(reg);  //匹配目标参数
-    if (r != null) return unescape(r[2]); return null; //返回参数值
+
+function getUrlParam(variable) {
+    let query = window.location.search.substring(1);
+    let vars = query.split("&");
+    for (let i = 0; i < vars.length; i++) {
+        let pair = vars[i].split("=");
+        if (pair[0] === variable) {
+            return pair[1];
+        }
+    }
+    return (false);
 }
+
 var searchData, comment, question, answer;
 var MerchandiseId;
+
 function GetMerchandise() {
-    MerchandiseId=getUrlParam('MerchandiseId');
+    MerchandiseId = parseInt(getUrlParam('MerchandiseId'));
+    if(MerchandiseId==null){
+        MerchandiseId = parseInt(getUrlParam('merchandiseId'));
+    }
     console.log(MerchandiseId);
     $.ajax({
         url: 'http://www.sparkxyf.cn:8080/api/GetMerchandise/',
@@ -19,7 +31,7 @@ function GetMerchandise() {
         data: JSON.stringify({
             'MerchandiseId': MerchandiseId,
         }),
-        success: function(data){
+        success: function (data) {
             searchData = data;
             //console.log(data);
             console.log("success11");
@@ -30,14 +42,31 @@ function GetMerchandise() {
             $("#price").html(searchData.Price);
             $("#description1").html(searchData.Description);
             $("#description2").html(searchData.Description);
+            $.ajax({
+                url: 'http://www.sparkxyf.cn:8080/api/GetBook/',
+                type: 'post',
+                contentType: 'application/json;charset=UTF-8',
+                xhrFields: {
+                    withCredentials: true
+                },
+                data: JSON.stringify({
+                    'ISBN': data.ISBN,
+                }),
+                success: (book) => {
+                    let urls = book.ImagePath.split('/');
+                    let path = "http://sparkxyf.cn/" + urls[urls.length - 1];
+                    $('#mainPic').attr("src", path)
+                }
+            });
             GetAllComments();
         },
-        error: function(err){
+        error: function (err) {
             console.log(err);
             console.log('fail11');
         }
     });
 }
+
 function GetAllComments() {
     $.ajax({
         url: 'http://www.sparkxyf.cn:8080/api/GetAllComments/',
@@ -49,48 +78,35 @@ function GetAllComments() {
         data: JSON.stringify({
             'MerchandiseId': MerchandiseId,
         }),
-        success: function(data){
+        success: function (data) {
             comment = data;
-            //console.log(data);
-            console.log("success22");
-            $("#time1").html(comment[0].CommentTime);
-            $("#time2").html(comment[1].CommentTime);
-            $("#comment1").html(comment[0].Comment);
-            $("#comment2").html(comment[1].Comment);
-            $("#time3").html(comment[2].CommentTime);
-            $("#time4").html(comment[3].CommentTime);
-            $("#comment3").html(comment[2].Comment);
-            $("#comment4").html(comment[3].Comment);
+            console.log(data);
+            for(let i=0;i<data.length;i++){
+                renderComment(data[i].NickName,data[i].CommentTime,data[i].Comment);
+            }
             GetQuestionFromMerchandise();
         },
-        error: function(err){
+        error: function (err) {
             console.log(err);
             console.log('fail22');
         }
     });
 }
-function ShoppingCart() {
-    $.ajax({
-        url: 'http://www.sparkxyf.cn:8080/api/ShoppingCart/',
-        type: 'post',
-        contentType: 'application/json;charset=UTF-8',
-        xhrFields: {
-            withCredentials: true
-        },
-        data: JSON.stringify({
-            'MerchandiseId': MerchandiseId,
-            'Anount': $("#amount").val(),
-        }),
-        success: function(data){
-            //console.log(data);
-            console.log("success22");
-        },
-        error: function(err){
-            console.log(err);
-            console.log('fail22');
-        }
-    });
+
+function renderComment(name, time, content) {
+    $("#commentContainer").append('<tr class="cart-item"> \
+  <td class="product-name" data-title="Product"> \
+    <div class="product-info"> \
+      <h3>'+name+'</h3>  \
+      <a id="time1">'+time+'</a> \
+    </div> \
+  </td>  \
+  <td class="product-price" data-title="Price"> \
+    <a class="product-Price-amount amount" id="comment1">'+content+'</a> \
+  </td> \
+</tr>')
 }
+
 function Question() {
     $.ajax({
         url: 'http://www.sparkxyf.cn:8080/api/Question/',
@@ -104,57 +120,39 @@ function Question() {
             'SubmitTime': new Date(),
             'Content': $("#question").val(),
         }),
-        success: function(data){
+        success: function (data) {
             console.log(data);
             console.log("success22");
         },
-        error: function(err){
+        error: function (err) {
             console.log(err);
             console.log('fail22');
         }
     });
 }
-function GetQuestionFromMerchandise(){
-$.ajax({
-    url: 'http://www.sparkxyf.cn:8080/api/GetQuestionFromMerchandise/',
-    type: 'post',
-    contentType: 'application/json;charset=UTF-8',
-    xhrFields: {
-        withCredentials: true
-    },
-    data: JSON.stringify({
-        'MerchandiseId': MerchandiseId,
-    }),
-    success: function(data){
-        question = data;
-        console.log(data);
-        $.ajax({
-            url: 'http://www.sparkxyf.cn:8080/api/GetAnswerFromQuestion/',
-            type: 'post',
-            contentType: 'application/json;charset=UTF-8',
-            xhrFields: {
-                withCredentials: true
-            },
-            data: JSON.stringify({
-                'QuestionId': data[0].QuestionId,
-            }),
-            success: function(data){
-                answer = data;
-                console.log(data);
-                console.log("success44");
-            },
-            error: function(err){
-                console.log(err);
-                console.log('fail44');
-            }
-        });
-        console.log(question);
-        console.log("success33");
 
-    },
-    error: function(err){
-        console.log(err);
-        console.log('fail33');
-    }
-});
+
+
+function AddtoCart() {
+    $.ajax({
+        url: 'http://www.sparkxyf.cn:8080/api/ShoppingCart/',
+        type: 'post',
+        async: false,
+        contentType: 'application/json; charset=UTF-8',
+        xhrFields: {	//发送cookie
+            withCredentials: true
+        },
+        data: JSON.stringify({
+            'MerchandiseId': MerchandiseId,
+            'Amount': $("#amount").val()
+        }),
+        success: function (msg) {
+            console.log(msg);
+            alert("添加到购物车成功!")
+        },
+        error: function (err) {
+            console.log(err.statusText);
+        }
+    });
+
 }

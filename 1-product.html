@@ -1,545 +1,286 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<title>SequoiaBook</title>
-		<meta name="description" content="Multi-Purpose E-commerce Template">
-		<!--[if IE]>
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<![endif]-->
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="author" content="">
-		<link rel="shortcut icon" href="images/favicon.png" type="image/x-icon" />
-		<link rel="apple-touch-icon" href="images/apple-touch-icon.png" />
-		<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png" />
-		<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
-		<link rel="stylesheet" type="text/css" href="third-party/sidr/css/jquery.sidr.dark.css">
-		<link rel="stylesheet" type="text/css" href="third-party/slick/css/slick.css">
+<head>
+    <meta charset="utf-8">
+    <title>SequoiaBook</title>
+    <meta name="description" content="Multi-Purpose E-commerce Template">
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon"/>
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png"/>
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png"/>
+    <link rel="stylesheet" type="text/css" href="third-party/sidr/css/jquery.sidr.dark.css">
+    <link rel="stylesheet" type="text/css" href="third-party/slick/css/slick.css">
 
-		<link rel="stylesheet" type="text/css" href="third-party/wow/css/animate.min.css">
-        <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css">
-		<link rel="stylesheet" type="text/css" href="third-party/magnific-popup-master/css/magnific-popup.css">
-		<link rel="stylesheet" type="text/css" href="third-party/accordionjs/css/accordion.min.css">
-		<link rel="stylesheet" type="text/css" href="style.css">
-		<link rel="stylesheet" type="text/css" href="icons/icons.css">
-		<link rel="stylesheet" type="text/css" href="css/custom.css">
-		<link rel="stylesheet" type="text/css" href="css/responsive.css">
-		<link rel="stylesheet" id="color" href="css/default.css">
-		<!-- <link rel="stylesheet" type="text/css" href="css/colors/lite-green.css"> -->
-		<!-- <link rel="stylesheet" type="text/css" href="css/colors/dark-green.css"> -->
-		<!-- <link rel="stylesheet" type="text/css" href="css/colors/black.css"> -->
-		<!-- <link rel="stylesheet" type="text/css" href="css/colors/orange.css"> -->
-		<!-- <link rel="stylesheet" type="text/css" href="css/colors/brown.css"> -->
-		<!-- <link rel="stylesheet" type="text/css" href="css/colors/lite-green.css"> -->
-		<!-- <link rel="stylesheet" type="text/css" href="css/colors/dark-purple.css"> -->
-		<!-- <link rel="stylesheet" type="text/css" href="css/colors/cyan.css"> -->
-		<!-- <link rel="stylesheet" type="text/css" href="css/colors/dark-blue.css"> -->
-		<!-- <link rel="stylesheet" type="text/css" href="css/colors/purple.css"> -->
-		<!-- <link rel="stylesheet" type="text/css" href="css/colors/sky-blue.css"> -->
+    <link rel="stylesheet" type="text/css" href="third-party/wow/css/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css">
+    <link rel="stylesheet" type="text/css" href="third-party/magnific-popup-master/css/magnific-popup.css">
+    <link rel="stylesheet" type="text/css" href="third-party/accordionjs/css/accordion.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="icons/icons.css">
+    <link rel="stylesheet" type="text/css" href="css/custom.css">
+    <link rel="stylesheet" type="text/css" href="css/responsive.css">
+    <link rel="stylesheet" id="color" href="css/default.css">
+    <!-- <link rel="stylesheet" type="text/css" href="css/colors/lite-green.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/colors/dark-green.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/colors/black.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/colors/orange.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/colors/brown.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/colors/lite-green.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/colors/dark-purple.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/colors/cyan.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/colors/dark-blue.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/colors/purple.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="css/colors/sky-blue.css"> -->
 
-		<link rel="stylesheet" href="third-party/fontawesome/releases/v5.2.0/css/all.css" >
+    <link rel="stylesheet" href="third-party/fontawesome/releases/v5.2.0/css/all.css">
 
-		<link href="https://fonts.googleapis.com/css?family=Roboto:400,500,600,700" rel="stylesheet">
-		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,600,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800" rel="stylesheet">
 
-		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-		<!--[if lt IE 9]>
-		<script src="http://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-		<script src="http://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-		<![endif]-->
-		<script src="js/product.js"></script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="http://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="http://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 
-	</head>
-	<body class="home header-v1" onload="GetMerchandise()">
-		<div id="page" class="site">
+    <script src="third-party/jquery/jquery-3.2.1.min.js"></script>
+    <script src="third-party/jquery/jquery-migrate-3.0.0.min.js"></script>
 
-			<header id="masthead" class="site-header sticky-enabled">
-				<div class="container">
-					<div class="site-branding pull-left">
-						<div id="site-identity">
-							<h1 class="site-title"><a href="1-home.html" rel="home"><img alt="logo" class="site-logo" src="images/logo.png">红杉书屋</a></h1>
-						</div><!-- #site-identity -->
-					</div><!-- .site-branding -->
-					<a href="1-search.html"><input type="button" value="进入搜索" class="pull-right quick-link-button"></a>
-					<div id="header-right" class="pull-right">
-						<div class="hearder-min-cart">
-							<ul>
-								<li class="cart-button mini-cart-wrap">
-									<a href="1-cart.html"><i class=" icon-basket"></i>	</a>
-								</li>
-			       				<li class="cart-button">
-				       				<a href="1-wishlist.html"  title="wishlist"><i class=" icon-heart"></i>	</a>
-			       				</li>
-							</ul>
-						</div><!-- #quick-link-buttons -->
-					</div>
-					<nav class="main-navigation pull-right">
-						<ul>
-							<a class="current-menu-item menu-item-has-children"><a href="1-home.html">主页&nbsp&nbsp</a>
-							</a>
-							<li class="menu-item-has-children"><a href="#">类别</a>
-								<ul class="sub-menu">
-									<li><a href="1-search.html">世界名著</a></li>
-									<li><a href="1-search.html">当代文学</a></li>
-									<li><a href="1-search.html">哲学宗教</a></li>
-									<li><a href="1-search.html">政治法律</a></li>
-									<li><a href="1-search.html">历史地理</a></li>
-									<li><a href="1-search.html">自然科学</a></li>
-								</ul>
-							</li>
-							<a class="menu-item-has-children"><a href="1-order.html" >我的订单</a>
-							</a>
-							<a class="menu-item-has-children"><a href="1-info.html" >&nbsp&nbsp&nbsp我的账户</a>
-							</a>
-						</ul>
-					</nav> <!-- .site-navigation -->
-				</div> <!-- .container -->
-			</header> <!-- .site-header -->
-			<div id="custom-header">
-			  <div class="custom-header-content">
-			    <div class="container">
-			      <h1 class="page-title">产品详情</h1>
-			    </div> <!-- .container -->
-			  </div>  <!-- .custom-header-content -->
-			</div> <!-- .custom-header -->
-            <div id="content" class="site-content global-layout-right-sidebar">
-              <div class="container">
+    <script src="js/product.js"></script>
+
+    <script>
+        $(() => {
+            GetMerchandise();
+        })
+    </script>
+
+</head>
+<body class="home header-v1">
+<div id="page" class="site">
+
+    <header id="masthead" class="site-header sticky-enabled">
+        <div class="container">
+            <div class="site-branding pull-left">
+                <div id="site-identity">
+                    <h1 class="site-title"><a href="1-home.html" rel="home"><img alt="logo" class="site-logo"
+                                                                                 src="images/logo.png">红杉书屋</a></h1>
+                </div><!-- #site-identity -->
+            </div><!-- .site-branding -->
+            <a href="1-search.html"><input type="button" value="进入搜索" class="pull-right quick-link-button"></a>
+            <div id="header-right" class="pull-right">
+                <div class="hearder-min-cart">
+                    <ul>
+                        <li class="cart-button mini-cart-wrap">
+                            <a href="1-cart.html"><i class=" icon-basket"></i> </a>
+                        </li>
+                        <li class="cart-button">
+                            <a href="1-wishlist.html" title="wishlist"><i class=" icon-heart"></i> </a>
+                        </li>
+                    </ul>
+                </div><!-- #quick-link-buttons -->
+            </div>
+            <nav class="main-navigation pull-right">
+                <ul>
+                    <a class="current-menu-item menu-item-has-children"><a href="1-home.html">主页&nbsp&nbsp</a>
+                    </a>
+                    <li class="menu-item-has-children"><a href="#">类别</a>
+                        <ul class="sub-menu">
+                            <li><a href="1-search.html">世界名著</a></li>
+                            <li><a href="1-search.html">当代文学</a></li>
+                            <li><a href="1-search.html">哲学宗教</a></li>
+                            <li><a href="1-search.html">政治法律</a></li>
+                            <li><a href="1-search.html">历史地理</a></li>
+                            <li><a href="1-search.html">自然科学</a></li>
+                        </ul>
+                    </li>
+                    <a class="menu-item-has-children"><a href="1-order.html">我的订单</a>
+                    </a>
+                    <a class="menu-item-has-children"><a href="1-info.html">&nbsp&nbsp&nbsp我的账户</a>
+                    </a>
+                </ul>
+            </nav> <!-- .site-navigation -->
+        </div> <!-- .container -->
+    </header> <!-- .site-header -->
+    <div id="custom-header">
+        <div class="custom-header-content">
+            <div class="container">
+                <h1 class="page-title">产品详情</h1>
+            </div> <!-- .container -->
+        </div>  <!-- .custom-header-content -->
+    </div> <!-- .custom-header -->
+    <div id="content" class="site-content global-layout-right-sidebar">
+        <div class="container">
+            <div class="inner-wrapper">
+                <div id="primary" class="content-area">
+                    <main id="main" class="site-main">
+                        <div class="product-single">
+                            <div class="inner-wrapper">
+                                <div class="col-grid-6">
+                                    <div class="single-thumb-detail">
+                                        <div class="single-main-thumb">
+                                            <div class="single-thumb"><a href="#">
+                                                <img alt="product" id="mainPic" src=""></a>
+                                            </div>
+                                        </div>
+                                    </div><!-- .single-thumb-detail -->
+                                </div><!-- col-grid-6 -->
+                                <div class="col-grid-6">
+                                    <div class="summary entry-summary">
+                                        <div class="product-item-details">
+                                            <h2 class="product-title"><a href="#" title="title" id="title">阿特拉斯耸耸肩</a>
+                                            </h2>
+                                            <div class="product-price-container">
+                                                <span class="fix-price">ISBN</span>
+                                                <a id="ISBN">123456</a>
+                                            </div><!-- .商品唯一ID -->
+                                            <div class="product-price-container">
+                                                <span class="fix-price">店铺名称&nbsp</span>
+                                                <a id="shopname">上海书城</a>
+                                            </div><!-- .商品唯一ID -->
+                                            <div class="product-price-container">
+                                                <span class="fix-price">作者&nbsp</span>
+                                                <a id="author">张三</a>
+                                            </div><!-- .商品发售地点 -->
+                                            <div class="product-price-container">
+                                                <a>￥</a><a class="fix-price" id="price">45.99</a>
+                                            </div><!-- .product-price-container -->
+                                        </div><!-- .product-item-details -->
+                                        <div class="item-content">
+                                            <p id="description1">
+                                                《阿特拉斯耸耸肩》一书是客观主义哲学之母安·兰德的代表作。它是一本小说，但同时也渗透着安·兰德的哲学思想，篇幅巨大，背景恢弘，气势磅礴。书中展示了如果人类的思想开始罢工——如果每一行业具有创造能力的人都停止工作，消失不见——世界将会怎样的图景。通过描写经济危机背景下几位商界大亨的不同应对方式，传达了作者的个人主义思想。</p>
+                                        </div><!-- .item-content -->
+                                        <form class="single-cart" method="post">
+                                            <input type="number" class="input-text" step="1" min="1" value="1"
+                                                   id="amount">
+                                            <button type="button" name="add-ro-cart" class="custom-button button-small"
+                                                    onclick="AddtoCart()"> 加入购物车
+                                            </button>
+                                        </form><!-- .single-cart -->
+                                        <div class="share-on">
+                                            <h4>分享商品 :</h4>
+                                            <div class="social-links text-alignleft">
+                                                <ul>
+                                                    <li><a target="_blank" href="http://facebook.com/">Facebook</a></li>
+                                                    <li><a target="_blank" href="http://twitter.com/">Twitter</a></li>
+                                                    <li><a target="_blank" href="http://linkedin.com/">Linkedln</a></li>
+                                                    <li><a target="_blank" href="http://youtube.com/">Linkedln</a></li>
+                                                </ul>
+                                            </div>
+                                        </div> <!-- .share-on -->
+                                    </div>
+                                </div><!-- .col-grid-6 -->
+                            </div><!-- .inner-wrapper -->
+                        </div> <!-- .product-single -->
+                        <div id="tabs" class="product-tabs wc-tabs-wrapper">
+                            <ul class="tabs wc-tabs nav-tabs" role="tablist">
+                                <li class="nav-item"><a href="#description"> 简介 </a></li>
+                                <li class="nav-item"><a href="#add-description"> 评论列表 </a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" id="description">
+                                    <p id="description2">
+                                        《阿特拉斯耸耸肩》编辑推荐：我以我的生命以及我对它的热爱发誓，我永远不会为别人而活，也不会要求别人为我而活。安•兰德：美国精神的奠基人，金融大鳄乔治•索罗斯、美联储前主席格林斯潘，美国前总统罗纳德•里根、建筑师兰克•劳埃德•赖特，维基百科创始人吉米•威尔士、《花花公子》创办人休•海夫纳，埃克森美孚CEO雷克斯•蒂尔纳森、吉列公司CEO詹姆斯•基尔茨……无数世界
+                                        人物的精神偶像。</p>
+                                </div>
+
+                                <!-- 评论列表 -->
+                                <div class="tab-pane" id="add-description">
+                                    <form class="product-cart-form">
+                                        <table class="cart shop-table shop-table-responsive" id="commentContainer">
+                                            <thead>
+                                            <tr>
+                                                <th class="product-name">评价用户</th>
+                                                <th class="product-price">评价内容</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </form> <!-- .product-cart-form -->
+                                </div>
+
+
+
+                            </div> <!-- .product-tabs -->
+                        </div>
+                    </main> <!-- #main -->
+                </div> <!-- #primary -->
+                <div id="sidebar-primary" class="sidebar widget-area">
+                    <div id="tabs" class="product-tabs wc-tabs-wrapper">
+                        <div class="tab-content">
+                            <!-- .unit -->
+                            <div class="tab-pane" id="questions">
+                                <h2>提问</h2>
+                                <div id="woo-reviews" class="product-reviews">
+                                    <div id="review_form_wrapper">
+                                        <div class="review_form">
+                                            <div id="respond" class="comment-respond">
+                                                <form id="commentform" class="comment-form">
+                                                    <p class="comment-form-comment">
+                                                        <label for="comment">问题详述</label>
+                                                        <textarea id="comment" name="comment" cols="45" rows="8"
+                                                                  maxlength="65525" required="required"
+                                                                  id="question"></textarea>
+                                                    </p>
+                                                    <p class="form-submit"><input name="submit" type="button"
+                                                                                  id="submit" class="submit" value="提交"
+                                                                                  onclick="Question()">
+                                                        <input type="hidden" name="comment_post_ID" value="4819"
+                                                               id="comment_post_ID">
+                                                        <input type="hidden" name="comment_parent" id="comment_parent"
+                                                               value="0">
+                                                    </p>
+                                                </form>
+
+                                            </div>
+                                            <!-- #respond -->
+                                        </div>
+                                    </div> <!-- #review_form_wrapper -->
+                                </div> <!-- #reviews -->
+                            </div>
+                        </div>
+                    </div> <!-- .product-tabs -->
+                </div> <!-- .sidebar -->
+            </div> <!-- #inner-wrapper -->
+        </div><!-- .container -->
+    </div> <!-- #content-->
+    <!-- 页脚 -->
+    <div class="footer-container">
+        <footer id="colophon" class="site-footer">
+            <div class="container">
                 <div class="inner-wrapper">
-					<div id="primary" class="content-area">
-						<main id="main" class="site-main">
-						  <div class="product-single">
-						  <div class="inner-wrapper">
-							<div class="col-grid-6">
-								<div class="single-thumb-detail">
-									<div class="single-main-thumb">
-										<div class="single-thumb"><a href="#"><img alt="product" src="images/shop/product-1.jpg"></a></div>
-										<div class="single-thumb"><a href="#"><img alt="product" src="images/shop/product-2.jpg"></a></div>
-										<div class="single-thumb"><a href="#"><img alt="product" src="images/shop/product-3.jpg"></a></div>
-									</div>
-									<div class="pager-thumbnail">
-											<div class="pager-thumb active"><img src="images/shop/product-1.jpg"></div>
-											<div class="pager-thumb"><img src="images/shop/product-2.jpg"></div>
-											<div class="pager-thumb"><img src="images/shop/product-3.jpg"></div>
-									</div> <!-- .pager-thumbnail---->
-								</div><!-- .single-thumb-detail -->
-							</div><!-- col-grid-6 -->
-						  	<div class="col-grid-6">
-								<div class="summary entry-summary">
-									<div class="product-item-details">
-										<h2 class="product-title"><a href="#" title="title" id="title">阿特拉斯耸耸肩</a></h2>
-										<div class="product-price-container">
-											<span class="fix-price">ISBN</span>
-											<a id="ISBN">123456</a>
-										</div><!-- .商品唯一ID -->
-										<div class="product-price-container">
-											<span class="fix-price">店铺名称&nbsp</span>
-											<a id="shopname">上海书城</a>
-										</div><!-- .商品唯一ID -->
-										<div class="product-price-container">
-											<span class="fix-price">作者&nbsp</span>
-											<a id="author">张三</a>
-										</div><!-- .商品发售地点 -->
-										<div class="product-price-container">
-											<a>￥</a><a class="fix-price" id="price">45.99</a>
-										</div><!-- .product-price-container -->
-									</div><!-- .product-item-details -->
-									<div class="item-content">
-											<p id="description1">《阿特拉斯耸耸肩》一书是客观主义哲学之母安·兰德的代表作。它是一本小说，但同时也渗透着安·兰德的哲学思想，篇幅巨大，背景恢弘，气势磅礴。书中展示了如果人类的思想开始罢工——如果每一行业具有创造能力的人都停止工作，消失不见——世界将会怎样的图景。通过描写经济危机背景下几位商界大亨的不同应对方式，传达了作者的个人主义思想。</p>
-									</div><!-- .item-content -->
-									<div class="availability">
-						                <i class="fas fa-check-circle"></i>
-						                <span>库存：200</span>
-						            </div><!-- .availability -->
-								   <form class="single-cart" method="post">
-								        <input type="number" class="input-text" step="1" min="1" value="1" id="amount">
-								        <button type="button" name="add-ro-cart" class="custom-button button-small" onclick="ShoppingCart()"> 加入购物车 </button>
-								   </form><!-- .single-cart -->
-								   <div class="share-on">
-								        <h4>分享商品 :</h4>
-								        <div class="social-links text-alignleft">
-								            <ul>
-								              <li><a target="_blank" href="http://facebook.com/">Facebook</a></li>
-								              <li><a target="_blank" href="http://twitter.com/">Twitter</a></li>
-								              <li><a target="_blank" href="http://linkedin.com/">Linkedln</a></li>
-								              <li><a target="_blank" href="http://youtube.com/">Linkedln</a></li>
-								            </ul>
-								        </div>
-								   </div> <!-- .share-on -->
-								   <div class="entry-meta product-meta">
-								            <h4>类别 :</h4>
-								       <span class="cat-links">
-								            <a href="1-search.html" rel="tag">世界名著</a>
-								       </span>
-								   </div><!-- .entry-meta -->
-								</div>
-						  	</div><!-- .col-grid-6 -->
-						  </div><!-- .inner-wrapper -->
-						 </div> <!-- .product-single -->
-						 <div id="tabs" class="product-tabs wc-tabs-wrapper">
-						 	<ul class="tabs wc-tabs nav-tabs" role="tablist">
-						 		<li class="nav-item"><a href="#description"> 简介 </a></li>
-						 		<li class="nav-item"> <a href="#add-description"> 评论列表 </a></li>
-						 		<li class="nav-item"><a href="#reviews"> 问答 </a></li>
-						 	</ul>
-						 	<div class="tab-content">
-						 		<div class="tab-pane active" id="description">
-						 			<p id="description2">《阿特拉斯耸耸肩》编辑推荐：我以我的生命以及我对它的热爱发誓，我永远不会为别人而活，也不会要求别人为我而活。安•兰德：美国精神的奠基人，金融大鳄乔治•索罗斯、美联储前主席格林斯潘，美国前总统罗纳德•里根、建筑师兰克•劳埃德•赖特，维基百科创始人吉米•威尔士、《花花公子》创办人休•海夫纳，埃克森美孚CEO雷克斯•蒂尔纳森、吉列公司CEO詹姆斯•基尔茨……无数世界 人物的精神偶像。</p>
-						 		</div>
+                    <a href="1-intro.html"> 团队介绍 </a>
+                    <br>
+                    <a href="http://www.miitbeian.gov.cn"> 互联网ICP备案：沪ICP备19023316号-1 </a>
+                    <p> (+86) 008 400 123 &nbsp&nbsp database@tongji.edu.cn &nbsp&nbsp 4800 Cao'an Street, China </p>
+                    <p> Copyright © 2019 SequoiaBook . All rights reserved. </p>
+                </div><!-- .inner-wrapper -->
+            </div> <!-- .container -->
+        </footer> <!-- footer ends here -->
+    </div><!-- footer-container -->
+</div> <!--#page-->
 
-								<!-- 评论列表 -->
-								<div class="tab-pane" id="add-description">
-										<form class="product-cart-form">
-												<table class="cart shop-table shop-table-responsive">
-													<thead>
-														<tr>
-															<th class="product-name">评价用户</th>
-															<th class="product-price">评价内容</th>
-														</tr>
-													</thead>
-													<tbody>
-														<!-- .unit begin---------------------------------------------------------------------------- -->
-														<tr class="cart-item">
-															<td class="product-name" data-title="Product">
-																<a href="#" class="cart-product-thumb">
-																	<img src="images/shop/product-1.jpg" alt="Product Thumbnail">
-																</a>
-																<div class="product-info">
-																	<h3>夏宇宁</h3>
-																	<a id="time1">评价时间：2019.05.27   05:27</a>
-																</div>
-															</td>
-															<td class="product-price" data-title="Price">
-															   <a class="product-Price-amount amount" id="comment1">
-																《阿特拉斯耸耸肩》一书是客观主义哲学之母安·兰德的代表作。它是一本小说，但同时也渗透着安·兰德的哲学思想，篇幅巨大，背景恢弘，气势磅礴。
-															   </a>
-															</td>
-														</tr>
-														<!-- .unit end---------------------------------------------------------------------------- -->
-														<!-- .unit begin---------------------------------------------------------------------------- -->
-														<tr class="cart-item">
-															<td class="product-name" data-title="Product">
-																<a href="#" class="cart-product-thumb">
-																	<img src="images/shop/product-1.jpg" alt="Product Thumbnail">
-																</a>
-																<div class="product-info">
-																	<h3>夏宇宁</h3>
-																	<a id="time2">评价时间：2019.05.27   05:27</a>
-																</div>
-															</td>
-															<td class="product-price" data-title="Price">
-															   <a class="product-Price-amount amount" id="comment2">
-																《阿特拉斯耸耸肩》一书是客观主义哲学之母安·兰德的代表作。它是一本小说，但同时也渗透着安·兰德的哲学思想，篇幅巨大，背景恢弘，气势磅礴。
-															   </a>
-															</td>
-														</tr>
-														<!-- .unit end---------------------------------------------------------------------------- -->
-														<!-- .unit begin---------------------------------------------------------------------------- -->
-														<tr class="cart-item">
-															<td class="product-name" data-title="Product">
-																<a href="#" class="cart-product-thumb">
-																	<img src="images/shop/product-1.jpg" alt="Product Thumbnail">
-																</a>
-																<div class="product-info">
-																	<h3>夏宇宁</h3>
-																	<a id="time3">评价时间：2019.05.27   05:27</a>
-																</div>
-															</td>
-															<td class="product-price" data-title="Price">
-															   <a class="product-Price-amount amount" id="comment3">
-																《阿特拉斯耸耸肩》一书是客观主义哲学之母安·兰德的代表作。它是一本小说，但同时也渗透着安·兰德的哲学思想，篇幅巨大，背景恢弘，气势磅礴。
-															   </a>
-															</td>
-														</tr>
-														<!-- .unit end---------------------------------------------------------------------------- -->
-														<!-- .unit begin---------------------------------------------------------------------------- -->
-														<tr class="cart-item">
-															<td class="product-name" data-title="Product">
-																<a href="#" class="cart-product-thumb">
-																	<img src="images/shop/product-1.jpg" alt="Product Thumbnail">
-																</a>
-																<div class="product-info">
-																	<h3>夏宇宁</h3>
-																	<a id="time4">评价时间：2019.05.27   05:27</a>
-																</div>
-															</td>
-															<td class="product-price" data-title="Price">
-															   <a class="product-Price-amount amount" id="comment4">
-																《阿特拉斯耸耸肩》一书是客观主义哲学之母安·兰德的代表作。它是一本小说，但同时也渗透着安·兰德的哲学思想，篇幅巨大，背景恢弘，气势磅礴。
-															   </a>
-															</td>
-														</tr>
-														<!-- .unit end---------------------------------------------------------------------------- -->
-													</tbody>
-												</table>
-											</form> <!-- .product-cart-form -->
-						 		</div>
+<div id="btn-scrollup">
+    <a title="Go Top" class="scrollup button-circle" href="#"><i class="fas fa-angle-up"></i></a>
+</div>
 
+<!--Include all compiled plugins (below), or include individual files as needed-->
+<script src="third-party/sidr/js/jquery.sidr.js"></script>
+<script src="third-party/cycle2/jquery.cycle2.js"></script>
+<script src="third-party/slick/js/slick.min.js"></script>
+<script src="third-party/wow/js/wow.min.js"></script>
+<script src="third-party/isotope/js/isotope.pkgd.min.js"></script>
 
-								<div class="tab-pane" id="reviews">
-															<form class="product-cart-form">
-						        <table class="cart shop-table shop-table-responsive">
-						            <thead>
-						                <tr>
-						                    <th class="product-price">问题</th>
-											<th class="product-price">回答</th>
-											<th class="product-subtotal">添加回答</th>
-						                </tr>
-						            </thead>
-						            <tbody>
-									<!-- .unit begin---------------------------------------------------------------------------- -->
-									<tr class="cart-item">
-										<td class="product-price" data-title="Price">
-						                       <span class="product-Price-amount amount">
-												Especially good, so good to know how to use human language description. Use poetry? It’s okay, but it doesn’t seem to be enough.
-						                       </span>
-										</td>
-										<td class="product-price" data-title="Price">
-						                       <span class="product-Price-amount amount">
-												Especially good, so good to know how to use human language description. Use poetry? It’s okay, but it doesn’t seem to be enough.
-						                       </span>
-										</td>
-										<td class="product-subtotal" data-title="Total">
-						                        <span class="product-Price-amount amount">
-													<a href="comment.html">
-														<a href="1-answer.html"><input type=button class="custom-button button-small" value="添加回答"></a>
-													</a>
-						                       </span>
-										</td>
-									</tr>
-									<!-- .unit end---------------------------------------------------------------------------- -->
-									<!-- .unit begin---------------------------------------------------------------------------- -->
-									<tr class="cart-item">
-										<td class="product-price" data-title="Price">
-						                       <span class="product-Price-amount amount">
-												Especially good, so good to know how to use human language description. Use poetry? It’s okay, but it doesn’t seem to be enough.
-						                       </span>
-										</td>
-										<td class="product-price" data-title="Price">
-						                       <span class="product-Price-amount amount">
-												Especially good, so good to know how to use human language description. Use poetry? It’s okay, but it doesn’t seem to be enough.
-						                       </span>
-										</td>
-										<td class="product-subtotal" data-title="Total">
-						                        <span class="product-Price-amount amount">
-													<a href="comment.html">
-														<a href="1-answer.html"><input type=button class="custom-button button-small" value="添加回答"></a>
-													</a>
-						                       </span>
-										</td>
-									</tr>
-									<!-- .unit end---------------------------------------------------------------------------- -->
-									<!-- .unit begin---------------------------------------------------------------------------- -->
-									<tr class="cart-item">
-										<td class="product-price" data-title="Price">
-						                       <span class="product-Price-amount amount">
-												Especially good, so good to know how to use human language description. Use poetry? It’s okay, but it doesn’t seem to be enough.
-						                       </span>
-										</td>
-										<td class="product-price" data-title="Price">
-						                       <span class="product-Price-amount amount">
-												Especially good, so good to know how to use human language description. Use poetry? It’s okay, but it doesn’t seem to be enough.
-						                       </span>
-										</td>
-										<td class="product-subtotal" data-title="Total">
-						                        <span class="product-Price-amount amount">
-													<a href="comment.html">
-														<a href="1-answer.html"><input type=button class="custom-button button-small" value="添加回答"></a>
-													</a>
-						                       </span>
-										</td>
-									</tr>
-									<!-- .unit end---------------------------------------------------------------------------- -->
-									<!-- .unit begin---------------------------------------------------------------------------- -->
-									<tr class="cart-item">
-										<td class="product-price" data-title="Price">
-						                       <span class="product-Price-amount amount">
-												Especially good, so good to know how to use human language description. Use poetry? It’s okay, but it doesn’t seem to be enough.
-						                       </span>
-										</td>
-										<td class="product-price" data-title="Price">
-						                       <span class="product-Price-amount amount">
-												Especially good, so good to know how to use human language description. Use poetry? It’s okay, but it doesn’t seem to be enough.
-						                       </span>
-										</td>
-										<td class="product-subtotal" data-title="Total">
-						                        <span class="product-Price-amount amount">
-													<a href="comment.html">
-														<a href="1-answer.html"><input type=button class="custom-button button-small" value="添加回答"></a>
-													</a>
-						                       </span>
-										</td>
-									</tr>
-									<!-- .unit end---------------------------------------------------------------------------- -->
-									<!-- .unit begin---------------------------------------------------------------------------- -->
-									<tr class="cart-item">
-										<td class="product-price" data-title="Price">
-						                       <span class="product-Price-amount amount">
-												Especially good, so good to know how to use human language description. Use poetry? It’s okay, but it doesn’t seem to be enough.
-						                       </span>
-										</td>
-										<td class="product-price" data-title="Price">
-						                       <span class="product-Price-amount amount">
-												Especially good, so good to know how to use human language description. Use poetry? It’s okay, but it doesn’t seem to be enough.
-						                       </span>
-										</td>
-										<td class="product-subtotal" data-title="Total">
-						                        <span class="product-Price-amount amount">
-													<a href="comment.html">
-														<a href="1-answer.html"><input type=button class="custom-button button-small" value="添加回答"></a>
-													</a>
-						                       </span>
-										</td>
-									</tr>
-									<!-- .unit end---------------------------------------------------------------------------- -->
-
-									</tbody>
-						        </table>
-							</form> <!-- .product-cart-form -->
-						 		</div>
-						 </div> <!-- .product-tabs -->
-							<div class="section-products related-product clear-fix top-space">
-									<div class="section-title-wrap text-alignleft">
-										<h2 class="section-title">相关产品</h2>
-										<span class="divider"></span>
-									</div>
-									<div class="inner-wrapper">
-										<div class="products-inner-wrapper iteam-col-3  section-carousel-enabled  clear-fix">
-
-											<!-- 单独的一个项目展示 -->
-											<div class="product-item col-grid-4 top-space">
-												<div class="product-item-wrapper zoom-effect-hover-container box-shadow-block">
-													<div class="product-thumb zoom-effect">
-														<a class="thumbnail" href="#"><img alt="product" src="images/shop/product-1.jpg"></a>
-														<div class="pruduct-buttons">
-															<a href="#" class="product-button tooltip"><i class="fas fa-cart-plus"></i>
-															<span class="tooltiptext tooltip-right">Add To Cart</span></a>
-															<a href="#" class="product-button tooltip"><i class="far fa-heart"></i><span class="tooltiptext tooltip-right">Wishlist</span></a>
-														</div><!-- .product-buttons -->
-														<!-- .product-ratings -->
-													</div><!-- .product-thumb -->
-													<div class="product-item-details">
-														<h3 class="product-title"><a href="1-product.html" title="title">源泉</a></h3>
-														<div class="product-price-container">
-															<span class="fix-price">￥499</span>
-														</div><!-- .product-price-container -->
-													</div>
-												</div><!-- .product-item-wrapper -->
-											</div><!-- .product-item -->
-
-											<!-- 单独的一个项目展示 -->
-											<div class="product-item col-grid-4 top-space">
-												<div class="product-item-wrapper zoom-effect-hover-container box-shadow-block">
-													<div class="product-thumb zoom-effect">
-														<a class="thumbnail" href="#"><img alt="product" src="images/shop/product-1.jpg"></a>
-														<div class="pruduct-buttons">
-															<a href="#" class="product-button tooltip"><i class="fas fa-cart-plus"></i>
-															<span class="tooltiptext tooltip-right">Add To Cart</span></a>
-															<a href="#" class="product-button tooltip"><i class="far fa-heart"></i><span class="tooltiptext tooltip-right">Wishlist</span></a>
-														</div><!-- .product-buttons -->
-														<!-- .product-ratings -->
-													</div><!-- .product-thumb -->
-													<div class="product-item-details">
-														<h3 class="product-title"><a href="1-product.html" title="title">沉思录</a></h3>
-														<div class="product-price-container">
-															<span class="fix-price">￥499</span>
-														</div><!-- .product-price-container -->
-													</div>
-												</div><!-- .product-item-wrapper -->
-											</div><!-- .product-item -->
-
-											<!-- 单独的一个项目展示 -->
-											<div class="product-item col-grid-4 top-space">
-												<div class="product-item-wrapper zoom-effect-hover-container box-shadow-block">
-													<div class="product-thumb zoom-effect">
-														<a class="thumbnail" href="#"><img alt="product" src="images/shop/product-1.jpg"></a>
-														<div class="pruduct-buttons">
-															<a href="#" class="product-button tooltip"><i class="fas fa-cart-plus"></i>
-															<span class="tooltiptext tooltip-right">Add To Cart</span></a>
-															<a href="#" class="product-button tooltip"><i class="far fa-heart"></i><span class="tooltiptext tooltip-right">Wishlist</span></a>
-														</div><!-- .product-buttons -->
-														<!-- .product-ratings -->
-													</div><!-- .product-thumb -->
-													<div class="product-item-details">
-														<h3 class="product-title"><a href="1-product.html" title="title">美的历程</a></h3>
-														<div class="product-price-container">
-															<span class="fix-price">￥499</span>
-														</div><!-- .product-price-container -->
-													</div>
-												</div><!-- .product-item-wrapper -->
-											</div><!-- .product-item -->
-
-
-										</div><!-- .products-inner-wrapper -->
-									</div><!-- .inner-wrapper -->
-							</div><!-- .section-products -->
-						</main> <!-- #main -->
-					</div> <!-- #primary -->
-                <div id="sidebar-primary" class="sidebar widget-area" >
-						<div id="tabs" class="product-tabs wc-tabs-wrapper">
-								<div class="tab-content">
-									<!-- .unit -->
-									<div class="tab-pane" id="reviews">
-										<h2>提问</h2>
-										<div id="woo-reviews" class="product-reviews">
-											<div id="review_form_wrapper">
-												<div class="review_form">
-													<div id="respond" class="comment-respond">
-														<form  id="commentform" class="comment-form" >
-															<p class="comment-form-comment">
-																<label for="comment">问题详述</label>
-																<textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" required="required" id="question"></textarea>
-															</p>
-															<p class="form-submit"><input name="submit" type="button" id="submit" class="submit" value="提交" onclick="Question()">
-																<input type="hidden" name="comment_post_ID" value="4819" id="comment_post_ID">
-																<input type="hidden" name="comment_parent" id="comment_parent" value="0">
-															</p>
-														</form>
-
-													</div>
-													<!-- #respond -->
-												</div>
-											</div> <!-- #review_form_wrapper -->
-										</div> <!-- #reviews -->
-									</div>
-								</div>
-							</div> <!-- .product-tabs -->
-				</div> <!-- .sidebar -->
-                </div> <!-- #inner-wrapper -->
-              </div><!-- .container -->
-            </div> <!-- #content-->
-			<!-- 页脚 -->
-			<div class="footer-container">
-				<footer id="colophon" class="site-footer">
-					<div class="container">
-						<div class="inner-wrapper">
-							<a href="1-intro.html">  团队介绍 </a>
-							<br>
-							<a href="http://www.miitbeian.gov.cn"> 互联网ICP备案：沪ICP备19023316号-1 </a>
-							<p> (+86) 008 400 123 &nbsp&nbsp database@tongji.edu.cn &nbsp&nbsp 4800 Cao'an Street, China </p>
-							<p> Copyright © 2019 SequoiaBook . All rights reserved. </p>
-						</div><!-- .inner-wrapper -->
-					</div> <!-- .container -->
-				</footer> <!-- footer ends here -->
-			</div><!-- footer-container -->
-		</div> <!--#page-->
-
-		<div id="btn-scrollup">
-			<a  title="Go Top"  class="scrollup button-circle" href="#"><i class="fas fa-angle-up"></i></a>
-		</div>
-		<script  src="third-party/jquery/jquery-3.2.1.min.js"></script>
-		<script  src="third-party/jquery/jquery-migrate-3.0.0.min.js"></script>
-		<!--Include all compiled plugins (below), or include individual files as needed-->
-		<script  src="third-party/sidr/js/jquery.sidr.js"></script>
-		<script  src="third-party/cycle2/jquery.cycle2.js"></script>
-		<script  src="third-party/slick/js/slick.min.js"></script>
-		<script  src="third-party/wow/js/wow.min.js"></script>
-		<script  src="third-party/isotope/js/isotope.pkgd.min.js"></script>
-
-        <script src="js/jquery-ui.min.js"></script>
-		<script  src="third-party/accordionjs/js/accordion.min.js"></script>
-		<script  src="js/contact.js"></script>
-		<script  src="js/custom.js"></script>
-		<script  src="js/color-switcher.js"></script>
-	</body>
+<script src="js/jquery-ui.min.js"></script>
+<script src="third-party/accordionjs/js/accordion.min.js"></script>
+<script src="js/contact.js"></script>
+<script src="js/custom.js"></script>
+<script src="js/color-switcher.js"></script>
+</body>
 </html>
