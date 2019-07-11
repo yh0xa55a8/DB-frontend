@@ -13,6 +13,7 @@ function search() {
             console.log(pages);
             searchData = data;
             page = data.length / 9;
+            $("#product0").val(data[0].title) ;
             if (page != 0){
                 $("#unfind").hide();
             }
@@ -27,6 +28,10 @@ function search() {
             display();
             console.log(page);
             console.log('search success');
+            console.log(document.getElementById('product0').title);
+            document.getElementById('product0').title = data[0].Title;
+            console.log(document.getElementById('product0').title);
+            display();
             console.info(searchData);
         },
         error: function(err){
