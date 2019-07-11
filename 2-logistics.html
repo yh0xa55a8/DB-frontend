@@ -76,7 +76,7 @@
 			console.log(orderData);
 			var pageSize = 20;
 			function pagination(){
-				jQuery_New('.M-box').pagination(orderData.length,{
+				jQuery_New('.pagination').pagination(orderData.length,{
 					jump: true,
 					coping: true,
 					num_display_entries: 4,
@@ -157,7 +157,7 @@
 				<div class="container">
 					<div class="site-branding pull-left">
 						<div id="site-identity">
-							<h1 class="site-title"><a href="#"  rel="home"><img alt="logo" class="site-logo" src="images/logo.png">红杉书屋</a></h1>
+							<h1 class="site-title"><a href="0-root.html"  rel="home"><img alt="logo" class="site-logo" src="images/logo.png">红杉书屋</a></h1>
 						</div><!-- #site-identity -->
 					</div><!-- .site-branding -->
 					<nav class="main-navigation pull-right">
@@ -292,7 +292,7 @@
 						</div>
 						<br><br>
 						<div>
-							<div class="M-box" ></div>
+							<div class="pagination" ></div>
 								<table class="tbody"></table>
 							</div>
 	

@@ -62,7 +62,8 @@ function CustomerByEmail() {
         }),
         success: function(msg){
             console.log("success");
-            //window.location.href= '1-login.html';
+
+            window.location.href= './1-home.html';
         },
         error: function(err){
             alert("请输入xx");
@@ -92,7 +93,7 @@ function CustomerByPhone() {
         }),
         success: function(msg){
             console.log("success");
-            //window.location.href= '1-login.html';
+            window.location.href= './1-home.html';
         },
         error: function(err){
             console.log('fail');

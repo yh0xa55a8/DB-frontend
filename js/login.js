@@ -1,3 +1,24 @@
+$(()=>{
+    $.ajax({
+        // FIXME: after getCustomerApi
+        url: 'http://www.sparkxyf.cn:8080/api/a/',
+        type: 'post',
+        contentType: 'application/json;charset=UTF-8',
+        xhrFields: {withCredentials: true},
+        data: {},
+        success: function(msg){
+            window.location.href = './1-home.html'
+            // window.location.href =
+        },
+        error: function(err,code){
+            if(code===404){
+                return
+            }
+            console.log(err)
+        }
+    });
+});
+
 
 function change(){
         var div1=document.getElementById("div1");

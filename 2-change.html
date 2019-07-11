@@ -106,7 +106,7 @@
 				<div class="container">
 					<div class="site-branding pull-left">
 						<div id="site-identity">
-							<h1 class="site-title"><a href="#"  rel="home"><img alt="logo" class="site-logo" src="images/logo.png">红杉书屋</a></h1>
+							<h1 class="site-title"><a href="0-root.html"  rel="home"><img alt="logo" class="site-logo" src="images/logo.png">红杉书屋</a></h1>
 						</div><!-- #site-identity -->
 					</div><!-- .site-branding -->
 					<nav class="main-navigation pull-right">
@@ -117,7 +117,7 @@
 							<script>
 								function logout(){
 									$.ajax({
-										url: 'http://192.168.1.178:5000/api/SellerLogout',
+										url: 'http://www.sparkxyf.cn:8080/api/SellerLogout',
 										type: 'post',
 										contentType: 'application/json; charset=UTF-8',
 										xhrFields: {	//发送cookie
@@ -165,7 +165,7 @@
 									<script>
 										function getEmailCode(){
 											$.ajax({
-												url: 'http://192.168.1.178:5000/api/SellerSendMail',
+												url: 'http://www.sparkxyf.cn:8080/api/SellerSendMail',
 												type: 'post',
 												contentType: 'application/json; charset=UTF-8',
 												xhrFields: {	//发送cookie
@@ -205,7 +205,7 @@
 								function changePasswordWithEmail(){
 									if(checkRePassword()==true&&checkPassword()==true) {
 										$.ajax({
-											url: 'http://192.168.1.178:5000/api/SellerMailChangePassword',
+											url: 'http://www.sparkxyf.cn:8080/api/SellerMailChangePassword',
 											type: 'post',
 											contentType: 'application/json; charset=UTF-8',
 											xhrFields: {	//发送cookie
