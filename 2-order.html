@@ -54,7 +54,7 @@
 			var orderData;
 			function loadData(){
 				$.ajax({
-					url: 'http://192.168.1.178:5000/api/SellerGetAllTransacts/',
+					url: 'http://www.sparkxyf.cn:8080/api/SellerGetAllTransacts/',
 					type: 'post',
 					async:false,
 					contentType: 'application/json; charset=UTF-8',
@@ -107,7 +107,7 @@
 					var bookname
 					for(var i=pageIndex*items_per_page;i<max_elem;i++) {
 						$.ajax({
-							url: 'http://192.168.1.178:5000/api/GetBook/',
+							url: 'http://www.sparkxyf.cn:8080/api/GetBook/',
 							type: 'post',
 							async:false,
 							contentType: 'application/json; charset=UTF-8',
@@ -170,7 +170,7 @@
 							<script>
 								function logout(){
 									$.ajax({
-										url: 'http://192.168.1.178:5000/api/SellerLogout',
+										url: 'http://www.sparkxyf.cn:8080/api/SellerLogout',
 										type: 'post',
 										contentType: 'application/json; charset=UTF-8',
 										xhrFields: {	//发送cookie
@@ -271,7 +271,7 @@
 								if($("#name").val() != ""){
 									for(var i = 0; i< orderData.length; i++){
 										$.ajax({
-											url: 'http://192.168.1.178:5000/api/GetBook/',
+											url: 'http://www.sparkxyf.cn:8080/api/GetBook/',
 											type: 'post',
 											async:false,
 											contentType: 'application/json; charset=UTF-8',

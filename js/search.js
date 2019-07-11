@@ -13,6 +13,7 @@ function search() {
             console.log(pages);
             searchData = data;
             page = data.length / 9;
+            $("#product0").val(data[0].title) ;
             if (page != 0){
                 $("#unfind").hide();
             }
@@ -125,7 +126,7 @@ function display(){
 
         $("#product0").html(searchData[pagenum + 0].Title);
         $("#shop0").html(searchData[pagenum + 0].ShopName);
-        $("#price0").html(searchData[pagenum + 0].Price);
+        $("#price0").html(searchData[pagenum + 0].Price);/
         $("#product0").click(function(){
             num = searchData[pagenum + 0].MerchandiseId;
             window.location.href='1-product.html?MerchandiseId='+num.toString();

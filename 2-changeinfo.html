@@ -34,7 +34,7 @@
 
 		<script>
 			$.ajax({
-				url: 'http://192.168.1.178:5000/api/GetSeller',	
+				url: 'http://www.sparkxyf.cn:8080/api/GetSeller',	
 				type: 'post',
 				contentType: 'application/json; charset=UTF-8',
 				xhrFields:{
@@ -77,7 +77,7 @@
 							<script>
 								function logout(){
 									$.ajax({
-										url: 'http://192.168.1.178:5000/api/SellerLogout',
+										url: 'http://www.sparkxyf.cn:8080/api/SellerLogout',
 										type: 'post',
 										contentType: 'application/json; charset=UTF-8',
 										xhrFields: {	//发送cookie
@@ -129,7 +129,7 @@
 								<script>
 								function changeInfo(){
 									$.ajax({
-										url: 'http://192.168.1.178:5000/api/UpdateSeller',
+										url: 'http://www.sparkxyf.cn:8080/api/UpdateSeller',
 										type: 'post',
 										contentType: 'application/json; charset=UTF-8',
 										xhrFields: {	//发送cookie

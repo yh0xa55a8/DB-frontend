@@ -54,7 +54,7 @@
 			var saleData;
 			function loadData(){
 				$.ajax({
-					url: 'http://192.168.1.178:5000/api/GetSeller',
+					url: 'http://www.sparkxyf.cn:8080/api/GetSeller',
 					async: false,
 					type: 'post',
 					contentType: 'application/json; charset=UTF-8',
@@ -66,7 +66,7 @@
 						console.log("success");
 						console.log(data);
 						$.ajax({
-							url: 'http://192.168.1.178:5000/api/GetMerchandisesOfSeller',
+							url: 'http://www.sparkxyf.cn:8080/api/GetMerchandisesOfSeller',
 							type: 'post',
 							async: false,
 							contentType: 'application/json; charset=UTF-8',
@@ -127,7 +127,7 @@
 					}
 					for(var i=pageIndex*items_per_page;i<max_elem;i++) {
 						$.ajax({
-							url: 'http://192.168.1.178:5000/api/GetBook/',
+							url: 'http://www.sparkxyf.cn:8080/api/GetBook/',
 							type: 'post',
 							async:false,
 							contentType: 'application/json; charset=UTF-8',
@@ -188,7 +188,7 @@
 							<script>
 								function logout(){
 									$.ajax({
-										url: 'http://192.168.1.178:5000/api/SellerLogout',
+										url: 'http://www.sparkxyf.cn:8080/api/SellerLogout',
 										type: 'post',
 										contentType: 'application/json; charset=UTF-8',
 										xhrFields: {	//发送cookie
@@ -270,7 +270,7 @@
 												if($("#author").val() != ""){
 													for(var i = 0; i< saleData.length; i++){
 														$.ajax({
-															url: 'http://192.168.1.178:5000/api/GetBook/',
+															url: 'http://www.sparkxyf.cn:8080/api/GetBook/',
 															type: 'post',
 															async:false,
 															contentType: 'application/json; charset=UTF-8',
@@ -296,7 +296,7 @@
 												if($("#name").val() != ""){
 													for(var i = 0; i< saleData.length; i++){
 														$.ajax({
-															url: 'http://192.168.1.178:5000/api/GetBook/',
+															url: 'http://www.sparkxyf.cn:8080/api/GetBook/',
 															type: 'post',
 															async:false,
 															contentType: 'application/json; charset=UTF-8',

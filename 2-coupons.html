@@ -166,7 +166,7 @@
 			var couponData;
 			function loadData(){
 				$.ajax({
-					url: 'http://192.168.1.178:5000/api/GetAllCoupons/',
+					url: 'http://www.sparkxyf.cn:8080/api/GetAllCoupons/',
 					async:false,
 					type: 'post',
 					contentType: 'application/json; charset=UTF-8',
@@ -256,7 +256,7 @@
 							<script>
 								function logout(){
 									$.ajax({
-										url: 'http://192.168.1.178:5000/api/SellerLogout',
+										url: 'http://www.sparkxyf.cn:8080/api/SellerLogout',
 										type: 'post',
 										contentType: 'application/json; charset=UTF-8',
 										xhrFields: {	//发送cookie
