@@ -31,10 +31,137 @@
 		<link href="https://fonts.googleapis.com/css?family=Roboto:400,500,600,700" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800" rel="stylesheet">
 		<script  src="third-party/jquery/jquery-3.2.1.min.js"></script>
+		<script  src="third-party/jquery/jquery-migrate-3.0.0.min.js"></script>
+		<script src="js/jquery.min.js"></script>
+		<script type="text/javascript">
+			var jQuery_New = $.noConflict();
+		</script>
+		<script src="js/lib/jquery.pagination.js"></script>
+		<link rel="stylesheet" href="css/common.css">
+		<link rel="stylesheet" href="js/lib/pagination.css">
+
 		<script>
-			$.ajax({
-				
+			var orderData;
+			function loadData(){
+				$.ajax({
+					url: 'http://www.sparkxyf.cn:8080/api/SellerGetAllTransacts/',
+					type: 'post',
+					async:false,
+					contentType: 'application/json; charset=UTF-8',
+					xhrFields: {	//发送cookie
+						withCredentials: true
+					},
+					data: JSON.stringify({}),
+					success: function(msg){
+						console.log("success");
+						console.log(msg);
+						orderData = msg;
+					},
+					error: function(err){
+						console.log(err.statusText);
+					}
+				});
+			}
+			loadData();
+			console.log(orderData);
+			var pageSize = 20;
+			function pagination(){
+				jQuery_New('.pagination').pagination(orderData.length,{
+					jump: true,
+					coping: true,
+					num_display_entries: 4,
+					num_edge_entries: 1,
+					callback: PageCallback,
+					items_per_page: pageSize,
+					homePage: '首页',
+					endPage: '末页',
+					current: 0,
+					prevContent: '<<上页',
+					nextContent: '下页>>'
+				});
+			}
+			function PageCallback(index,jq) {
+				jQuery_New(".PageTable").hide();
+				LoadData(index);
+			}
+			var flag = 0;
+			function LoadData(pageIndex){
+				var items_per_page = pageSize;
+				var max_elem = Math.min((pageIndex+1)*items_per_page,orderData.length);
+				if(flag==0){
+						jQuery_New('.tbody').append(`<tr>								
+						<th style="width: 100px"><select id="level" style="width: 100px; height: 40px; background-color: #fff; border:0px;" onchange="selectByLevel()">
+										<option value="all">评级</option>
+										<option value="all">全部</option>
+										<option value="0">0</option>
+										<option value="1">1</option>
+										<option value="2">2</option>
+										<option value="3">3</option>
+										<option value="4">4</option>
+										<option value="5">5</option>
+										</select></th>
+						<th style="width: 200px">评论内容</th>
+						<th>顾客昵称</th>
+						<th>书籍名称</th>
+						<th>商品ID</th></tr>`);
+						flag = 1
+					}
+				var bookname
+				for(var i=pageIndex*items_per_page;i<max_elem;i++) {
+					$.ajax({
+						url: 'http://www.sparkxyf.cn:8080/api/GetBook/',
+						type: 'post',
+						async:false,
+						contentType: 'application/json; charset=UTF-8',
+						xhrFields: {	//发送cookie
+							withCredentials: true
+						},
+						data: JSON.stringify({
+							'ISBN': orderData[i].Merchandise.ISBN
+						}),
+						success: function(msg){
+							console.log("success");
+							console.log(msg);
+							bookname = msg.Title;
+						},
+						error: function(err){
+							console.log(err.statusText);
+						}
+					});
+					jQuery_New('.tbody').append(`
+				<tr class="PageTable">
+					<td>${orderData[i].CommentLevel}</td>
+					<td>${orderData[i].Comment}</td>
+					<td>${orderData[i].CustomerId}</td>
+					<td>${bookname}</td>
+					<td>${orderData[i].Merchandise.MerchandiseId}</td>
+					</tr>
+				`)
+				}
+			}
+			jQuery_New(function(){
+				pagination();
 			})
+
+			function selectByLevel(){
+				level = $("#level").val();
+				if(level != "all"){
+					loadData();
+					for(var i=0; i<orderData.length; i++){
+						if(orderData[i].CommentLevel != level){
+							orderData.splice(i, 1);
+							i--;
+						}
+					}
+				}
+				else{
+					loadData();
+				}
+				jQuery_New(function(){
+					pagination();
+				});
+			}
+
 		</script>
 	</head>
 	<body class="home header-v1">
@@ -46,7 +173,7 @@
 				<div class="container">
 					<div class="site-branding pull-left">
 						<div id="site-identity">
-							<h1 class="site-title"><a href="#"  rel="home"><img alt="logo" class="site-logo" src="images/logo.png">红杉书屋</a></h1>
+							<h1 class="site-title"><a href="0-root.html"  rel="home"><img alt="logo" class="site-logo" src="images/logo.png">红杉书屋</a></h1>
 						</div><!-- #site-identity -->
 					</div><!-- .site-branding -->
 					<nav class="main-navigation pull-right">
@@ -57,7 +184,7 @@
 							<script>
 								function logout(){
 									$.ajax({
-										url: 'http://192.168.1.178:5000/api/SellerLogout',
+										url: 'http://www.sparkxyf.cn:8080/api/SellerLogout',
 										type: 'post',
 										contentType: 'application/json; charset=UTF-8',
 										xhrFields: {	//发送cookie
@@ -96,74 +223,10 @@
 							<h3>评价管理</h3>
 						</div>
 						<div class="content">
-							<div style="width: 800px;height:240px;">
-							<h4 id="rate">好评率：</h4>
-							<table class="frameless-table">
-								<tr>
-									<th>&nbsp;</th>
-									<th>最近一周</th>
-									<th>最近一个月</th>
-									<th>最近六个月</th>
-									<th>六个月前</th>
-									<th>总计</th>
-								</tr>
-								<tr>
-									<td>好评</td>
-									<td>good_number1</td>
-									<td>good_number2</td>
-									<td>good_number3</td>
-									<td>good_number4</td>
-									<td>good_total</td>
-								</tr>
-								<tr>
-									<td>中评</td>
-									<td>mid_number1</td>
-									<td>mid_number2</td>
-									<td>mid_number3</td>
-									<td>mid_number4</td>
-									<td>mid_total</td>
-								</tr>
-								<tr>
-									<td>差评</td>
-									<td>bad_number1</td>
-									<td>bad_number2</td>
-									<td>bad_number3</td>
-									<td>bad_number4</td>
-									<td>bad_total</td>
-								</tr>
-								<tr>
-									<td>总计</td>
-									<td>total_number1</td>
-									<td>total_number2</td>
-									<td>total_number3</td>
-									<td>total_number4</td>
-									<td>total_total</td>
-								</tr>
-							</table>
+								<div class="pagination" ></div>
+								<table class="tbody"></table>
+							</div>				
 						</div>
-
-						<div style="background-color: gray;"><h4>来自顾客的评论</h4></div>
-						<table>
-							<tr>
-								<th style="width: 100px"><select style="width: 100px; height: 40px; background-color: #fff; border:0px;">
-										<option value="评价">评价</option>
-										<option value="全部">全部</option>
-										<option value="好评">好评</option>
-										<option value="中评">中评</option>
-										<option value="差评">差评</option></select></th>
-								<th style="width: 200px"><select style="width: 200px; height: 40px; background-color: #fff; border:0px;">
-										<option value="评论">评论</option>
-										<option value="全部">全部</option>
-										<option value="有评论内容">有评论内容</option>
-										<option value="无评论内容">无评论内容</option></select></th>
-								<th>顾客昵称</th>
-								<th>书籍名称</th>
-								<th>商品ID</th>
-							</tr>
-							<!--根据评论条数添加行-->
-						</table>
-					</div>
-					</div>
                     </main> <!-- #main -->
                   </div> <!-- #primary -->
                   <div id="sidebar-primary" class="sidebar widget-area" >
