@@ -1,6 +1,6 @@
 function SendMail() {
     $.ajax({
-        url: 'http://www.sparkxyf.cn:8080/api/SendMail/',
+        url: 'http://192.168.1.178:5000/api/SendMail/',
         type: 'post',
         contentType: 'application/json;charset=UTF-8',
         xhrFields: {
@@ -21,7 +21,7 @@ function SendMail() {
 }
 function MailChangePassword() {
     $.ajax({
-        url: 'http://www.sparkxyf.cn:8080/api/MailChangePassword/',
+        url: 'http://192.168.1.178:5000/api/MailChangePassword/',
         type: 'post',
         contentType: 'application/json;charset=UTF-8',
         xhrFields: {
@@ -44,7 +44,7 @@ function MailChangePassword() {
 }
 function Sms() {
     $.ajax({
-        url: 'http://www.sparkxyf.cn:8080/api/Sms/',
+        url: 'http://192.168.1.178:5000/api/Sms/',
         type: 'post',
         contentType: 'application/json;charset=UTF-8',
         xhrFields: {
@@ -64,7 +64,7 @@ function Sms() {
 }
 function SmsChangePassword() {
     $.ajax({
-        url: 'http://www.sparkxyf.cn:8080/api/SmsChangePassword/',
+        url: 'http://192.168.1.178:5000/api/SmsChangePassword/',
         type: 'post',
         contentType: 'application/json;charset=UTF-8',
         xhrFields: {

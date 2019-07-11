@@ -2,7 +2,7 @@ var searchData, pagenum, page, searchTitle;
 function search() {
     pagenum = 0;
     $.ajax({
-        url: 'http://www.sparkxyf.cn:8080/api/BookSearch/',
+        url: 'http://192.168.1.178:5000/api/BookSearch/',
         type: 'post',
         contentType: 'application/json;charset=UTF-8',
         data: JSON.stringify({
@@ -13,7 +13,6 @@ function search() {
             console.log(pages);
             searchData = data;
             page = data.length / 9;
-            $("#product0").val(data[0].title) ;
             if (page != 0){
                 $("#unfind").hide();
             }
@@ -28,10 +27,6 @@ function search() {
             display();
             console.log(page);
             console.log('search success');
-            console.log(document.getElementById('product0').title);
-            document.getElementById('product0').title = data[0].Title;
-            console.log(document.getElementById('product0').title);
-            display();
             console.info(searchData);
         },
         error: function(err){

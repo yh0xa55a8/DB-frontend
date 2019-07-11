@@ -82,7 +82,7 @@
 							var Data;
 							function loadData(){
 								$.ajax({
-									url: 'http://www.sparkxyf.cn:8080/api/ManageSelectTransact/',
+									url: 'http://192.168.1.154:5000/api/StatisticTransactsOfAllSellers/',
 									type: 'post',
 									async: false,
 									contentType: 'application/json; charset=UTF-8',
@@ -101,49 +101,57 @@
 								});
 							}
 							loadData();
-							var saleMap = new Map();
-							for(var i=0; i<Data.length; i++){
-								if(saleMap[Data[i].MerchandiseId] == undefined){
-									saleMap[Data[i].MerchandiseId] = Data[i].Amount;
-								}
-								else{
-									saleMap[Data[i].MerchandiseId] += Data[i].Amount;
-								}
-							}
-							var shopMap = new Map();
-							for(var key in saleMap){
-								var shopName;
-								$.ajax({
-									url:'http://www.sparkxyf.cn:8080/api/GetMerchandise',
-									type: 'post',
-									async:false,
-									contentType: 'application/json; charset=UTF-8',
-									xhrFields: {	//发送cookie
-										withCredentials: true
-									},
-									data: JSON.stringify({
-										'MerchandiseId': key
-									}),
-									success: function(msg){
-										shopName = msg.ShopName;
-									},
-									error: function(err){
-										console.log(err.statusText);
-									}
-								});
-								if(shopMap[shopName] == undefined){
-									shopMap[shopName] = saleMap[key];
-								}
-								else{
-									shopMap[shopName] += saleMap[key];
-								}
-							}
-							var shopArray = new Array();
-							var saleArray = new Array();
-							for(var key in shopMap){
+							var shopArray = Array();
+							var saleArray = Array();
+							Data = JSON.parse(Data)
+							for(var key in Data){
 								shopArray.push(key);
-								saleArray.push(shopMap[key]);
+								saleArray.push(Data[key]);
 							}
+							console.log(shopArray, saleArray);
+							// var saleMap = new Map();
+							// for(var i=0; i<Data.length; i++){
+							// 	if(saleMap[Data[i].MerchandiseId] == undefined){
+							// 		saleMap[Data[i].MerchandiseId] = Data[i].Amount;
+							// 	}
+							// 	else{
+							// 		saleMap[Data[i].MerchandiseId] += Data[i].Amount;
+							// 	}
+							// }
+							// var shopMap = new Map();
+							// for(var key in saleMap){
+							// 	var shopName;
+							// 	$.ajax({
+							// 		url:'http://www.sparkxyf.cn:8080/api/GetMerchandise',
+							// 		type: 'post',
+							// 		async:false,
+							// 		contentType: 'application/json; charset=UTF-8',
+							// 		xhrFields: {	//发送cookie
+							// 			withCredentials: true
+							// 		},
+							// 		data: JSON.stringify({
+							// 			'MerchandiseId': key
+							// 		}),
+							// 		success: function(msg){
+							// 			shopName = msg.ShopName;
+							// 		},
+							// 		error: function(err){
+							// 			console.log(err.statusText);
+							// 		}
+							// 	});
+							// 	if(shopMap[shopName] == undefined){
+							// 		shopMap[shopName] = saleMap[key];
+							// 	}
+							// 	else{
+							// 		shopMap[shopName] += saleMap[key];
+							// 	}
+							// }
+							// var shopArray = new Array();
+							// var saleArray = new Array();
+							// for(var key in shopMap){
+							// 	shopArray.push(key);
+							// 	saleArray.push(shopMap[key]);
+							// }
 							var myChart = echarts.init(document.getElementById('3-shopchart'));
 							var option = {
 								title : {
@@ -162,7 +170,7 @@
 								series:[{
 									name:'销量',
 									type: 'bar',
-									data: saleArray
+									data:saleArray
 								}]
 							};
 							myChart.setOption(option);

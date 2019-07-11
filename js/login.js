@@ -1,24 +1,3 @@
-$(()=>{
-    $.ajax({
-        // FIXME: after getCustomerApi
-        url: 'http://www.sparkxyf.cn:8080/api/a/',
-        type: 'post',
-        contentType: 'application/json;charset=UTF-8',
-        xhrFields: {withCredentials: true},
-        data: {},
-        success: function(msg){
-            window.location.href = './1-home.html'
-            // window.location.href =
-        },
-        error: function(err,code){
-            if(code===404){
-                return
-            }
-            console.log(err)
-        }
-    });
-});
-
 
 function change(){
         var div1=document.getElementById("div1");
@@ -36,7 +15,7 @@ function change(){
     }
     function Login() {
         $.ajax({
-            url: 'http://www.sparkxyf.cn:8080/api/Login/',
+            url: 'http://192.168.1.178:5000/api/Login/',
             type: 'post',
             contentType: 'application/json;charset=UTF-8',
             xhrFields: {
@@ -60,7 +39,7 @@ function change(){
     }
 function Sms() {
     $.ajax({
-        url: 'http://www.sparkxyf.cn:8080/api/Sms/',
+        url: 'http://192.168.1.178:5000/api/Sms/',
         type: 'post',
         contentType: 'application/json;charset=UTF-8',
         xhrFields: {
@@ -80,7 +59,7 @@ function Sms() {
 }
 function SmsLogin() {
     $.ajax({
-        url: 'http://www.sparkxyf.cn:8080/api/SmsLogin/',
+        url: 'http://192.168.1.178:5000/api/SmsLogin/',
         type: 'post',
         contentType: 'application/json;charset=UTF-8',
         xhrFields: {

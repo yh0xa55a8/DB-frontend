@@ -1,6 +1,6 @@
 function SendMail() {
     $.ajax({
-        url: 'http://www.sparkxyf.cn:8080/api/SendMail/',
+        url: 'http://192.168.1.178:5000/api/SendMail/',
         type: 'post',
         contentType: 'application/json;charset=UTF-8',
         xhrFields: {
@@ -11,18 +11,16 @@ function SendMail() {
             'EmailStatus': 0,
         }),
         success: function(msg){
-            alert("success");
             console.log("success");
         },
         error: function(err){
-            alert("fail");
             console.log('fail');
         }
     });
 }
 function Sms() {
     $.ajax({
-        url: 'http://www.sparkxyf.cn:8080/api/Sms/',
+        url: 'http://192.168.1.178:5000/api/Sms/',
         type: 'post',
         contentType: 'application/json;charset=UTF-8',
         xhrFields: {
@@ -42,7 +40,7 @@ function Sms() {
 }
 function CustomerByEmail() {
     $.ajax({
-        url: 'http://www.sparkxyf.cn:8080/api/Customer/',
+        url: 'http://192.168.1.178:5000/api/Customer/',
         type: 'post',
         contentType: 'application/json;charset=UTF-8',
         xhrFields: {
@@ -62,18 +60,16 @@ function CustomerByEmail() {
         }),
         success: function(msg){
             console.log("success");
-
-            window.location.href= './1-home.html';
+            //window.location.href= '1-login.html';
         },
         error: function(err){
-            alert("请输入xx");
             console.log('fail');
         }
     });
 }
 function CustomerByPhone() {
     $.ajax({
-        url: 'http://www.sparkxyf.cn:8080/api/Customer/',
+        url: 'http://192.168.1.178:5000/api/Customer/',
         type: 'post',
         contentType: 'application/json;charset=UTF-8',
         xhrFields: {
@@ -93,7 +89,7 @@ function CustomerByPhone() {
         }),
         success: function(msg){
             console.log("success");
-            window.location.href= './1-home.html';
+            //window.location.href= '1-login.html';
         },
         error: function(err){
             console.log('fail');

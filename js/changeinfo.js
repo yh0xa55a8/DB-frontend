@@ -1,6 +1,6 @@
 function UpdateCustomer() {
     $.ajax({
-        url: 'http://www.sparkxyf.cn:8080/api/UpdateCustomer/',
+        url: 'http://192.168.1.178:5000/api/UpdateCustomer/',
         type: 'post',
         contentType: 'application/json;charset=UTF-8',
         xhrFields: {
@@ -8,11 +8,9 @@ function UpdateCustomer() {
         },
         data: JSON.stringify({
             'NickName': $("#NickName").val(),
-            'DateOfBirth': $("#BirthDate").val(),
+            'DateOfBirth': $("#DateOfBirth").val(),
         }),
         success: function(data){
-            alert("更改成功！跳转回用户信息界面。");
-            window.location = ('1-info.html');
             console.log(data);
             //$("#question").html(dataContent);
             console.log("success11");
