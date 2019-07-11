@@ -18,7 +18,7 @@
 		<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
 		<link rel="stylesheet" type="text/css" href="third-party/sidr/css/jquery.sidr.dark.css">
 		<link rel="stylesheet" type="text/css" href="third-party/slick/css/slick.css">
-		
+
 		<link rel="stylesheet" type="text/css" href="third-party/wow/css/animate.min.css">
         <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css">
 		<link rel="stylesheet" type="text/css" href="third-party/magnific-popup-master/css/magnific-popup.css">
@@ -39,7 +39,7 @@
 		<!-- <link rel="stylesheet" type="text/css" href="css/colors/dark-blue.css"> -->
 		<!-- <link rel="stylesheet" type="text/css" href="css/colors/purple.css"> -->
 		<!-- <link rel="stylesheet" type="text/css" href="css/colors/sky-blue.css"> -->
-		
+
 
 		<link rel="stylesheet" href="third-party/fontawesome/releases/v5.2.0/css/all.css" >
 
@@ -52,14 +52,36 @@
 		<script src="http://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 		<script src="http://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 		<![endif]-->
-		<script src="js/order.js"></script>
+		<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
+
+		<script>
+			var allTransacts = null;
+			$(()=>{
+				$.ajax({
+					url: 'http://www.sparkxyf.cn:8080/api/CustomerGetAllTransacts/',
+					type: 'post',
+					data: {},
+					contentType: 'application/json;charset=UTF-8',
+					xhrFields: {withCredentials: true},
+					success: function(data){
+						console.log(data);
+						allTransacts = data;
+					},
+					error: function(err){
+						alert(err.responseJSON.Message)
+					}
+				});
+			})
+		</script>
+
 
 	</head>
-	<body class="home header-v1" onload="CustomerGetAllTransacts()">
+	<body class="home header-v1">
 
 		<div id="page" class="site">
-			
-			
+
+
 			<header id="masthead" class="site-header sticky-enabled">
 				<div class="container">
 					<div class="site-branding pull-left">
@@ -99,8 +121,8 @@
 					</nav> <!-- .site-navigation -->
 				</div> <!-- .container -->
 			</header> <!-- .site-header -->
-			
-			
+
+
 			<div id="custom-header">
 			  <div class="custom-header-content">
 			    <div class="container">
@@ -470,7 +492,7 @@
 				</footer> <!-- footer ends here -->
 			</div><!-- footer-container -->
 		</div> <!--#page-->
-		
+
 		</div> <!--#page-->
 		<div class="quick-view-content white-popup-block mfp-hide" id="quick-view-content-wrappr">
 			<div class="product-single">
