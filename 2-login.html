@@ -172,7 +172,7 @@
 				<div class="container">
 					<div class="site-branding pull-left">
 						<div id="site-identity">
-							<h1 class="site-title"><a href="#" rel="home"><img alt="logo" class="site-logo" src="images/logo.png">红杉书屋</a></h1>
+							<h1 class="site-title"><a href="0-root.html" rel="home"><img alt="logo" class="site-logo" src="images/logo.png">红杉书屋</a></h1>
 						</div><!-- #site-identity -->
 					</div><!-- .site-branding -->
 					<nav class="main-navigation pull-right">
@@ -241,7 +241,7 @@
 										 <script>
 											 function getPhoneCode(){
 												 $.ajax({
-													url: 'http://192.168.1.154:5000/api/SellerSms',
+													url: 'http://www.sparkxyf.cn:8080/api/SellerSms',
 													type: 'post',
 													contentType: 'application/json; charset=UTF-8',
 													xhrFields: {	//发送cookie
@@ -249,7 +249,6 @@
 													},
 													data: JSON.stringify({
 														'Phone': $("#phone1").val(),
-														'Password': "123456",
 														'PhoneStatus': '1'
 													}),
 													success: function(msg){
@@ -270,7 +269,7 @@
 										 <script>
 											 function loginWithCode(){
 												 $.ajax({
-													 url: 'http://192.168.1.154:5000/api/SellerSmsLogin/',
+													 url: 'http://www.sparkxyf.cn:8080/api/SellerSmsLogin/',
 													 type: 'post',
 													 contentType: 'application/json; charset=UTF-8',
 													 xhrFields: {	//发送cookie
@@ -311,6 +310,7 @@
 													 },
 													 data: JSON.stringify({
 														 'Email': $("#email").val(),
+														 'Phone': $("#email").val(),
 														 'Password': $("#password2").val(),
 														 'EmailStatus': "1"
 													 }),
