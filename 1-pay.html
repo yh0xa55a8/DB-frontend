@@ -134,8 +134,10 @@
 					contentType: 'application/json;charset=UTF-8',
 					xhrFields: {withCredentials: true},
 					data: JSON.stringify({
+						SourceAddressIndex: 1,
+						DestinationAddressIndex: 2,
 						MerchandiseId: merchanData.MerchandiseId,
-						ActualPrice: merchanData.Price,
+						ActualPrice: parseInt(merchanData.Price),
 						Amount: 1
 					}),
 					success: ()=>{
@@ -259,8 +261,9 @@
 						                </tbody>
 						            </table>
 						            <div class="wc-proceed-to-checkout">
-						                <a href="#" class="checkout-button custom-button" target="_blank" onclick="createTransact()"> 确认并结账 </a>
-						            </div>
+						                <a href="#" class="checkout-button custom-button" onclick="createTransact()"> 确认 </a>
+										<a href="./e-pay.html" class="checkout-button custom-button" target="_blank" onclick="createTransact()"> 结账 </a>
+									</div>
 						        </div> <!-- .cart_totals -->
 						    </div> <!-- .cart-collaterals -->
 						</div>
