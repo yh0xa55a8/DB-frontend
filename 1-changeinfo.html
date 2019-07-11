@@ -50,7 +50,33 @@
 		<script src="http://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 		<![endif]-->
 		<script src="js/changeinfo.js"></script>
+		<script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
 
+		<script>
+	$(function(){
+		$.ajax({
+			url: 'http://www.sparkxyf.cn:8080/api/GetCustomer/',
+			type: 'post',
+			contentType: 'application/json;charset=UTF-8',
+			xhrFields: {
+				withCredentials: true
+			},
+			success: function(data){
+				console.log(data);
+				$("#RealName").val(data.RealName);
+				$("#IdCard").val(data.IdCardNum);
+				$("#NickName").val(data.NickName);
+				$("#BirthDate").val((data.DateOfBirth).substring(0,10));
+				console.log("success11");
+			},
+			error: function(err){
+				alert("未登录");
+				window.location="1-login.html";
+
+			}
+		});
+	})
+</script>
 	</head>
 	<body class="home header-v1">
 		<div id="page" class="site">
@@ -172,17 +198,26 @@
 							                <h3>个人信息</h3>
 											<div class="product-billing-fields_field-wrapper">
 												<div class="form-row">
+													<label>真实姓名<abbr class="required">*</abbr></label>
+													<input type="text" placeholder="" id="RealName">
+												</div>
+												<div class="form-row">
+													<label>身份证号<abbr class="required">*</abbr></label>
+													<input type="text" placeholder="" id="IdCard">
+												</div>
+												<div class="form-row">
 													<label>用户昵称<abbr class="required">*</abbr></label>
-													<input type="text" placeholder="用户昵称" id="NickName">
+													<input type="text" placeholder="" id="NickName">
 												</div>
 												<div class="form-row">
 													<label>出生日期<abbr class="required">*</abbr></label>
-													<input type="text" placeholder="出生日期" id="BirthDate">
+													<input type="date" placeholder="" id="BirthDate">
 												</div>
 											</div>
 											<div id="payment" class="product-checkout-payment">
 												<div class="form-row place-order">
-													<a href="1-info.html"><input type="button" class="button alt" name="product-checkout-place-order" id="place_order" value="保存已更改的个人信息" data-value="Place order" onclick="UpdateCustomer()"></a>
+
+														<input type="button" class="button alt" name="product-checkout-place-order" id="place_order" value="保存已更改的个人信息" data-value="Place order" onclick="UpdateCustomer()"></a>
 												</div>
 											</div>
 							            </div>
