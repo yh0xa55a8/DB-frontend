@@ -15,7 +15,7 @@
 		<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
 		<link rel="stylesheet" type="text/css" href="third-party/sidr/css/jquery.sidr.dark.css">
 		<link rel="stylesheet" type="text/css" href="third-party/slick/css/slick.css">
-		
+
 		<link rel="stylesheet" type="text/css" href="third-party/wow/css/animate.min.css">
         <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css">
 		<link rel="stylesheet" type="text/css" href="third-party/magnific-popup-master/css/magnific-popup.css">
@@ -36,7 +36,7 @@
 		<!-- <link rel="stylesheet" type="text/css" href="css/colors/dark-blue.css"> -->
 		<!-- <link rel="stylesheet" type="text/css" href="css/colors/purple.css"> -->
 		<!-- <link rel="stylesheet" type="text/css" href="css/colors/sky-blue.css"> -->
-		
+
 
 		<link rel="stylesheet" href="third-party/fontawesome/releases/v5.2.0/css/all.css" >
 
@@ -60,18 +60,18 @@
 					return
 				}
 				$.ajax({
-					url: 'http://localhost:5000/api/RequestCustomerAvatarUpload',
+					url: 'http://www.sparkxyf.cn:8080/api/RequestCustomerAvatarUpload',
 					type: 'post',
 					xhrFields:{withCredentials: true}, // 发送凭据
 					contentType: 'application/json; charset=UTF-8',
 					data: JSON.stringify({}),
 					success: function(result,status,xhl){
-						$("#avatarUploadToken").val(result.token);
-						$("#avatarUploadKey").val(result.key);
-
 						let form = $("#avatarUploadForm")[0];
 
 						let data = new FormData(form);
+
+						data.set("token", result.token);
+						data.set("key", result.key);
 						$.ajax({
 							type: 'POST',
 							processData: false,
@@ -212,7 +212,7 @@
                   <div id="primary" class="content-area">
                     <main id="main" class="site-main">
 						<div class="section-checkout">
-							<form name="checkout" class="checkout product-checkout">
+
 							    <div class="col2-set" id="customer_details">
 							        <div class="col-1">
 							            <div class="product-billing-fields">
@@ -288,7 +288,6 @@
 								        </div>
 							        </div>
 							    </div> <!-- #customer_details -->
-							</form><!-- .checkout product-checkout -->
 						</div><!-- .section-checkout -->
                     </main> <!-- #main -->
                   </div> <!-- #primary -->
