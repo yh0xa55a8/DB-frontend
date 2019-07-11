@@ -60,7 +60,7 @@
       }
 	}
 	</script>
-	
+
 	<script>
 		function submitFormData() {
 			console.log($("#user").text());
@@ -292,7 +292,7 @@
 														},
 														data: JSON.stringify({			//注册信息不足
 															"ValidateCode": $("#code2").val(),
-															"SellerData": JSON.stringify({
+															"SellerData": {
 																  'Password': $("#password2").val(),
 																  'ShopName': $("#name2").val(),
 																  'CreditLevel': 5,
@@ -301,7 +301,7 @@
 																  'DefaultSellerAddressIndex': 0,
 																  'SellerEmail': $("#email2").val(),
 																  'SellerPhone': $("#phone2").val()
-															})
+															}
 														}),
 														success: function(msg){
 															console.log("success");
@@ -311,7 +311,7 @@
 														}
 													});
 												}
-											</script>  
+											</script>
 									</form>
 							    </div>
 								  <div class="content-body" id="div4" style="display: none">
@@ -361,7 +361,7 @@
 													  },
 													  data: JSON.stringify({			//注册信息不足
 														  "ValidateCode": $("#code2").val(),
-														  "SellerData": JSON.stringify({
+														  "SellerData": {
 																'Password': $("#password2").val(),
 																'ShopName': $("#name2").val(),
 																'CreditLevel': 5,
@@ -370,7 +370,7 @@
 																'DefaultSellerAddressIndex': 0,
 																'SellerEmail': $("#email2").val(),
 																'SellerPhone': $("#phone2").val()
-														  })
+														  }
 													  }),
 													  success: function(msg){
 														  console.log("success");

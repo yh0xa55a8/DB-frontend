@@ -1,3 +1,26 @@
+$(()=>{
+    $.ajax({
+        url: 'http://www.sparkxyf.cn:8080/api/a/',
+        type: 'post',
+        contentType: 'application/json;charset=UTF-8',
+        xhrFields: {withCredentials: true},
+        data: {},
+        success: function(msg){
+            let url_splited = window.location.href.split('/');
+
+            // window.location.href =
+        },
+        error: function(err,code){
+            let url_splited = window.location.href.split('/');
+            console.log(url_splited);
+            if(code===404){
+                return
+            }
+            console(err)
+        }
+    });
+});
+
 
 function change(){
         var div1=document.getElementById("div1");

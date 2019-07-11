@@ -82,7 +82,7 @@
 
 		function refresh_logestic_tracking() {
 			$.ajax({
-				url: 'http://localhost:5000/api/GetTransact/',
+				url: 'http://www.sparkxyf.cn:8080/api/GetLogistics/',
 				type: 'post',
 				contentType: 'application/json;charset=UTF-8',
 				xhrFields:{withCredentials: true},
@@ -90,64 +90,49 @@
 					'TransactId': getUrlParam('TransactId')
 				}),
 				success: function(data){
+					console.log(data);
+
+					$('#trackId').text(data.LogisticTrackNum);
+					$('#startLoc').text(data.SourceProvince + data.SourceCity);
+					$('#endLoc').text(data.DestinationProvince + data.DestinationCity)
+
 					$.ajax({
-						url: 'http://localhost:5000/api/GetLogistics/',
-						type: 'post',
+						url: 'http://www.sparkxyf.cn:8080/api/Logistic',
+						type: 'POST',
 						contentType: 'application/json;charset=UTF-8',
 						xhrFields:{withCredentials: true},
 						data: JSON.stringify({
-							'TransactId': data.TransactId
+							'LogisticId': data.LogisticTrackNum
 						}),
-						success: function(data){
+						success: data => {
+							data = JSON.parse(data.replace('\\', ''));
 							console.log(data);
-
-							$('#trackId').text(data.LogisticTrackNum);
-							$('#startLoc').text(data.SourceProvince + data.SourceCity);
-							$('#endLoc').text(data.DestinationProvince + data.DestinationCity)
-
-							$.ajax({
-								url: 'http://www.sparkxyf.cn:8080/api/Logistic',
-								type: 'POST',
-								contentType: 'application/json;charset=UTF-8',
-								xhrFields:{withCredentials: true},
-								data: JSON.stringify({
-									'LogisticId': data.LogisticTrackNum
-								}),
-								success: data => {
-									data = JSON.parse(data.replace('\\', ''));
-									console.log(data);
-									let addRecord = (time, status) => {
-										let recordTable = $('#trackInfo')
-										recordTable.append(
-												"<li><div class=\"status-content-before\">"+status+"</div>" +
-												"<div class=\"status-time-before\">"+time+"</div>" +
-												"<div class=\"status-line\"></div></li>")
-									};
-									if(data.status === "0"){
-										let list = data.result.list;
-										let upper = list.length>4?4:list.length;
-										for(let i=0;i<upper;i++) {
-											addRecord(list[i].time, list[i].status);
-										}
-									}
-									else {
-										addRecord("", "暂时没有追踪信息")
-									}
+							let addRecord = (time, status) => {
+								let recordTable = $('#trackInfo');
+								recordTable.append(
+										"<li><div class=\"status-content-before\">"+status+"</div>" +
+										"<div class=\"status-time-before\">"+time+"</div>" +
+										"<div class=\"status-line\"></div></li>")
+							};
+							if(data.status === "0"){
+								let list = data.result.list;
+								let upper = list.length>4?4:list.length;
+								for(let i=0;i<upper;i++) {
+									addRecord(list[i].time, list[i].status);
 								}
-							});
-
-							map.clearOverlays();
-							search(data.SourceCity,data.DestinationCity,BMAP_DRIVING_POLICY_LEAST_DISTANCE);
-							function search(start,end,route){
-								var driving = new BMap.DrivingRoute(map, {renderOptions:{map: map, autoViewport: true},policy: route});
-								driving.search(start,end);
 							}
-						},
-						error: function(err){
-							console.log('fail');
+							else {
+								addRecord("", "暂时没有追踪信息")
+							}
 						}
 					});
 
+					map.clearOverlays();
+					search(data.SourceCity,data.DestinationCity,BMAP_DRIVING_POLICY_LEAST_DISTANCE);
+					function search(start,end,route){
+						var driving = new BMap.DrivingRoute(map, {renderOptions:{map: map, autoViewport: true},policy: route});
+						driving.search(start,end);
+					}
 				},
 				error: function(err){
 					console.log('fail');
