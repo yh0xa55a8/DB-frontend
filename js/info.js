@@ -16,19 +16,18 @@ function GetCustomer() {
             console.log("success11");
         },
         error: function(err){
+            alert("未登录");
+            window.location = '1-login.html';
             console.log(err);
-            console.log('fail11');
         }
     });
 }
 function display(){
-    $("#BirthDayDate").html(info.BirthDayDate);
-    $("#CustomerId").html(info.CustomerId);
-    $("#DefaultAddressIndex").html(info.DefaultAddressIndex);
+    $("#Birthday").html(info.DateOfBirth.substring(0,10));
+    //$("#DefaultAddressIndex").html(info.DefaultSellerAddressIndex);
     $("#Email").html(info.Email);
     $("#IdCardNum").html(info.IdCardNum);
     $("#NickName").html(info.NickName);
-    $("#Password").html(info.Password);
     $("#PhoneNum").html(info.PhoneNum);
     $("#Point").html(info.Point);
     $("#RealName").html(info.RealName);

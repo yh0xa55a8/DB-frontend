@@ -66,7 +66,7 @@
 				$("#RealName").val(data.RealName);
 				$("#IdCard").val(data.IdCardNum);
 				$("#NickName").val(data.NickName);
-				$("#BirthDate").val((data.DateOfBirth).substring(0,10));
+				$("#Birthday").val((data.DateOfBirth).substring(0,10));
 				console.log("success11");
 			},
 			error: function(err){
@@ -211,7 +211,7 @@
 												</div>
 												<div class="form-row">
 													<label>出生日期<abbr class="required">*</abbr></label>
-													<input type="date" placeholder="" id="BirthDate">
+													<input type="date" placeholder="" id="Birthday">
 												</div>
 											</div>
 											<div id="payment" class="product-checkout-payment">

@@ -13,6 +13,7 @@ $(()=>{
             if(code===404){
                 return
             }
+
             console.log(err)
         }
     });
@@ -55,6 +56,7 @@ function change(){
             error: function(err){
                 console.log(err);
                 console.log('fail');
+                alert("账号或密码错误");
             }
         });
     }
