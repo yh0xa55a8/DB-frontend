@@ -7,6 +7,8 @@ function UpdateCustomer() {
             withCredentials: true,
         },
         data: JSON.stringify({
+            'RealName': $("#RealName").val(),
+            'IdCardNum': $("#IdCard").val(),
             'NickName': $("#NickName").val(),
             'DateOfBirth': $("#BirthDate").val(),
         }),
