@@ -1,22 +1,20 @@
 $(()=>{
     $.ajax({
+        // FIXME: after getCustomerApi
         url: 'http://www.sparkxyf.cn:8080/api/a/',
         type: 'post',
         contentType: 'application/json;charset=UTF-8',
         xhrFields: {withCredentials: true},
         data: {},
         success: function(msg){
-            let url_splited = window.location.href.split('/');
-
+            window.location.href = './1-home.html'
             // window.location.href =
         },
         error: function(err,code){
-            let url_splited = window.location.href.split('/');
-            console.log(url_splited);
             if(code===404){
                 return
             }
-            console(err)
+            console.log(err)
         }
     });
 });
