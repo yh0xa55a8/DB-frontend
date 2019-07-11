@@ -1,13 +1,12 @@
 $(()=>{
     $.ajax({
-        // FIXME: after getCustomerApi
-        url: 'http://www.sparkxyf.cn:8080/api/a/',
+        url: 'http://www.sparkxyf.cn:8080/api/GetCustomer/',
         type: 'post',
         contentType: 'application/json;charset=UTF-8',
         xhrFields: {withCredentials: true},
         data: {},
         success: function(msg){
-            window.location.href = './1-home.html'
+            //window.location.href = './1-home.html'
             // window.location.href =
         },
         error: function(err,code){
@@ -37,6 +36,7 @@ function change(){
     function Login() {
         $.ajax({
             url: 'http://www.sparkxyf.cn:8080/api/Login/',
+            // url: 'http://192.168.1.154:5000/api/Login/',
             type: 'post',
             contentType: 'application/json;charset=UTF-8',
             xhrFields: {
