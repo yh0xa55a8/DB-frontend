@@ -1,7 +1,7 @@
 var cart, title;
 function SeeShoppingCart() {
     $.ajax({
-        url: 'http://192.168.1.178:5000/api/SeeShoppingCart/',
+        url: 'http://www.sparkxyf.cn:8080/api/SeeShoppingCart/',
         type: 'post',
         contentType: 'application/json;charset=UTF-8',
         async: false,
@@ -28,7 +28,7 @@ function SeeShoppingCart() {
 }
 function GetBook(ISBN) {
     $.ajax({
-        url: 'http://192.168.1.178:5000/api/GetBook/',
+        url: 'http://www.sparkxyf.cn:8080/api/GetBook/',
         type: 'post',
         contentType: 'application/json;charset=UTF-8',
         async: false,

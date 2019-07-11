@@ -1,7 +1,7 @@
 var order, title;
 function CustomerGetAllTransacts() {
     $.ajax({
-        url: 'http://192.168.1.178:5000/api/CustomerGetAllTransacts/',
+        url: 'http://www.sparkxyf.cn:8080/api/CustomerGetAllTransacts/',
         type: 'post',
         contentType: 'application/json;charset=UTF-8',
         async: false,
@@ -28,7 +28,7 @@ function CustomerGetAllTransacts() {
 }
 function GetBook(ISBN) {
     $.ajax({
-        url: 'http://192.168.1.178:5000/api/GetBook/',
+        url: 'http://www.sparkxyf.cn:8080/api/GetBook/',
         type: 'post',
         contentType: 'application/json;charset=UTF-8',
         async: false,

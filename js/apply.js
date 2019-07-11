@@ -2,7 +2,7 @@ function VipMember() {
     var now = new Date();
     now.setFullYear(now.getFullYear()+1);
     $.ajax({
-        url: 'http://192.168.1.178:5000/api/VipMember/',
+        url: 'http://www.sparkxyf.cn:8080/api/VipMember/',
         type: 'post',
         contentType: 'application/json;charset=UTF-8',
         xhrFields: {
