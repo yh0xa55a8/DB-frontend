@@ -50,9 +50,12 @@
 		<script src="http://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 		<![endif]-->
 		<script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+		<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+
 
 	</head>
 	<script>
+		var addressses;
 		$(function(){
 			$.ajax({
 				url: 'http://www.sparkxyf.cn:8080/api/CustomerGetAllAddresses/',
@@ -63,19 +66,29 @@
 				},
 				success: function(data){
 					console.log(data);
-					console.log(data[1].AddressIndex);
-					$("#number1").html(data[0].AddressIndex);
+					addressses = data;
+
+					$("#number1").html(1);
 					$("#name1").html(data[0].ReceiverName);
 					$("#phone1").html(data[0].ReceivePhone);
-					$("#address1").html(data[0].Province + data[0].City + data[0].Block + data[0].DetailAddress);
-					$("#number2").html(data[1].AddressIndex);
-					$("#name2").html(data[1].ReceiverName);
-					$("#phone2").html(data[1].ReceivePhone);
-					$("#address2").html(data[1].Province + data[1].City + data[1].Block + data[1].DetailAddress);
-					$("#number3").html(data[2].AddressIndex);
-					$("#name3").html(data[2].ReceiverName);
-					$("#phone3").html(data[2].ReceivePhone);
-					$("#address3").html(data[2].Province + data[2].City + data[2].Block + data[2].DetailAddress);
+					$("#address1").html(data[0].Province + data[0].City + data[0].Block);
+					$("#detail1").html(data[0].DetailAddress)
+					if(data.length > 1){
+						$("#number2").html(2);
+						$("#name2").html(data[1].ReceiverName);
+						$("#phone2").html(data[1].ReceivePhone);
+						$("#address2").html(data[1].Province + data[1].City + data[1].Block);
+						$("#detail2").html(data[1].DetailAddress);
+					}
+					if(data.length >2){
+						$("#number3").html(3);
+						$("#name3").html(data[2].ReceiverName);
+						$("#phone3").html(data[2].ReceivePhone);
+						$("#address3").html(data[2].Province + data[2].City + data[2].Block);
+						$("#detail3").html(data[2].DetailAddress)
+					}
+
+					//$("#box2").hide();
 					console.log("success11");
 				},
 				error: function(err){
@@ -234,37 +247,37 @@
 							   </div>
 							</div>
 							<div class="inner-wrapper">
-								<div class="products-inner-wrapper clear-fix">
+								<div id="box1"  class="products-inner-wrapper clear-fix">
 									<div class="product-item col-grid-12 product-grid top-space">
 										<div class="product-item-wrapper zoom-effect-hover-container box-shadow-block">
 											<div class="product-item-details">
-												<a href="#" id="number1" title="Category Name">学校</a>
-												<h3 class="product-title"><a id="name1" href="#" title="title">洪欣鹏</a></h3>
-												<h3 class="product-title"><a id="phone1" href="#" title="title">18717787656</a></h3>
-												<h3 class="product-title"><a id="address1" href="#" title="title">上海市嘉定区曹安公路4800号</a></h3>
-												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+												<a href="#" id="number1" title="Category Name"></a>
+												<h3 class="product-title"><a id="name1" href="#" title="title"></a></h3>
+												<h3 class="product-title"><a id="phone1" href="#" title="title"></a></h3>
+												<h3 class="product-title"><a id="address1" href="#" title="title"></a></h3>
+												<p id="detail1"></p>
 											</div><!-- .product-item-details -->
 										</div><!-- .product-item-wrapper -->
 									</div><!-- .product-item -->
 									<div class="product-item col-grid-12 product-grid top-space">
 										<div class="product-item-wrapper zoom-effect-hover-container box-shadow-block">
 											<div class="product-item-details">
-												<a href="#" id="number2" title="Category Name">学校</a>
-												<h3 class="product-title"><a id="name2" href="#" title="title">洪欣鹏</a></h3>
-												<h3 class="product-title"><a id="phone2" href="#" title="title">18717787656</a></h3>
-												<h3 class="product-title"><a id="address2" href="#" title="title">上海市嘉定区曹安公路4800号</a></h3>
-												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+												<a href="#" id="number2" title="Category Name"></a>
+												<h3 class="product-title"><a id="name2" href="#" title="title"></a></h3>
+												<h3 class="product-title"><a id="phone2" href="#" title="title"></a></h3>
+												<h3 class="product-title"><a id="address2" href="#" title="title"></a></h3>
+												<p id="detail2"></p>
 											</div><!-- .product-item-details -->
 										</div><!-- .product-item-wrapper -->
 									</div><!-- .product-item -->
 									<div class="product-item col-grid-12 product-grid top-space">
 										<div class="product-item-wrapper zoom-effect-hover-container box-shadow-block">
 											<div class="product-item-details">
-												<a href="#" id="number3" title="Category Name">学校</a>
-												<h3 class="product-title"><a id="name3" href="#" title="title">洪欣鹏</a></h3>
-												<h3 class="product-title"><a id="phone3" href="#" title="title">18717787656</a></h3>
-												<h3 class="product-title"><a id="address3" href="#" title="title">上海市嘉定区曹安公路4800号</a></h3>
-												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+												<a href="#" id="number3" title="Category Name"></a>
+												<h3 class="product-title"><a id="name3" href="#" title="title"></a></h3>
+												<h3 class="product-title"><a id="phone3" href="#" title="title"></a></h3>
+												<h3 class="product-title"><a id="address3" href="#" title="title"></a></h3>
+												<p id="detail3"></p>
 											</div><!-- .product-item-details -->
 										</div><!-- .product-item-wrapper -->
 									</div><!-- .product-item -->
