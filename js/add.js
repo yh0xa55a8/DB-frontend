@@ -20,10 +20,13 @@ function CustomerAddress() {
             console.log(data);
             //$("#question").html(dataContent);
             console.log("success11");
+            alert("新建成功");
+            window.location="1-address.html";
         },
         error: function(err){
             console.log(err);
             console.log('fail11');
+            alert("保存失败")
         }
     });
 }
