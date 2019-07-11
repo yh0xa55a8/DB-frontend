@@ -8,9 +8,11 @@ function UpdateCustomer() {
         },
         data: JSON.stringify({
             'NickName': $("#NickName").val(),
-            'DateOfBirth': $("#DateOfBirth").val(),
+            'DateOfBirth': $("#BirthDate").val(),
         }),
         success: function(data){
+            alert("更改成功！跳转回用户信息界面。");
+            window.location = ('1-info.html');
             console.log(data);
             //$("#question").html(dataContent);
             console.log("success11");

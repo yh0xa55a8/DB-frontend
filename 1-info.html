@@ -15,7 +15,7 @@
 		<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
 		<link rel="stylesheet" type="text/css" href="third-party/sidr/css/jquery.sidr.dark.css">
 		<link rel="stylesheet" type="text/css" href="third-party/slick/css/slick.css">
-		
+
 		<link rel="stylesheet" type="text/css" href="third-party/wow/css/animate.min.css">
         <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css">
 		<link rel="stylesheet" type="text/css" href="third-party/magnific-popup-master/css/magnific-popup.css">
@@ -36,7 +36,7 @@
 		<!-- <link rel="stylesheet" type="text/css" href="css/colors/dark-blue.css"> -->
 		<!-- <link rel="stylesheet" type="text/css" href="css/colors/purple.css"> -->
 		<!-- <link rel="stylesheet" type="text/css" href="css/colors/sky-blue.css"> -->
-		
+
 
 		<link rel="stylesheet" href="third-party/fontawesome/releases/v5.2.0/css/all.css" >
 
@@ -53,6 +53,13 @@
 		<script src="js/info.js"></script>
 
 		<script>
+
+            function ShowImg(input) {
+                var file = input.files[0];
+                var url = window.URL.createObjectURL(file);
+                document.getElementById('preview').src = url;
+            }
+
 			function uploadAvatar(){
 				let avatar = $("#avatarToUpload")[0];
 				console.log(avatar.value)
@@ -60,18 +67,18 @@
 					return
 				}
 				$.ajax({
-					url: 'http://localhost:5000/api/RequestCustomerAvatarUpload',
+					url: 'http://www.sparkxyf.cn:8080/api/RequestCustomerAvatarUpload',
 					type: 'post',
 					xhrFields:{withCredentials: true}, // 发送凭据
 					contentType: 'application/json; charset=UTF-8',
 					data: JSON.stringify({}),
 					success: function(result,status,xhl){
-						$("#avatarUploadToken").val(result.token);
-						$("#avatarUploadKey").val(result.key);
-
 						let form = $("#avatarUploadForm")[0];
 
 						let data = new FormData(form);
+
+						data.set("token", result.token);
+						data.set("key", result.key);
 						$.ajax({
 							type: 'POST',
 							processData: false,
@@ -212,7 +219,7 @@
                   <div id="primary" class="content-area">
                     <main id="main" class="site-main">
 						<div class="section-checkout">
-							<form name="checkout" class="checkout product-checkout">
+
 							    <div class="col2-set" id="customer_details">
 							        <div class="col-1">
 							            <div class="product-billing-fields">
@@ -224,28 +231,24 @@
 														  enctype="multipart/form-data" id="avatarUploadForm">
 														<input name="key" type="hidden" id="avatarUploadKey" value="">
 														<input name="token" type="hidden" id="avatarUploadToken" value="">
-														<input name="file" type="file" accept="image/jpeg,image/png" id="avatarToUpload"/>
+														<input name="file" type="file" accept="image/jpeg,image/png" id="avatarToUpload" onchange="ShowImg(this)" required/>
 													</form>
 													<button onclick="uploadAvatar()">上传头像</button>
 												</div>
 												<div class="form-row form-row-last">
-													<img src="images/blog-single/author1.png" alt="" width="112" height="112">
+													<img src="images/blog-single/author1.png" alt="" id="preview" style="width:112px;height: 112px;" >
 												</div>
 							                    <div class="form-row form-row-first">
-							                        <label>用户ID</label>
-													<p id="CustomerId">772192398</p>
-							                    </div>
-							                    <div class="form-row form-row-last">
 							                        <label>用户昵称</label>
-													<p id="NickName">12345678</p>
+													<p id="NickName">-</p>
 							                    </div>
-												<div class="form-row form-row-first">
-													<label>账户密码</label>
-													<p id="Password">18717787656</p>
-												</div>
 												<div class="form-row form-row-last">
 													<label>账户积分</label>
-													<p id="Point">3000</p>
+													<p id="Point">-</p>
+												</div>
+												<div class="form-row form-row-first">
+													<label>个人邮箱</label>
+													<p id="Email">-</p>
 												</div>
 							                </div>
 							            </div>
@@ -255,32 +258,29 @@
 											<h3>个人信息</h3>
 											<div class="form-row form-row-first">
 												<label>真实姓名</label>
-												<p id="RealName">洪欣鹏</p>
+												<p id="RealName">-</p>
 											</div>
 											<div class="form-row form-row-last">
 												<label>默认地址</label>
-												<p id="DefaultAddressIndex">江西南昌洪都大道12号</p>
+												<p id="DefaultAddressIndex">-</p>
 											</div>
 											<div class="form-row form-row-first">
 												<label>出生日期</label>
-												<p id="BirthDayDate">1998年3月8日</p>
+												<p id="Birthday">-</p>
 											</div>
-											<div class="form-row form-row-last">
+											<div class="form-row first">
 												<label>身份证号</label>
-												<p id="IdCardNum">360103199803085915</p>
+												<p id="IdCardNum">-</p>
 											</div>
-											<div class="form-row form-row-first">
+											<div class="form-row last">
 												<label>手机号码</label>
-												<p id="PhoneNum">18717787656</p>
+												<p id="PhoneNum">-</p>
 											</div>
-											<div class="form-row form-row-last">
-												<label>个人邮箱</label>
-												<p id="Email">hongxinpeng@tongji.edu.cn</p>
-											</div>
+
 							            </div>
 								        <div id="payment" class="product-checkout-payment">
 								             <div class="form-row-first place-order">
-												 <a href="1-changeinfo.html"><input type="button" class="button alt" name="product-checkout-place-order" id="place_order1" value="编辑个人信息" data-value="Place order"></a>
+												 <a href="1-changeinfo.html"><input type="button" class="button alt" name="product-checkout-place-order" id="place_order1" value="编辑个人信息" data-value="Place order" ></a>
 								             </div>
 											<div class="form-row-last place-order">
 												<a href="1-change.html"><input type="button" class="button alt" name="product-checkout-place-order" id="place_order2" value="修改账户密码" data-value="Place order"></a>
@@ -288,7 +288,6 @@
 								        </div>
 							        </div>
 							    </div> <!-- #customer_details -->
-							</form><!-- .checkout product-checkout -->
 						</div><!-- .section-checkout -->
                     </main> <!-- #main -->
                   </div> <!-- #primary -->
