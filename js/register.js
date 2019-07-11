@@ -11,11 +11,9 @@ function SendMail() {
             'EmailStatus': 0,
         }),
         success: function(msg){
-            alert("success");
             console.log("success");
         },
         error: function(err){
-            alert("fail");
             console.log('fail');
         }
     });
@@ -62,11 +60,9 @@ function CustomerByEmail() {
         }),
         success: function(msg){
             console.log("success");
-
-            window.location.href= './1-home.html';
+            //window.location.href= '1-login.html';
         },
         error: function(err){
-            alert("请输入xx");
             console.log('fail');
         }
     });
@@ -93,7 +89,7 @@ function CustomerByPhone() {
         }),
         success: function(msg){
             console.log("success");
-            window.location.href= './1-home.html';
+            //window.location.href= '1-login.html';
         },
         error: function(err){
             console.log('fail');

@@ -15,12 +15,12 @@
 				border: none;
 				cursor: pointer;
 			}
-			
+
 			.dropdown {
 				position: relative;
 				display: inline-block;
 			}
-			
+
 			.dropdown-content {
 				display: none;
 				position: absolute;
@@ -28,20 +28,20 @@
 				min-width: 160px;
 				box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 			}
-			
+
 			.dropdown-content a {
 				color: black;
 				padding: 12px 16px;
 				text-decoration: none;
 				display: block;
 			}
-			
+
 			.dropdown-content a:hover {background-color: #f1f1f1}
-			
+
 			.dropdown:hover .dropdown-content {
 				display: block;
 			}
-			
+
 			.dropdown:hover .dropbtn {
 				background-color: #aa3131;
 			}
@@ -58,7 +58,7 @@
 		<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png" />
 		<link rel="stylesheet" type="text/css" href="third-party/sidr/css/jquery.sidr.dark.css">
 		<link rel="stylesheet" type="text/css" href="third-party/slick/css/slick.css">
-		
+
 		<link rel="stylesheet" type="text/css" href="third-party/wow/css/animate.min.css">
         <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css">
 		<link rel="stylesheet" type="text/css" href="third-party/magnific-popup-master/css/magnific-popup.css">
@@ -92,9 +92,29 @@
 					</div><!-- .site-branding -->
 					<nav class="main-navigation pull-right">
 						<ul>
-							<li><a href="1-home.html">网站首页</a></li>
 							<li><a href="2-information.html">我的店铺</a></li>
-							<li><a href="#" >安全退出</a></li>
+							<li><a href="2-login.html">登录</a></li>
+							<li><a href="#" onclick="logout()">安全退出</a></li>
+							<script>
+								function logout(){
+									$.ajax({
+										url: 'http://www.sparkxyf.cn:8080/api/SellerLogout',
+										type: 'post',
+										contentType: 'application/json; charset=UTF-8',
+										xhrFields: {	//发送cookie
+										withCredentials: true
+										},
+										data: JSON.stringify({}),
+										success: function(msg){
+											console.log("success");
+											window.location = '2-login.html';
+										},
+										error: function(err){
+											//理论上不可能
+										}
+									});
+								}
+							</script>	
 						</ul>
 					</nav> <!-- .site-navigation -->
 				</div> <!-- .container -->
@@ -119,7 +139,6 @@
 
 						<h2>用户行为分析</h2>
 
-                        <button type=button value="模拟商家登录" onclick="Shop_Login()">模拟商家登录</button>
 						<button onclick="download1()">生成报告一</button>
 						<button onclick="download2()">生成报告二</button>
                         <script type="text/javascript" src="js/login_pic.js"></script>
@@ -131,8 +150,8 @@
                                 <!-- <button type=button value="测试API" onclick="Test_Api1()">测试API</button> 得到商家名称-->
                                 <!-- <button type=button value="测试API" onclick="Test_Api2()">测试API</button> 得到Merchandize的ID-->
                                 <!-- <button type=button value="测试API" onclick="Test_Api3()">测试API</button> 得到Merchandize的ISBN和Price-->
-                                <button type=button value="价格分布——直方图" onclick="Test_Api4()">本书店价格分布</button>
-                                <button type=button value="价格分布——折线图" onclick="Test_Api5()">本书店价格分布</button>
+                                <button type=button value="价格分布——直方图" onclick="Test_Api4()">价格分布——直方图</button>
+                                <button type=button value="价格分布——折线图" onclick="Test_Api5()">价格分布——折线图</button>
 							</div>
 						</div>
 
@@ -140,13 +159,12 @@
 						<br><br>
 
 						<div style="position:relative;left:170px;">
-                            <!-- 第一幅图——本书点价格分布 -->
+                            <!-- 第一幅图——价格分布直方图 -->
                             <div id="bar" style="width:600px; height:400px;display:none;"></div>
                             <script type="text/javascript" src="js/testApi.js"></script>
 
-                            <!-- 第二幅图——销量榜单 -->
+                            <!-- 第二幅图——价格分布折线图 -->
                             <div id="line" style="width:600px; height:400px;display:none;"></div>
-							<script type="text/javascript" src="js/testApi.js"></script>
 
 						<br>
 						<!-- 图表分割线 -->
@@ -191,7 +209,7 @@
 						</ul>
                       </aside>
 <!-- .widget-recent-entries -->                      <!-- .widget-tag-cloud -->
-                    </div> 
+                    </div>
                     <!-- .sidebar-widget-wrapper -->
                   </div> <!-- .sidebar -->
                 </div> <!-- #inner-wrapper -->
@@ -211,7 +229,7 @@
 						</div> <!-- .container -->
 					</div> <!-- .colophon-bottom -->
 				</footer> <!-- footer ends here -->
-			</div><!-- footer-container -->	
+			</div><!-- footer-container -->
 	</div> <!--#page-->
 		<div id="btn-scrollup">
 			<a  title="Go Top"  class="scrollup button-circle" href="#"><i class="fas fa-angle-up"></i></a>

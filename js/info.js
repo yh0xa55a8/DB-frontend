@@ -1,5 +1,4 @@
 var info;
-
 function GetCustomer() {
     $.ajax({
         url: 'http://www.sparkxyf.cn:8080/api/GetCustomer/',
@@ -16,19 +15,19 @@ function GetCustomer() {
             console.log("success11");
         },
         error: function(err){
-            alert("未登录");
-            window.location="1-login.html";
-
+            console.log(err);
+            console.log('fail11');
         }
     });
 }
 function display(){
-    $("#Birthday").html(info.DateOfBirth.substring(0,10));
-    $("#DefaultAddressIndex").html(info.DefaultSellerAddressIndex);
+    $("#BirthDayDate").html(info.BirthDayDate);
+    $("#CustomerId").html(info.CustomerId);
+    $("#DefaultAddressIndex").html(info.DefaultAddressIndex);
     $("#Email").html(info.Email);
     $("#IdCardNum").html(info.IdCardNum);
     $("#NickName").html(info.NickName);
-    //document.getElementById("Nick")
+    $("#Password").html(info.Password);
     $("#PhoneNum").html(info.PhoneNum);
     $("#Point").html(info.Point);
     $("#RealName").html(info.RealName);

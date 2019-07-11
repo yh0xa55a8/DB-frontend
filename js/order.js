@@ -51,16 +51,16 @@ function GetBook(ISBN) {
 function display() {
 
 
-    GetBook(order[0].MerchandiseId);
+    GetBook(order[0].Merchandise.ISBN);
     $("#title0").html(title);
-    $("#transactID0").html(order[0].TransactId);
-   // $("#ISBN0").html(order[0].ISBN);
-    //$("#price0").html(order[0].Price);
-   // $("#time0").html(order[0].CreateTime);
+    $("#transactID0").html(order[0].TransactID);
+    $("#ISBN0").html(order[0].ISBN);
+    $("#price0").html(order[0].Price);
+    $("#time0").html(order[0].CreateTime);
 
     GetBook(order[1].Merchandise.ISBN);
     $("#title1").html(title);
-    $("#transactID1").html(order[1].TransactId);
+    $("#transactID1").html(order[1].TransactID);
     $("#ISBN1").html(order[1].ISBN);
     $("#price1").html(order[1].Price);
     $("#time1").html(order[1].CreateTime);
