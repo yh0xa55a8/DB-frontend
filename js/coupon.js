@@ -1,7 +1,7 @@
 var coupon;
 function GetCoupon() {
     $.ajax({
-        url: 'http://192.168.1.178:5000/api/GetCoupon/',
+        url: 'http://www.sparkxyf.cn:8080/api/GetCoupon/',
         type: 'post',
         contentType: 'application/json;charset=UTF-8',
         xhrFields: {

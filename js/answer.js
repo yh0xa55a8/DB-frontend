@@ -1,7 +1,7 @@
 var questionId;
 function GetQuestion() {
     $.ajax({
-        url: 'http://192.168.1.178:5000/api/GetQuestion/',
+        url: 'http://www.sparkxyf.cn:8080/api/GetQuestion/',
         type: 'post',
         contentType: 'application/json;charset=UTF-8',
         xhrFields: {
@@ -25,7 +25,7 @@ function GetQuestion() {
 }
 function Answer() {
     $.ajax({
-        url: 'http://192.168.1.178:5000/api/Answer/',
+        url: 'http://www.sparkxyf.cn:8080/api/Answer/',
         type: 'post',
         contentType: 'application/json;charset=UTF-8',
         xhrFields: {

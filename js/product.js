@@ -10,7 +10,7 @@ function GetMerchandise() {
     MerchandiseId=getUrlParam('MerchandiseId');
     console.log(MerchandiseId);
     $.ajax({
-        url: 'http://192.168.1.178:5000/api/GetMerchandise/',
+        url: 'http://www.sparkxyf.cn:8080/api/GetMerchandise/',
         type: 'post',
         contentType: 'application/json;charset=UTF-8',
         xhrFields: {
@@ -40,7 +40,7 @@ function GetMerchandise() {
 }
 function GetAllComments() {
     $.ajax({
-        url: 'http://192.168.1.178:5000/api/GetAllComments/',
+        url: 'http://www.sparkxyf.cn:8080/api/GetAllComments/',
         type: 'post',
         contentType: 'application/json;charset=UTF-8',
         xhrFields: {
@@ -71,7 +71,7 @@ function GetAllComments() {
 }
 function ShoppingCart() {
     $.ajax({
-        url: 'http://192.168.1.178:5000/api/ShoppingCart/',
+        url: 'http://www.sparkxyf.cn:8080/api/ShoppingCart/',
         type: 'post',
         contentType: 'application/json;charset=UTF-8',
         xhrFields: {
@@ -93,7 +93,7 @@ function ShoppingCart() {
 }
 function Question() {
     $.ajax({
-        url: 'http://192.168.1.178:5000/api/Question/',
+        url: 'http://www.sparkxyf.cn:8080/api/Question/',
         type: 'post',
         contentType: 'application/json;charset=UTF-8',
         xhrFields: {
@@ -116,7 +116,7 @@ function Question() {
 }
 function GetQuestionFromMerchandise(){
 $.ajax({
-    url: 'http://192.168.1.178:5000/api/GetQuestionFromMerchandise/',
+    url: 'http://www.sparkxyf.cn:8080/api/GetQuestionFromMerchandise/',
     type: 'post',
     contentType: 'application/json;charset=UTF-8',
     xhrFields: {
@@ -129,7 +129,7 @@ $.ajax({
         question = data;
         console.log(data);
         $.ajax({
-            url: 'http://192.168.1.178:5000/api/GetAnswerFromQuestion/',
+            url: 'http://www.sparkxyf.cn:8080/api/GetAnswerFromQuestion/',
             type: 'post',
             contentType: 'application/json;charset=UTF-8',
             xhrFields: {

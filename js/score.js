@@ -1,7 +1,7 @@
 var VIPinfo;
 function GetVipOfCustomer() {
     $.ajax({
-        url: 'http://192.168.1.178:5000/api/GetVipOfCustomer/',
+        url: 'http://www.sparkxyf.cn:8080/api/GetVipOfCustomer/',
         type: 'post',
         contentType: 'application/json;charset=UTF-8',
         xhrFields: {

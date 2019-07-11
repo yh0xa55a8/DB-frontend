@@ -1,6 +1,6 @@
 function SendMail() {
     $.ajax({
-        url: 'http://192.168.1.178:5000/api/SendMail/',
+        url: 'http://www.sparkxyf.cn:8080/api/SendMail/',
         type: 'post',
         contentType: 'application/json;charset=UTF-8',
         xhrFields: {
@@ -20,7 +20,7 @@ function SendMail() {
 }
 function Sms() {
     $.ajax({
-        url: 'http://192.168.1.178:5000/api/Sms/',
+        url: 'http://www.sparkxyf.cn:8080/api/Sms/',
         type: 'post',
         contentType: 'application/json;charset=UTF-8',
         xhrFields: {
@@ -40,7 +40,7 @@ function Sms() {
 }
 function CustomerByEmail() {
     $.ajax({
-        url: 'http://192.168.1.178:5000/api/Customer/',
+        url: 'http://www.sparkxyf.cn:8080/api/Customer/',
         type: 'post',
         contentType: 'application/json;charset=UTF-8',
         xhrFields: {
@@ -69,7 +69,7 @@ function CustomerByEmail() {
 }
 function CustomerByPhone() {
     $.ajax({
-        url: 'http://192.168.1.178:5000/api/Customer/',
+        url: 'http://www.sparkxyf.cn:8080/api/Customer/',
         type: 'post',
         contentType: 'application/json;charset=UTF-8',
         xhrFields: {
