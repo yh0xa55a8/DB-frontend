@@ -152,6 +152,55 @@
 						<div class="title">
 							<h3>订单列表</h3>
 						</div>
+						<div><p>输入要删除的订单编号：</p><input type="text" id="delete"><input type="button" onclick="deleteTransact()" value="删除"></div>
+						<div><p id="error" style="color:red"></p></div>
+						<script>
+							var index;
+							function deleteTransact(){
+								for(var i=0; i<Data.length; i++){
+									if(Data[i].TransactId == $("#delete").val()){
+										index = i;
+										break;
+									}
+								}
+								$.ajax({
+									url: 'http://www.sparkxyf.cn:8080/api/ManageUpdateTransact',
+									type: 'post',
+									async: false,
+									contentType: 'application/json; charset=UTF-8',
+									xhrFields: {	//发送cookie
+										withCredentials: true
+									},
+									data: JSON.stringify({
+										'TransactId': $("#delete").val(),
+										'ActualPrice': Data[index].ActualPrice,
+										'Amount': Data[index].Amount,
+										'Comment': Data[index].Comment,
+										'CommentLevel': Data[index].CommentLevel,
+										'CommentTime': Data[index].CommentTime,
+										'CreateTime': Data[index].CreateTime,
+										'CustomerId': Data[index].CustomerId,
+										'DestinationAddressIndex': Data[index].DestinationAddressIndex,
+										'ImagePath1': Data[index].ImagePath1,
+										'ImagePath2': Data[index].ImagePath2,
+										'LogisticTrackNum': Data[index].LogisticTrackNum,
+										'MerchandiseId': Data[index].MerchandiseId,
+										'SourceAddressIndex': Data[index].SourceAddressIndex,
+										'Status': 0,
+										'UsedCouponId': Data[index].UsedCouponId
+									}),
+									success: function(msg){
+										console.log("success");
+										$("#error").html("删除成功");
+									},
+									error: function(err){
+										console.log(err.statusText);
+										$("#error").html("删除失败");
+									}
+								})
+							}
+						</script>
+
 						<div class="content" style="padding-top: 30px;">
 							<div class="pagination" ></div>
 							<table class="tbody"></table>

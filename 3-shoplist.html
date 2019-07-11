@@ -157,6 +157,48 @@
 							<div style="float:left">
 							</div>
 						</div>
+						<div><p>输入要删除的商家编号：</p><input type="text" id="delete"><input type="button" onclick="deleteSeller()" value="删除"></div>
+						<div><p id="error" style="color:red"></p></div>
+						<script>
+							var index;
+							function deleteSeller(){
+								for(var i=0; i<Data.length; i++){
+									if(Data[i].SellerId == $("#delete").val()){
+										index = i;
+										break;
+									}
+								}
+								$.ajax({
+									url: 'http://www.sparkxyf.cn:8080/api/ManageUpdateSeller',
+									type: 'post',
+									async: false,
+									contentType: 'application/json; charset=UTF-8',
+									xhrFields: {	//发送cookie
+										withCredentials: true
+									},
+									data: JSON.stringify({
+										'SellerId': $("#delete").val(),
+										'AvatarPath': Data[index].AvatarPath,
+										'CreditLevel': Data[index].CreditLevel,
+										'DefaultSellerAddressIndex': Data[index].DefaultSellerAddressIndex,
+										'Password': Data[index].Password,
+										'SellerEmail': Data[index].SellerEmail,
+										'SellerPhone': Data[index].SellerPhone,
+										'ShopDescription': Data[index].ShopDescription,
+										'ShopName': Data[index].ShopName,
+										'IsValid': 0
+									}),
+									success: function(msg){
+										console.log("success");
+										$("#error").html("删除成功");
+									},
+									error: function(err){
+										console.log(err.statusText);
+										$("#error").html("删除失败");
+									}
+								})
+							}
+						</script>
 						<div class="content" style="padding-top: 30px;">
 							<div class="pagination" ></div>
 							<table class="tbody"></table>
