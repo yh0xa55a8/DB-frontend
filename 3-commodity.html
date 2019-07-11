@@ -45,9 +45,32 @@
 		<link rel="stylesheet" href="css/common.css">
 		<link rel="stylesheet" href="js/lib/pagination.css">
 		<script>
-			var pageSize = 10;
+			var Data;
+			function loadData(){
+				$.ajax({
+					url: 'http://www.sparkxyf.cn:8080/api/ManageSelectMerchandise/',
+					type: 'post',
+					async: false,
+					contentType: 'application/json; charset=UTF-8',
+					xhrFields: {	//发送cookie
+						withCredentials: true
+					},
+					data: JSON.stringify({}),
+					success: function(msg){
+						console.log("success");
+						Data = msg;
+						console.log(Data);
+					},
+					error: function(err){
+						console.log(err.statusText);
+					}
+				});
+			}
+			loadData();
+
+			var pageSize = 30;
 			function pagination(){
-				jQuery_New('.M-box').pagination(14,{
+				jQuery_New('.pagination').pagination(Data.length,{
 					jump: true,
 					coping: true,
 					num_display_entries: 4,
@@ -67,32 +90,23 @@
 			}
 			var flag = 0;
 			function LoadData(pageIndex) {
-				$.ajax({
-					url: 'data/VipMembers.json',
-					type: 'post',
-					contentType: 'application/json; charset=UTF-8',
-					data: JSON.stringify({}),
-					success: function (data) {
-						console.log(data);
-						var items_per_page = pageSize;
-						var max_elem = Math.min((pageIndex + 1) * items_per_page, data.VipMembers.length);
-						if (flag == 0) {
-							jQuery_New('.tbody').append(`<tr><th>会员ID</th><th>会员昵称</th><th>折扣率</th>
-							<th>有效期</th></tr>`);
-							flag = 1;
-						}
-						for (var i = pageIndex * items_per_page; i < max_elem; i++) {
-							jQuery_New('.tbody').append(`
-							<tr class="PageTable">
-							<td>${data.VipMembers[i].CustomerId}</td>
-							<td>${data.VipMembers[i].SellerId}</td>
-							<td>${data.VipMembers[i].DiscountRatio}</td>
-							<td>${data.VipMembers[i].ValidThrough}</td>
-							</tr>
-							`)
-						}
-					}
-				})
+				var items_per_page = pageSize;
+				var max_elem = Math.min((pageIndex + 1) * items_per_page, Data.length);
+				if (flag == 0) {
+					jQuery_New('.tbody').append(`<tr><th>商品编号</th><th>ISBN</th><th>卖家编号</th><th>价格</th><th>描述</th></tr>`);
+					flag = 1;
+				}
+				for (var i = pageIndex * items_per_page; i < max_elem; i++) {
+					jQuery_New('.tbody').append(`
+					<tr class="PageTable">
+					<td>${Data[i].MerchandiseId}</td>
+					<td>${Data[i].ISBN}</td>
+					<td>${Data[i].SellerId}</td>
+					<td>${Data[i].Price}</td>
+					<td>${Data[i].Description}</td>
+					</tr>
+					`)
+				}
 			}
 			jQuery_New(function(){
 				pagination();
@@ -109,7 +123,7 @@
 				<div class="container">
 					<div class="site-branding pull-left">
 						<div id="site-identity">
-							<h1 class="site-title"><a href="1-home.html" rel="home"><img alt="logo" class="site-logo" src="images/logo.png">红杉书屋</a></h1>
+							<h1 class="site-title"><a href="0-root.html" rel="home"><img alt="logo" class="site-logo" src="images/logo.png">红杉书屋</a></h1>
 						</div><!-- #site-identity -->
 					</div><!-- .site-branding -->
 					<nav class="main-navigation pull-right">
@@ -138,7 +152,7 @@
 							<h3>商品列表</h3>
 						</div>
 						<div class="content" style="padding-top: 30px;">
-							<div class="M-box" ></div>
+							<div class="pagination" ></div>
 							<table class="tbody"></table>
 						</div>	
 					</div>

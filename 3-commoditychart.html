@@ -41,7 +41,7 @@
 				<div class="container">
 					<div class="site-branding pull-left">
 						<div id="site-identity">
-							<h1 class="site-title"><a href="1-home.html" rel="home"><img alt="logo" class="site-logo" src="images/logo.png">红杉书屋</a></h1>
+							<h1 class="site-title"><a href="0-root.html" rel="home"><img alt="logo" class="site-logo" src="images/logo.png">红杉书屋</a></h1>
 						</div><!-- #site-identity -->
 					</div><!-- .site-branding -->
 					<nav class="main-navigation pull-right">
@@ -173,7 +173,126 @@
 		<script  src="incubator-echarts-4.2.1/dist/echarts.min.js"></script>
 		<script src="https://cdn.bootcss.com/echarts/3.8.5/echarts.js"></script>
 		<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
-		<script  src="js/chart35.js"></script>
+		<script>
+			var Data;
+			function loadData(){
+				$.ajax({
+					url: 'http://www.sparkxyf.cn:8080/api/ManageSelectTransact/',
+					type: 'post',
+					async: false,
+					contentType: 'application/json; charset=UTF-8',
+					xhrFields: {	//发送cookie
+						withCredentials: true
+					},
+					data: JSON.stringify({}),
+					success: function(msg){
+						console.log("success");
+						Data = msg;
+						console.log(Data);
+					},
+					error: function(err){
+						console.log(err.statusText);
+					}
+				});
+			}
+			loadData();
+			var saleMap = new Map();
+			for(var i=0; i<Data.length; i++){
+				if(saleMap[Data[i].MerchandiseId] == undefined){
+					saleMap[Data[i].MerchandiseId] = Data[i].Amount;
+				}
+				else{
+					saleMap[Data[i].MerchandiseId] += Data[i].Amount;
+				}
+			}
+			console.log(saleMap);
+			var idArray = new Array();
+			var saleArray = new Array();
+			var maxSale = 0, maxName;
+			for(var i=0; i<5; i++){
+				maxSale = 0;
+				for(var key in saleMap){
+					if(saleMap[key]>maxSale){
+						maxSale=saleMap[key];
+						maxName=key;
+					}
+				}
+				idArray.push(maxName);
+				saleArray.push(maxSale);
+				saleMap[maxName.toString()] = 0;
+				console.log(saleMap);
+			}
+			console.log(idArray, saleArray);
+			var nameArray = new Array();
+			for(var j=0;j<idArray.length; j++){
+				for(var i=0; i<Data.length; i++){
+					if(Data[i].MerchandiseId == idArray[j]){
+						$.ajax({
+							url:'http://www.sparkxyf.cn:8080/api/GetMerchandise',
+							type: 'post',
+							async:false,
+							contentType: 'application/json; charset=UTF-8',
+							xhrFields: {	//发送cookie
+								withCredentials: true
+							},
+							data: JSON.stringify({
+								'MerchandiseId': Data[i].MerchandiseId
+							}),
+							success: function(msg){
+								console.log(Data[i].MerchandiseId, msg);
+								$.ajax({
+									url: 'http://www.sparkxyf.cn:8080/api/GetBook/',
+									type: 'post',
+									async:false,
+									contentType: 'application/json; charset=UTF-8',
+									xhrFields: {	//发送cookie
+										withCredentials: true
+									},
+									data: JSON.stringify({
+										'ISBN': msg.ISBN
+									}),
+									success: function(data){
+										console.log("success");
+										console.log(data);
+										nameArray.push(data.Title);
+									},
+									error: function(err){
+										console.log(err.statusText);
+									}
+								});
+							},
+							error: function(err){
+								console.log(err.statusText);
+							}
+						});
+						break;
+					}
+				}
+			}
+			console.log(nameArray, saleArray);
+			var myChart = echarts.init(document.getElementById('chart35'));
+			var option = {
+					title:{
+						text: '销量Top5的书籍'
+					},
+					legend: {
+						data: ['销量']
+					},
+					xAxis:{
+						axisLabel :{
+							interval:0
+						},
+						data:nameArray
+					},
+					yAxis: {},
+					series:[{
+						name:'销量',
+						type: 'bar',
+						data: saleArray
+					}]
+				};
+			myChart.setOption(option);
+		</script>
 		<script  src="js/chart35-1.js"></script>
 		</div>
 		</div>

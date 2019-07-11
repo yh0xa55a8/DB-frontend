@@ -31,14 +31,42 @@
 		<link href="https://fonts.googleapis.com/css?family=Roboto:400,500,600,700" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700,800" rel="stylesheet">
 
+		<script  src="third-party/jquery/jquery-3.2.1.min.js"></script>
+		<script  src="third-party/jquery/jquery-migrate-3.0.0.min.js"></script>
 		<script src="js/jquery.min.js"></script>
+		<script type="text/javascript">
+			var jQuery_New = $.noConflict();
+		</script>
 		<script src="js/lib/jquery.pagination.js"></script>
 		<link rel="stylesheet" href="css/common.css">
 		<link rel="stylesheet" href="js/lib/pagination.css">
 		<script>
+			var Data;
+			function loadData(){
+				$.ajax({
+					url: 'http://www.sparkxyf.cn:8080/api/ManageSelectBook/',
+					type: 'post',
+					async: false,
+					contentType: 'application/json; charset=UTF-8',
+					xhrFields: {	//发送cookie
+						withCredentials: true
+					},
+					data: JSON.stringify({}),
+					success: function(msg){
+						console.log("success");
+						Data = msg;
+						console.log(Data);
+					},
+					error: function(err){
+						console.log(err.statusText);
+					}
+				});
+			}
+			loadData();
+
 			var pageSize = 10;
 			function pagination(){
-				$('.M-box').pagination(200,{
+				jQuery_New('.pagination').pagination(Data.length,{
 					jump: true,
 					coping: true,
 					num_display_entries: 4,
@@ -53,53 +81,33 @@
 				});
 			}
 			function PageCallback(index,jq) {
-				$(".PageTable").hide();
+				jQuery_New(".PageTable").hide();
 				LoadData(index);
 			}
-			function LoadData(pageIndex){
-				$.ajax({
-					url: 'data/table.json',
-					type: 'POST',
-					dataType: 'JSON',
-					data: {},
-					success: function (data) {
-						var items_per_page = pageSize;
-						var max_elem = Math.min((pageIndex+1)*items_per_page,data.Book.length);
-						if(pageIndex==0){
-							$('.tbody').append(`<tr><th>ISBN</th><th>书本名称</th><th>作者</th>
-							<th>出版社</th><th>出版年份</th><th>页数</th><th>图片</th></tr>`);
-						}
-						for(var i=pageIndex*items_per_page;i<max_elem;i++) {
-							$('.tbody').append(`
-                        <tr class="PageTable">
-                            <td>${data.Book[i].ISBN}</td>
-                            <td>${data.Book[i].Title}</td>
-                            <td>${data.Book[i].Author}</span></td>
-                            <td>${data.Book[i].Publisher}</td>
-                            <td>${data.Book[i].PublishYear}</td>
-                            <td>${data.Book[i].PageNum}</td>
-                         </tr>
-                        `)
-						}
-					}
-				})
+			var flag = 0;
+			function LoadData(pageIndex) {
+				var items_per_page = pageSize;
+				var max_elem = Math.min((pageIndex + 1) * items_per_page, Data.length);
+				if (flag == 0) {
+					jQuery_New('.tbody').append(`<tr><th>ISBN</th><th>书籍名称</th><th>作者</th><th>出版社</th>
+					<th>出版年份</th></tr>`);
+					flag = 1;
+				}
+				for (var i = pageIndex * items_per_page; i < max_elem; i++) {
+					jQuery_New('.tbody').append(`
+					<tr class="PageTable">
+					<td>${Data[i].ISBN}</td>
+					<td>${Data[i].Title}</td>
+					<td>${Data[i].Author}</td>
+					<td>${Data[i].Publisher}</td>
+					<td>${Data[i].PublishYear}</td>
+					</tr>
+					`)
+				}
 			}
-			$(function(){
+			jQuery_New(function(){
 				pagination();
 			})
-
-			function showNumber() {
-				$.ajax({
-					url: 'data/table.json',
-					type: 'POST',
-					dataType: 'JSON',
-					data: {},
-					success: function (data) {
-						var name = document.getElementById("number");
-						name.innerHTML(data.Book.length);
-					}
-				})
-			}
 		</script>
 	</head>
 	<body class="home header-v1">
@@ -112,7 +120,7 @@
 				<div class="container">
 					<div class="site-branding pull-left">
 						<div id="site-identity">
-							<h1 class="site-title"><a href="1-home.html" rel="home"><img alt="logo" class="site-logo" src="images/logo.png">红杉书屋</a></h1>
+							<h1 class="site-title"><a href="0-root.html" rel="home"><img alt="logo" class="site-logo" src="images/logo.png">红杉书屋</a></h1>
 						</div><!-- #site-identity -->
 					</div><!-- .site-branding -->
 					<nav class="main-navigation pull-right">
@@ -142,14 +150,12 @@
 						</div>
 						<div>
 							<div style="float:left;margin-right:10px;">
-							<label style="width: 130px;height:35px;">书本总数量:</label>
 							</div>
 							<div style="float:left">
-							<span>200</span>
 							</div>
 						</div>
 						<div class="content" style="padding-top: 30px;">
-							<div class="M-box" ></div>
+							<div class="pagination" ></div>
 							<table class="tbody"></table>
 						</div>
 					</div>
