@@ -11,6 +11,24 @@ function download2(){
     var var_1 = new Array(); //价格
     var var_2 = new Array(); //书名
     var var_3 = new Array(); //描述
+    var shopName;
+    $.ajax({
+        url: 'http://www.sparkxyf.cn:8080/api/GetSeller/',
+        type: 'post',
+        async: false,
+        contentType: 'application/json;charset=UTF-8',
+        xhrFields: {
+            withCredentials: true
+        },
+        success:function(data){
+            console.log("success");
+            shopName = data.ShopName;
+            console.log(data);
+        },
+        error: function(err) {
+            console.log(err);
+        }
+    });
     $.ajax({
         url: 'http://www.sparkxyf.cn:8080/api/GetMerchandisesOfSeller/',
         type: 'post',
@@ -18,8 +36,8 @@ function download2(){
         xhrFields: {
             withCredentials: true
         },
-        data: JSON.stringify({
-            'SellerShopName': "淘吧书店"
+        data: JSON.stringify({  
+            'SellerShopName': shopName
         }),
         success:function(data){
             console.log("success");
@@ -87,6 +105,24 @@ function download1(){
     var var_1 = new Array(); //价格
     var var_2 = new Array(); //书名
     var var_3 = new Array(); //描述
+    var shopName;
+    $.ajax({
+        url: 'http://www.sparkxyf.cn:8080/api/GetSeller/',
+        type: 'post',
+        async: false,
+        contentType: 'application/json;charset=UTF-8',
+        xhrFields: {
+            withCredentials: true
+        },
+        success:function(data){
+            console.log("success");
+            shopName = data.ShopName;
+            console.log(data);
+        },
+        error: function(err) {
+            console.log(err);
+        }
+    });
     $.ajax({
         url: 'http://www.sparkxyf.cn:8080/api/GetMerchandisesOfSeller/',
         type: 'post',
@@ -94,8 +130,8 @@ function download1(){
         xhrFields: {
             withCredentials: true
         },
-        data: JSON.stringify({
-            'SellerShopName': "淘吧书店"
+        data: JSON.stringify({  
+            'SellerShopName': shopName
         }),
         success:function(data){
             console.log("success");
@@ -184,6 +220,24 @@ function Test_Api5(){
     var var_1 = new Array(); //价格
     var var_2 = new Array(); //书名
     var var_3 = new Array(); //描述
+    var shopName;
+    $.ajax({
+        url: 'http://www.sparkxyf.cn:8080/api/GetSeller/',
+        type: 'post',
+        async: false,
+        contentType: 'application/json;charset=UTF-8',
+        xhrFields: {
+            withCredentials: true
+        },
+        success:function(data){
+            console.log("success");
+            shopName = data.ShopName;
+            console.log(data);
+        },
+        error: function(err) {
+            console.log(err);
+        }
+    });
     $.ajax({
         url: 'http://www.sparkxyf.cn:8080/api/GetMerchandisesOfSeller/',
         type: 'post',
@@ -191,8 +245,8 @@ function Test_Api5(){
         xhrFields: {
             withCredentials: true
         },
-        data: JSON.stringify({
-            'SellerShopName': "淘吧书店"
+        data: JSON.stringify({  
+            'SellerShopName': shopName
         }),
         success:function(data){
             console.log("success");
@@ -219,10 +273,12 @@ function Test_Api5(){
             option = {
                 xAxis: {
                     type: 'category',
-                    data: var_2
+                    data: var_2,
+                    name:"单位：图书数量"
                 },
                 yAxis: {
-                    type: 'value'
+                    type: 'value',
+                    name:"单位：元"
                 },
                 series: [{
                     data: var_1,
@@ -250,6 +306,24 @@ function Test_Api4(){
     var var_1 = new Array(); //价格
     var var_2 = new Array(); //书名
     var var_3 = new Array(); //描述
+    var shopName;
+    $.ajax({
+        url: 'http://www.sparkxyf.cn:8080/api/GetSeller/',
+        type: 'post',
+        async: false,
+        contentType: 'application/json;charset=UTF-8',
+        xhrFields: {
+            withCredentials: true
+        },
+        success:function(data){
+            console.log("success");
+            shopName = data.ShopName;
+            console.log(data);
+        },
+        error: function(err) {
+            console.log(err);
+        }
+    });
     $.ajax({
         url: 'http://www.sparkxyf.cn:8080/api/GetMerchandisesOfSeller/',
         type: 'post',
@@ -257,8 +331,8 @@ function Test_Api4(){
         xhrFields: {
             withCredentials: true
         },
-        data: JSON.stringify({
-            'SellerShopName': "淘吧书店"
+        data: JSON.stringify({ 
+            "SellerShopName": shopName
         }),
         success:function(data){
             console.log("success");
@@ -281,9 +355,6 @@ function Test_Api4(){
             }
 
             Sort(var_1);
-
-
-
 
             var option = {
                 grid: { left: '2%', right: '2%', bottom: '10%', containLabel: true },
@@ -322,7 +393,7 @@ function Test_Api3(){
         xhrFields: {
             withCredentials: true
         },
-        data: JSON.stringify({
+        data: JSON.stringify({  
             'MerchandiseId': "622"
         }),
         success:function(data){

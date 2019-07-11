@@ -190,10 +190,10 @@
 			</div><!-- .site-branding -->
 			<nav class="main-navigation pull-right">
 				<ul>
-					<a href="2-information.html" >我的店铺&nbsp&nbsp&nbsp</a>
-					<a href="2-login.html">登录</a>
-					<a href="#" onclick="logout()" >安全退出</a>
-					<script>
+						<li><a href="2-information.html">我的店铺</a></li>
+						<li><a href="2-login.html">登录</a></li>
+						<li><a href="#" onclick="logout()" >安全退出</a></li>
+				<script>
 						function logout(){
 							$.ajax({
 								url: 'http://www.sparkxyf.cn:8080/api/SellerLogout',
@@ -295,7 +295,7 @@
 															"SellerData": {
 																  'Password': $("#password1").val(),
 																  'ShopName': $("#name1").val(),
-																  'ShopDescription': 'fuck',
+																  'ShopDescription': 'Defaul Description',
 																  'SellerEmail': $("#email1").val(),
 																  'SellerPhone': $("#phone1").val()
 															}
@@ -364,7 +364,7 @@
 														  "SellerData": {
 																'Password': $("#password2").val(),
 																'ShopName': $("#name2").val(),
-																'ShopDescription': "fuck",
+																'ShopDescription': "Default Description",
 																'SellerEmail': $("#email2").val(),
 																'SellerPhone': $("#phone2").val()
 														  }
